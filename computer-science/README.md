@@ -8,7 +8,7 @@
 
 - 🐍 [UC Berkeley CS61A - Structure and Interpretation of Computer Programs](UCB%20CS61A/)
 - 🧠 [MIT - The Missing Semester](ms/)
-
+- 🤖 [AI series](AI/)
 ---
 
 > 持续更新中...

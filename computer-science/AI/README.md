@@ -19,7 +19,8 @@
   - [NLP task](NLP.md)
       介绍了相关的NLP任务
       包括但不限于：NER，翻译，摘要，问答系统
-    
+- [stanford CS336大语言模型的架构与实验](https://www.bilibili.com/video/BV1APuUz7Erx?spm_id_from=333.788.videopod.sections&vd_source=d29a21e1671c0e8f0a10617e8e3990f6&p=18)
+    - [Overview and tokenization](chapter1.md)
 
 
 ## 测试用例
