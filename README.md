@@ -8,7 +8,7 @@
 
 ### 💻 计算机科学
 
-- **[UC Berkeley CS61A](computer-science/UCB%20CS61A/)** - Structure and Interpretation of Computer Programs
+- **[computer science](computer-science/)** - from basic python grammer to the most advanced ML, NLP and LLM
   
 ### 📚 英文学习
 
@@ -20,7 +20,7 @@
 
 ### 🤖人工智能
 
-- **[人工智能](AI/)** - Artificial Intelligence - My road to SH ai lab 
+- **[NLP / LLM](computer-science/huggingface/)** - 主要记录 Hugging Face LLM Course 与相关大模型笔记
 
 ### 大学物理
 - **[大学物理](phy/)** - generall physics

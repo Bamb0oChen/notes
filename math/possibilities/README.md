@@ -8,7 +8,7 @@ Change is the constant
 ---
 
 ## 📖 内容目录
-[概率论初步](basic.md)
+[概率论初步](math/possibilities/basic.md)
 
 ---
 

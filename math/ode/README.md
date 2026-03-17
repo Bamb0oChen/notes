@@ -10,4 +10,4 @@
 
 基于 ZJU 常微分方程
 
-- [](math/ode/)
+- [常微分方程笔记（ode）](math/ode/ode.md)

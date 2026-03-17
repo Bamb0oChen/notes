@@ -1,6 +1,4 @@
-- [首页](#/)
-
-- [AI](AI/)
+- [首页](README.md)
 
 - [计算机科学](computer-science/)
 

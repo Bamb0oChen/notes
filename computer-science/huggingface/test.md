@@ -1,7 +1,7 @@
 # Jupyter 示例：情感分类（Transformer）
 
 > 说明：Docsify 站点默认渲染 `.md`，不会直接渲染 `.ipynb`。  
-> 本仓库已移除对应的 Notebook 文件（`AI/test.ipynb`），仅保留本页的代码示例。
+> 本仓库已移除对应的 Notebook 文件（`computer-science/huggingface/test.ipynb`），仅保留本页的代码示例。
 
 ## 代码
 
@@ -50,4 +50,4 @@ for i, sentence in enumerate(raw_inputs):
 ## 在本地运行（Jupyter）
 
 - Notebook 文件：已移除（如需可自行新建 `.ipynb` 并复制本页代码）
-- 网页展示页：`AI/test.md`
+- 网页展示页：本页（`computer-science/huggingface/test.md`）

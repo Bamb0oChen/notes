@@ -42,5 +42,3 @@
 6.系统级评估（Full System Evaluation）
 
 在完整应用场景中评估模型表现，如检索增强生成（RAG）系统和智能代理（agents）。
-
-## tokenizer
