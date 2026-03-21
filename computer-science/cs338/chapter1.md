@@ -11,7 +11,7 @@
 
 关于模型的训练数据选择，越大的模型需要的训练数据越小，所以怎么找到平衡点？
 参考OpenAI给出的论文
-![balance.png](images/balance.png)
+![balance.png](balance.png)
 然后用曲线对应
 
 ## Data
@@ -22,7 +22,7 @@
 1.Perplexity（困惑度）
 
 语言模型的传统评估指标，衡量模型对文本的预测能力。
-
+![perplexity](perplexity.png)
 2.标准化测试（Standardized Testing）
 
 使用公开数据集（如MMLU、HellaSwag、GSM8K）评估模型在多任务、常识推理、数学等能力上的表现。
