@@ -27,7 +27,7 @@ In the pursuit of demanding goals, initialexcitement may be enough to begin.But 
 
 当然，雅思可能会提出进一步的要求，要求我们解释一下这种现象产生的原因
 
-Trueandpurpose, grounded in self-understanding and a clearly defined purpose, transforms ambition into consistent movement.It sustains effort whenvisible results are missing and allows setbacks to be understood as part of theprocess rather than as final defeat.In the pursuit of demanding goals, initialexcitement may be enough to begin.But when improvement slows, superficial drivetends to fade.Motivation that depends on quick rewards cannot survive suchconditions. What is needed is a disciplined resolve that functions even in the absenceof reassurance.
+True and purpose, grounded in self-understanding and a clearly defined purpose, transforms ambition into consistent movement.It sustains effort whenvisible results are missing and allows setbacks to be understood as part of theprocess rather than as final defeat.In the pursuit of demanding goals, initialexcitement may be enough to begin.But when improvement slows, superficial drivetends to fade.Motivation that depends on quick rewards cannot survive suchconditions. What is needed is a disciplined resolve that functions even in the absenceof reassurance.
 
 于是我们不妨加上原因：However,in today's media landscape,success is often presented as afinished scene.We see the award, the promotion, the moment of celebration-rarelythe years of uncertainty and repetition behind them.Motivation built on imitation ofthese finished scenes collapses once progress proves slower and less glamorous than expected.
 

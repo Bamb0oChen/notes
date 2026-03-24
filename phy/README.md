@@ -6,6 +6,7 @@
 
 ## 📖 内容目录
 
+[运动学](ydx.md)
 [力学](phy/methology.md)
 
 ---
