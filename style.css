@@ -14,8 +14,18 @@
 
 html,
 body {
-    background-color: #1e1e1e;
+    background-color: #1e1e1e !important;
     color: #ecf0f1;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 兜底：无论主题/插件怎么加，都不允许 body 顶部留白 */
+
+body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 .app-nav {
@@ -152,9 +162,50 @@ body {
 .markdown-section {
     background-color: #1e1e1e;
     color: #c9d1d9;
-    padding: 30px 40px;
+    padding: 0 40px 30px;
     max-width: 900px;
     margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+
+/* 防止主题给正文整体下移/缩放 */
+
+.content,
+.markdown-section {
+    transform: none !important;
+    top: 0 !important;
+}
+
+
+/* 顶部顶格：覆盖 docsify 主题给内容区的默认上边距/内边距 */
+
+
+/* Docsify 在 sticky 模式下会给 body/main/content 增加顶部留白用于避开导航 */
+
+body.sticky,
+body.ready.sticky {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+main,
+.main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.content {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+
+/* Markdown 区块首元素不要额外顶空 */
+
+.markdown-section> :first-child {
+    margin-top: 0;
 }
 
 .markdown-section h1,

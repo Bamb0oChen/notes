@@ -1,123 +1,17 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>学习笔记</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Docsify Theme CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-
-    <!-- Custom Theme Override Styles -->
-    <link rel="stylesheet" href="style.css?v=20260301-3">
-    <link rel="icon" href="favicon.ico" />
-    <!-- Docsify Configuration -->
-    <script>
-        window.$docsify = {
-            name: ' 学习笔记',
-            repo: '',
-            basePath: (function() {
-                const path = location.pathname;
-                return path.endsWith('/') ? path : path.replace(/\/[^/]*$/, '/');
-            })(),
-            loadSidebar: true,
-            loadNavbar: true,
-            alias: {
-                '/.*/_sidebar.md': '/_sidebar.md',
-                '/.*/_navbar.md': '/_navbar.md'
-            },
-            subMaxLevel: 0,
-            sidebarDisplayLevel: 1,
-            homepage: 'README.md',
-            coverpage: false,
-            auto2top: true,
-            disableAnchors: true,
-            markdown: {
-                breaks: true
-            },
-            toc: {
-                tocMaxLevel: 5,
-                target: 'h1, h2, h3, h4, h5, h6'
-            },
-            search: {
-                maxAge: 86400000,
-                paths: 'auto',
-                placeholder: '搜索笔记...',
-                noData: '未找到结果',
-                depth: 6,
-                hideOtherSidebarContent: false
-            }
-        }
-
-        // 初始化完成后禁用标题链接
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', disableHeadingLinks);
-        } else {
-            disableHeadingLinks();
-        }
-
-        function disableHeadingLinks() {
-            const headingLinks = document.querySelectorAll('.markdown-section h1 a, .markdown-section h2 a, .markdown-section h3 a, .markdown-section h4 a, .markdown-section h5 a, .markdown-section h6 a');
-            headingLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                });
-            });
-        }
-
-        // 监听页面内容变化，重新禁用新添加的标题链接
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new MutationObserver(() => {
-                disableHeadingLinks();
-            });
-
-            if (document.body) {
-                observer.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                });
-            }
-        });
-
-        // 侧边栏收缩功能
-        document.addEventListener('DOMContentLoaded', function() {
-            // 创建右侧TOC收缩按钮
-            const tocToggle = document.createElement('div');
-            tocToggle.className = 'sidebar-toggle-right';
-            tocToggle.setAttribute('aria-label', '切换右侧目录');
-            document.body.appendChild(tocToggle);
-
-            // 等待TOC加载
-            setTimeout(() => {
-                const pageToc = document.querySelector('.page_toc');
-                if (pageToc) {
-                    tocToggle.addEventListener('click', () => {
-                        pageToc.classList.toggle('show');
-                    });
-                }
-
-                // 左侧sidebar切换
-                const sidebarToggle = document.querySelector('.sidebar-toggle');
-                const sidebar = document.querySelector('.sidebar');
-                if (sidebarToggle && sidebar) {
-                    sidebarToggle.addEventListener('click', () => {
-                        sidebar.classList.toggle('show');
-                    });
-                }
-            }, 500);
-        });
-    </script>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
 </head>
 
 <body>
     <div id="app"></div>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
-    <script src="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>
