@@ -33,7 +33,14 @@ function setupDocsifyConfig() {
     el: '#docsify-app',
     basePath: (() => {
       const path = location.pathname;
-      return path.endsWith('/') ? path : path.replace(/\/[^/]*$/, '/');
+      let base = path;
+      if (base.endsWith('.html')) {
+        base = base.replace(/\/[^/]*$/, '/');
+      }
+      if (!base.endsWith('/')) {
+        base += '/';
+      }
+      return base;
     })(),
     loadSidebar: true,
     loadNavbar: true,
