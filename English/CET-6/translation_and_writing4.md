@@ -1,0 +1,10 @@
+# 影响题的写法
+
+Directions: For this part, you are allowed 30 minutes to write an essay that begins with thesentence"It is believed that teachers(family/library) can exert a profound influence on their students' academicpursuit and personal development. "You can make comments, cite examples or use your personalexperience to develop your essay. You should write at least 150 words but no more than 200 words
+
+---
+It is believed that teachers can exert a profound influence on their students' academic pursuitand personal development.**When answers are offered by AI before questions are even fully formed, and success is reduced to mere numbers on a screen,teachers protect something thatis quietly fading away:the essence of independent thought and the cultivation of moral character/and multidimensional standards of evaluation**——the ability to critically engage with the world,rather than passively consume it.
+
+Teachers, in reality, become the defenders of the "human" aspect ofeducation.Today, knowledge arrives filtered and compressed by recommendationsystems. Students can access conclusions within seconds,often without tracing thereasoning behind them. While the abundance of information has surged,sustainedattention and independent judgment increasingly deteriorate.In thiscontext,teachers are tasked with fostering analytical thinking rather than merelyoroviding answers, encouraging students to immerse themselves in entire worksnstead of resorting to summaries. Teachers also resist the idea that value can bemeasured entirely by metrics. In a culture dominated by rankings, scores, andvisibility, students may begin to define themselves by comparison. They shouldlluminate mistakes, recognize effort and reframe failure as an essential part ofpersonal growth.
+
+In a word, teachers are not merely human Google searches that dispense facts. In a worldincreasingly enamored/obsessed with speed, likes, and instant gratification, they serve as theunsung superheroes of critical thinking and sound judgment, preserving our capacity for "slowthinking," even though we can breeze through a meme but get stuck on a simple mathproblem.
