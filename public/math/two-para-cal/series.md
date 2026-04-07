@@ -272,3 +272,19 @@ $$
 $\sum_{n=1}^{+\infty}a_n$收敛
 
 $\sum_{n=1}^{+\infty}b_n$单调有界
+
+## 幂级数展开和系数抽取
+
+常见展开：
+$$
+sinx = \sum^{\infty}_{n=0} \frac{(-1)^n}{(2n+1)!}x^{2n+1}
+$$
+$$
+cosx = \sum^{\infty}_{n=0} \frac{(-1)^n}{(2n)!}x^{2n}
+$$
+$$
+e^x = \sum^{\infty}_{n=0} \frac{x^n}{n!}
+$$
+$$
+\ln(1+x) = \sum_{n=1}\^{\infty} \frac{(-1)\^{n+1} x\^n}{n}
+$$
