@@ -29,9 +29,20 @@
         }
 
         async function loadFromManifest() {
-            const response = await fetch('./manifest.json', { cache: 'no-store' });
-            if (!response.ok) throw new Error('manifest not found');
-            const manifest = await response.json();
+            const candidates = ['./manifest.json', './.vite/manifest.json'];
+            let manifest = null;
+            for (const url of candidates) {
+                try {
+                    const response = await fetch(url, { cache: 'no-store' });
+                    if (response.ok) {
+                        manifest = await response.json();
+                        break;
+                    }
+                } catch (error) {
+                    // try next
+                }
+            }
+            if (!manifest) throw new Error('manifest not found');
             const entry = manifest['src/main.js'];
             if (!entry || !entry.file) throw new Error('entry not found');
             if (Array.isArray(entry.css)) {
