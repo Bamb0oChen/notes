@@ -11,7 +11,60 @@
 
 <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module">
+        const isDev = import.meta.env && import.meta.env.DEV;
+
+        function injectScript(src) {
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = src;
+            document.body.appendChild(script);
+        }
+
+        function injectCss(href) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+        }
+
+        async function loadFromManifest() {
+            const response = await fetch('./manifest.json', { cache: 'no-store' });
+            if (!response.ok) throw new Error('manifest not found');
+            const manifest = await response.json();
+            const entry = manifest['src/main.js'];
+            if (!entry || !entry.file) throw new Error('entry not found');
+            if (Array.isArray(entry.css)) {
+                entry.css.forEach(injectCss);
+            }
+            injectScript(`./${entry.file}`);
+        }
+
+        function loadDocsifyFallback() {
+            const app = document.getElementById('app');
+            if (app && !app.firstChild) {
+                app.innerHTML = '<div style="text-align:center;color:#6b7280;margin-top:40vh;">Loading...</div>';
+            }
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/docsify@4';
+            document.body.appendChild(script);
+            const prism = document.createElement('script');
+            prism.src = 'https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js';
+            document.body.appendChild(prism);
+            const search = document.createElement('script');
+            search.src = 'https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js';
+            document.body.appendChild(search);
+            const toc = document.createElement('script');
+            toc.src = 'https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js';
+            document.body.appendChild(toc);
+        }
+
+        if (isDev) {
+            injectScript('/src/main.js');
+        } else {
+            loadFromManifest().catch(() => loadDocsifyFallback());
+        }
+    </script>
 </body>
 
 </html>
