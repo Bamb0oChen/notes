@@ -10,3 +10,7 @@
 - [写作](English/CET-6/translation_and_writing3.md) - CET-6 六级第四次正课
 - [写作](English/CET-6/translation_and_writing4.md) - CET-6 六级第五次正课（影响类写作，老师的影响）
 - [翻译](English/CET-6/translation_and_writing5.md) - CET-6 六级第六次正课（翻译和选词填空）
+
+## 总结
+- [反思平台通用类](English/CET-6/sammary1.md)
+- [社会现象通用类](English/CET-6/sammary2.md)
