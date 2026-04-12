@@ -1,6 +1,8 @@
 <template>
   <div class="docsify-shell">
-    <div id="docsify-app"></div>
+    <div id="docsify-app">
+      <div class="notes-loading">Loading...</div>
+    </div>
   </div>
 </template>
 
