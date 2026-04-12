@@ -26,15 +26,15 @@ function forceNoTopGap() {
 
 function setupDocsifyConfig(basePath) {
   window.$docsify = {
-    name: 'Ñ§Ï°±Ê¼Ç',
+    name: 'å­¦ä¹ ç¬”è®°',
     repo: '',
     el: '#docsify-app',
     basePath,
     loadSidebar: true,
     loadNavbar: true,
     alias: {
-      '/.*/_sidebar.md': '/_sidebar.md',
-      '/.*/_navbar.md': '/_navbar.md'
+      '/.*/_sidebar.md': `${basePath}_sidebar.md`,
+      '/.*/_navbar.md': `${basePath}_navbar.md`
     },
     subMaxLevel: 0,
     sidebarDisplayLevel: 1,
@@ -52,8 +52,8 @@ function setupDocsifyConfig(basePath) {
     search: {
       maxAge: 86400000,
       paths: 'auto',
-      placeholder: 'ËÑË÷±Ê¼Ç...',
-      noData: 'Î´ÕÒµ½½á¹û',
+      placeholder: 'æœç´¢ç¬”è®°...',
+      noData: 'æœªæ‰¾åˆ°ç»“æžœ',
       depth: 6,
       hideOtherSidebarContent: false
     }
@@ -105,7 +105,7 @@ function setupMutationObserver() {
 function setupSidebarToggles() {
   const tocToggle = document.createElement('div');
   tocToggle.className = 'sidebar-toggle-right';
-  tocToggle.setAttribute('aria-label', 'ÇÐ»»ÓÒ²àÄ¿Â¼');
+  tocToggle.setAttribute('aria-label', 'åˆ‡æ¢å³ä¾§ç›®å½•');
   document.body.appendChild(tocToggle);
 
   setTimeout(() => {
