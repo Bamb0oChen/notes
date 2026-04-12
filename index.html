@@ -5,76 +5,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>学习笔记</title>
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="./favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
 </head>
 
 <body>
     <div id="app"></div>
     <script type="module">
-        const isDev = import.meta.env && import.meta.env.DEV;
-
-        function injectScript(src) {
-            const script = document.createElement('script');
-            script.type = 'module';
-            script.src = src;
-            document.body.appendChild(script);
-        }
-
-        function injectCss(href) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = href;
-            document.head.appendChild(link);
-        }
-
-        async function loadFromManifest() {
-            const candidates = ['./manifest.json', './.vite/manifest.json'];
-            let manifest = null;
-            for (const url of candidates) {
-                try {
-                    const response = await fetch(url, { cache: 'no-store' });
-                    if (response.ok) {
-                        manifest = await response.json();
-                        break;
-                    }
-                } catch (error) {
-                    // try next
-                }
-            }
-            if (!manifest) throw new Error('manifest not found');
-            const entry = manifest['src/main.js'];
-            if (!entry || !entry.file) throw new Error('entry not found');
-            if (Array.isArray(entry.css)) {
-                entry.css.forEach(injectCss);
-            }
-            injectScript(`./${entry.file}`);
-        }
-
-        function loadDocsifyFallback() {
-            const app = document.getElementById('app');
-            if (app && !app.firstChild) {
-                app.innerHTML = '<div style="text-align:center;color:#6b7280;margin-top:40vh;">Loading...</div>';
-            }
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/docsify@4';
-            document.body.appendChild(script);
-            const prism = document.createElement('script');
-            prism.src = 'https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js';
-            document.body.appendChild(prism);
-            const search = document.createElement('script');
-            search.src = 'https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js';
-            document.body.appendChild(search);
-            const toc = document.createElement('script');
-            toc.src = 'https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js';
-            document.body.appendChild(toc);
-        }
-
-        if (isDev) {
-            injectScript('/src/main.js');
-        } else {
-            loadFromManifest().catch(() => loadDocsifyFallback());
-        }
+        const isDev = import.meta.env && import.meta.env.DEV; function normalizeBasePathname() { const pathname = location.pathname || '/'; if (pathname.endsWith('/')) return pathname; if (pathname.includes('.')) { const dir = pathname.replace(/\/[^/]*$/, '/');
+        return dir.endsWith('/') ? dir : `${dir}/`; } return `${pathname}/`; } function injectScript(src) { const script = document.createElement('script'); script.type = 'module'; script.src = src; document.body.appendChild(script); } function injectCss(href)
+        { const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = href; document.head.appendChild(link); } async function loadFromManifest() { const base = normalizeBasePathname(); const candidates = [ `${base}manifest.json`,
+        `${base}.vite/manifest.json`, './manifest.json', './.vite/manifest.json' ]; let manifest = null; for (const url of candidates) { try { const response = await fetch(url, { cache: 'no-store' }); if (response.ok) { manifest = await response.json();
+        break; } } catch (error) { // try next } } if (!manifest) throw new Error('manifest not found'); const entry = manifest['src/main.js']; if (!entry || !entry.file) throw new Error('entry not found'); if (Array.isArray(entry.css)) { entry.css.forEach(injectCss);
+        } injectScript(`./${entry.file}`); } async function detectDocsifyBasePath() { const base = normalizeBasePathname(); const candidates = [base, './', '/']; async function exists(url) { try { const res = await fetch(url, { cache: 'no-store' }); return
+        res.ok; } catch { return false; } } for (const prefix of candidates) { if (await exists(`${prefix}README.md`)) return prefix; if (await exists(`${prefix}public/README.md`)) return `${prefix}public/`; } return './'; } async function setupDocsifyFallbackConfig()
+        { const basePath = await detectDocsifyBasePath(); window.$docsify = { name: '学习笔记', repo: '', el: '#app', basePath, loadSidebar: true, loadNavbar: true, alias: { '/.*/_sidebar.md': '/_sidebar.md', '/.*/_navbar.md': '/_navbar.md' }, subMaxLevel:
+        0, sidebarDisplayLevel: 1, homepage: 'README.md', coverpage: false, auto2top: true, disableAnchors: true, markdown: { breaks: true } }; } function loadDocsifyFallback() { const app = document.getElementById('app'); if (app && !app.firstChild)
+        { app.innerHTML = '
+        <div style="text-align:center;color:#6b7280;margin-top:40vh;">Loading...</div>'; } const script = document.createElement('script'); script.src = 'https://cdn.jsdelivr.net/npm/docsify@4'; document.body.appendChild(script); const prism = document.createElement('script'); prism.src = 'https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js';
+        document.body.appendChild(prism); const search = document.createElement('script'); search.src = 'https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js'; document.body.appendChild(search); const toc = document.createElement('script'); toc.src
+        = 'https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js'; document.body.appendChild(toc); } if (isDev) { injectScript('/src/main.js'); } else { loadFromManifest().catch(() => { setupDocsifyFallbackConfig().finally(() => loadDocsifyFallback());
+        }); }
     </script>
 </body>
 
