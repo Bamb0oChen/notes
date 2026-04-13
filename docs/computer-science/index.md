@@ -6,8 +6,6 @@
 - 系统 / 架构（微服务与系统设计）
 - NLP / LLM（Hugging Face LLM Course、CS338）
 
-链接约定：本页的模块入口使用 `computer-science/.../` 这种站内路径（不带 `#`、不带 `index.html`），交给 Docsify 解析成正确路由，避免出现 `?id=...` 或加载 `index.html` 导致卡住。
-
 ---
 
 ## 🧭 索引
@@ -21,6 +19,4 @@
 - 📚 [CS224N](computer-science/cs224n/)：NLP with Deep Learning（暂未整理）
 
 ---
-
-> 持续更新中：优先保证目录与链接可用，再逐步补齐内容。
  
