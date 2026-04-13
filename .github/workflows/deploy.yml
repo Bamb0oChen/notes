@@ -24,6 +24,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements-mkdocs.txt
 
       - name: Install dependencies
         run: python -m pip install -r requirements-mkdocs.txt
