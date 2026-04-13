@@ -10,6 +10,13 @@ __pycache__/
 # Large local datasets (downloaded/generated)
 math/lineralgebra/data/
 
-# Code notebooks/scripts not used for front-end rendering
+# MkDocs build output
+site/
+
+# Node artifacts (legacy from Vite/Vue)
+node_modules/
+dist/
+package-lock.json
+
+# Code notebooks not used for rendering
 *.ipynb
-*.py
