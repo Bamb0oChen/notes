@@ -1,0 +1,3 @@
+# MkDocs + Material（最小可用）
+mkdocs>=1.6
+mkdocs-material>=9.5

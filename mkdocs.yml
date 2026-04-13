@@ -1,0 +1,22 @@
+# 最小可用 MkDocs 配置：先跑起来（Material + 搜索 + docs/）
+# 说明：不依赖复杂插件；导航先交给 MkDocs 自动发现页面（不完美但可用）。
+
+site_name: 学习笔记
+
+# MkDocs 约定文档源目录为 docs/
+docs_dir: docs
+
+theme:
+  name: material
+  language: zh
+
+# 基础搜索（Material 会自动接入）
+plugins:
+  - search
+
+# 先保守使用 MkDocs 内置扩展，保证通用 Markdown 可渲染
+markdown_extensions:
+  - toc:
+      permalink: false
+  - tables
+  - fenced_code
