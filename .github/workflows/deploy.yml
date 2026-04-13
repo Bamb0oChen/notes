@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main", "master", "newhead"]
+    branches: ["**"]
   workflow_dispatch:
 
 permissions:
@@ -36,6 +36,9 @@ jobs:
 
       - name: Build
         run: mkdocs build
+
+      - name: Disable Jekyll
+        run: touch site/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
