@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../lazy_evaluation/">
       
-        <link rel="next" href="exercise/">
+      
+        <link rel="next" href="../../cs224n/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>学习笔记</title>
+        <title>01_Slicing.md - 学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#01_slicingmd" class="md-skip">
           跳转至
         </a>
       
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              📒 学习笔记仓库
+              01_Slicing.md
             
           </span>
         </div>
@@ -178,7 +180,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -193,37 +195,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📒 学习笔记仓库
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -239,148 +214,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 学科索引
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📚 学科索引">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💻 计算机科学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 英文学习
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📐 数学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖人工智能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        大学物理
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#-generall-physics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        - 大学物理 - generall physics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 开始学习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📖 更新日志
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📖 更新日志">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -392,7 +225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exercise/" class="md-nav__link">
+      <a href="../../../exercise/" class="md-nav__link">
         
   
   
@@ -466,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/" class="md-nav__link">
+      <a href="../../../Diary/" class="md-nav__link">
         
   
   
@@ -494,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/2025/" class="md-nav__link">
+      <a href="../../../Diary/2025/" class="md-nav__link">
         
   
   
@@ -522,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/amusementpark/" class="md-nav__link">
+      <a href="../../../Diary/amusementpark/" class="md-nav__link">
         
   
   
@@ -550,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/senrenbanka/" class="md-nav__link">
+      <a href="../../../Diary/senrenbanka/" class="md-nav__link">
         
   
   
@@ -578,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/star_white/" class="md-nav__link">
+      <a href="../../../Diary/star_white/" class="md-nav__link">
         
   
   
@@ -660,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/" class="md-nav__link">
+      <a href="../../../English/" class="md-nav__link">
         
   
   
@@ -735,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/" class="md-nav__link">
+      <a href="../../../English/CET-6/" class="md-nav__link">
         
   
   
@@ -763,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/sammary1/" class="md-nav__link">
+      <a href="../../../English/CET-6/sammary1/" class="md-nav__link">
         
   
   
@@ -791,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/sammary2/" class="md-nav__link">
+      <a href="../../../English/CET-6/sammary2/" class="md-nav__link">
         
   
   
@@ -819,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing1/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing1/" class="md-nav__link">
         
   
   
@@ -847,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing2/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing2/" class="md-nav__link">
         
   
   
@@ -875,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing3/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing3/" class="md-nav__link">
         
   
   
@@ -903,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing4/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing4/" class="md-nav__link">
         
   
   
@@ -931,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing5/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing5/" class="md-nav__link">
         
   
   
@@ -959,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing6/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing6/" class="md-nav__link">
         
   
   
@@ -987,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing7/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing7/" class="md-nav__link">
         
   
   
@@ -1015,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/word1/" class="md-nav__link">
+      <a href="../../../English/CET-6/word1/" class="md-nav__link">
         
   
   
@@ -1055,18 +888,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1087,7 +922,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1105,7 +940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -1130,18 +965,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
         
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
@@ -1162,7 +999,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1180,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1208,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Function%26Environment/" class="md-nav__link">
+      <a href="../Function%26Environment/" class="md-nav__link">
         
   
   
@@ -1236,7 +1073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Generator/" class="md-nav__link">
+      <a href="../Generator/" class="md-nav__link">
         
   
   
@@ -1264,7 +1101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Object-Oriented/" class="md-nav__link">
+      <a href="../Object-Oriented/" class="md-nav__link">
         
   
   
@@ -1292,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Structure_Basic/" class="md-nav__link">
+      <a href="../Structure_Basic/" class="md-nav__link">
         
   
   
@@ -1320,7 +1157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/lazy_evaluation/" class="md-nav__link">
+      <a href="../lazy_evaluation/" class="md-nav__link">
         
   
   
@@ -1345,10 +1182,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/python/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_Slicing.md
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1364,6 +1228,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 序列切片 (Slicing)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 函数式编程与算法语法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 函数式编程与算法语法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-list-comprehension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 列表推导式 (List Comprehension)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22lamba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2Lamba表达式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 高阶函数映射
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1431,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs224n/" class="md-nav__link">
+      <a href="../../cs224n/" class="md-nav__link">
         
   
   
@@ -1459,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs224n/pybasis/" class="md-nav__link">
+      <a href="../../cs224n/pybasis/" class="md-nav__link">
         
   
   
@@ -1542,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/" class="md-nav__link">
+      <a href="../../cs338/" class="md-nav__link">
         
   
   
@@ -1570,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter1/" class="md-nav__link">
+      <a href="../../cs338/chapter1/" class="md-nav__link">
         
   
   
@@ -1598,7 +1543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter2/" class="md-nav__link">
+      <a href="../../cs338/chapter2/" class="md-nav__link">
         
   
   
@@ -1626,7 +1571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter3/" class="md-nav__link">
+      <a href="../../cs338/chapter3/" class="md-nav__link">
         
   
   
@@ -1654,7 +1599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter4/" class="md-nav__link">
+      <a href="../../cs338/chapter4/" class="md-nav__link">
         
   
   
@@ -1737,7 +1682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/" class="md-nav__link">
+      <a href="../../huggingface/" class="md-nav__link">
         
   
   
@@ -1765,7 +1710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/NLP/" class="md-nav__link">
+      <a href="../../huggingface/NLP/" class="md-nav__link">
         
   
   
@@ -1793,7 +1738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/fine_tune_a_model/" class="md-nav__link">
+      <a href="../../huggingface/fine_tune_a_model/" class="md-nav__link">
         
   
   
@@ -1821,7 +1766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/test/" class="md-nav__link">
+      <a href="../../huggingface/test/" class="md-nav__link">
         
   
   
@@ -1849,7 +1794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/the_use_of_transformer/" class="md-nav__link">
+      <a href="../../huggingface/the_use_of_transformer/" class="md-nav__link">
         
   
   
@@ -1877,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/transformer/" class="md-nav__link">
+      <a href="../../huggingface/transformer/" class="md-nav__link">
         
   
   
@@ -1960,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/ms/" class="md-nav__link">
+      <a href="../../ms/" class="md-nav__link">
         
   
   
@@ -2050,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/" class="md-nav__link">
+      <a href="../../../math/" class="md-nav__link">
         
   
   
@@ -2125,7 +2070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/" class="md-nav__link">
+      <a href="../../../math/lineralgebra/" class="md-nav__link">
         
   
   
@@ -2153,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/mapping/" class="md-nav__link">
+      <a href="../../../math/lineralgebra/mapping/" class="md-nav__link">
         
   
   
@@ -2181,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/orthonormal/" class="md-nav__link">
+      <a href="../../../math/lineralgebra/orthonormal/" class="md-nav__link">
         
   
   
@@ -2209,7 +2154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/vectorspace/" class="md-nav__link">
+      <a href="../../../math/lineralgebra/vectorspace/" class="md-nav__link">
         
   
   
@@ -2292,7 +2237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/ode/" class="md-nav__link">
+      <a href="../../../math/ode/" class="md-nav__link">
         
   
   
@@ -2320,7 +2265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/ode/ode/" class="md-nav__link">
+      <a href="../../../math/ode/ode/" class="md-nav__link">
         
   
   
@@ -2403,7 +2348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/possibilities/" class="md-nav__link">
+      <a href="../../../math/possibilities/" class="md-nav__link">
         
   
   
@@ -2431,7 +2376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/possibilities/basic/" class="md-nav__link">
+      <a href="../../../math/possibilities/basic/" class="md-nav__link">
         
   
   
@@ -2514,7 +2459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/" class="md-nav__link">
+      <a href="../../../math/two-para-cal/" class="md-nav__link">
         
   
   
@@ -2542,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/geomentry/" class="md-nav__link">
+      <a href="../../../math/two-para-cal/geomentry/" class="md-nav__link">
         
   
   
@@ -2570,7 +2515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/series/" class="md-nav__link">
+      <a href="../../../math/two-para-cal/series/" class="md-nav__link">
         
   
   
@@ -2660,7 +2605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/" class="md-nav__link">
+      <a href="../../../phy/" class="md-nav__link">
         
   
   
@@ -2688,7 +2633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/methology/" class="md-nav__link">
+      <a href="../../../phy/methology/" class="md-nav__link">
         
   
   
@@ -2716,7 +2661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/ydx/" class="md-nav__link">
+      <a href="../../../phy/ydx/" class="md-nav__link">
         
   
   
@@ -2771,22 +2716,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#1-slicing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 学科索引
+        1. 序列切片 (Slicing)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📚 学科索引">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 函数式编程与算法语法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 函数式编程与算法语法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#21-list-comprehension" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💻 计算机科学
+        2.1 列表推导式 (List Comprehension)
       
     </span>
   </a>
@@ -2794,10 +2750,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#22lamba" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 英文学习
+        2.2Lamba表达式
       
     </span>
   </a>
@@ -2805,82 +2761,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#23" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📐 数学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖人工智能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        大学物理
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#-generall-physics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        - 大学物理 - generall physics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 开始学习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📖 更新日志
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📖 更新日志">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
+        2.3 高阶函数映射
       
     </span>
   </a>
@@ -2909,50 +2793,458 @@
 
 
 
-<h1 id="_1">📒 学习笔记仓库</h1>
-<p>欢迎来到我的学习笔记仓库！这里记录我的计算机科学、英文学习与数学笔记，当然，也欢迎观看我的<a href="Diary/">随笔集</a>和<a href="exercise/">健身笔记</a>，持续更新中。</p>
-<hr />
-<h2 id="_2">📚 学科索引</h2>
-<h3 id="_3">💻 计算机科学</h3>
+<h1 id="01_slicingmd">01_Slicing.md</h1>
+<h2 id="1-slicing">1. 序列切片 (Slicing)</h2>
+<p><strong>标准格式：</strong> <code>sequence[start:stop:step]</code>
+<strong>核心逻辑：</strong> 左闭右开 <code>[start, stop)</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">语法</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">示例 (<code>a = [0, 1, 2, 3, 4]</code>)</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>a[1:3]</code></td>
+<td style="text-align: left;">基础范围</td>
+<td style="text-align: left;"><code>a[1:3]</code></td>
+<td style="text-align: left;"><code>[1, 2]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>a[:2]</code></td>
+<td style="text-align: left;">从头开始</td>
+<td style="text-align: left;"><code>a[:2]</code></td>
+<td style="text-align: left;"><code>[0, 1]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>a[2:]</code></td>
+<td style="text-align: left;">取到末尾</td>
+<td style="text-align: left;"><code>a[2:]</code></td>
+<td style="text-align: left;"><code>[2, 3, 4]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>a[-1]</code></td>
+<td style="text-align: left;">末尾索引</td>
+<td style="text-align: left;"><code>a[-1]</code></td>
+<td style="text-align: left;"><code>4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>a[-3:]</code></td>
+<td style="text-align: left;">最后三个</td>
+<td style="text-align: left;"><code>a[-3:]</code></td>
+<td style="text-align: left;"><code>[2, 3, 4]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>a[::-1]</code></td>
+<td style="text-align: left;"><strong>序列反转</strong></td>
+<td style="text-align: left;"><code>a[::-1]</code></td>
+<td style="text-align: left;"><code>[4, 3, 2, 1, 0]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>a[::2]</code></td>
+<td style="text-align: left;">步长取值</td>
+<td style="text-align: left;"><code>a[::2]</code></td>
+<td style="text-align: left;"><code>[0, 2, 4]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>a[:]</code></td>
+<td style="text-align: left;">浅拷贝</td>
+<td style="text-align: left;"><code>b = a[:]</code></td>
+<td style="text-align: left;">创建新列表对象</td>
+</tr>
+<tr>
+<td style="text-align: left;"># 02_Functional_Programming.md</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2">2. 函数式编程与算法语法</h2>
+<h3 id="21-list-comprehension">2.1 列表推导式 (List Comprehension)</h3>
+<pre><code class="language-python"># [expression for item in iterable if condition]
+nums = [1, 2, 3, 4, 5, 6]
+
+# 基础过滤与转换
+evens_squared = [x**2 for x in nums if x % 2 == 0] # [4, 16, 36]
+
+# 嵌套循环 (等同于双重 for 嵌套)
+pairs = [(i, j) for i in range(2) for j in range(2)]
+# [(0, 0), (0, 1), (1, 0), (1, 1)]
+</code></pre>
+<h3 id="22lamba">2.2Lamba表达式</h3>
+<pre><code class="language-python"># lambda 参数: 表达式 (隐式返回)
+f = lambda x, y: x + y
+res = (lambda x: x * x)(5) # 25
+</code></pre>
+<h3 id="23">2.3 高阶函数映射</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">函数</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>map(f, it)</code></td>
+<td style="text-align: left;">应用 f 到每个元素</td>
+<td style="text-align: left;"><code>list(map(abs, [-1, 2]))</code> -&gt; <code>[1, 2]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>filter(f, it)</code></td>
+<td style="text-align: left;">保留 f 为 True 的元素</td>
+<td style="text-align: left;"><code>list(filter(lambda x: x&gt;0, [-1, 1]))</code> -&gt; <code>[1]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>zip(it1, it2)</code></td>
+<td style="text-align: left;">并行迭代打包</td>
+<td style="text-align: left;"><code>list(zip('AB', [1, 2]))</code> -&gt; <code>[('A',1), ('B',2)]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>reduce(f, it)</code></td>
+<td style="text-align: left;">归约计算</td>
+<td style="text-align: left;"><code>reduce(lambda x,y: x+y, [1,2,3])</code> -&gt; <code>6</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="03_file_handlingmd">03_File_Handling.md</h1>
+<h2 id="3-file-io">3. 文件操作 (File I/O)</h2>
+<h3 id="31">3.1 模式对照表</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">模式</th>
+<th style="text-align: left;">描述</th>
+<th style="text-align: left;">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>'r'</code></td>
+<td style="text-align: left;">读取 (Read)</td>
+<td style="text-align: left;">默认模式，文件不存在报错</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>'w'</code></td>
+<td style="text-align: left;">写入 (Write)</td>
+<td style="text-align: left;">文件存在则清空，不存在则创建</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>'a'</code></td>
+<td style="text-align: left;">追加 (Append)</td>
+<td style="text-align: left;">在文件末尾写入</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>'r+'</code></td>
+<td style="text-align: left;">读写</td>
+<td style="text-align: left;">不会清空文件，可同时进行读写</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 核心代码模板</h3>
+<pre><code class="language-python"># 推荐写法：使用 with 自动关闭文件
+with open('data.txt', 'r', encoding='utf-8') as f:
+    # 方式A: 一次性读取全文
+    content = f.read()
+
+    # 方式B: 逐行读取到列表
+    lines = f.readlines()
+
+    # 方式C: 迭代器读取 (处理超大文件最优)
+    for line in f:
+        process(line.strip()) # strip() 去除换行符
+
+# 写入
+with open('out.txt', 'w') as f:
+    f.write(&quot;Text\n&quot;)
+    f.writelines([&quot;Line1\n&quot;, &quot;Line2\n&quot;])
+</code></pre>
+<h1 id="04_data_structuresmd">04_Data_Structures.md</h1>
+<h2 id="4-dict-set">4. 高效数据结构 (Dict &amp; Set)</h2>
+<h3 id="41-dictionary-o1">4.1 字典 (Dictionary) - $O(1)$ 复杂度</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>d.get(k, default)</code></td>
+<td style="text-align: left;">安全取值，key 不存在时不报错而是返回默认值</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>d.items()</code></td>
+<td style="text-align: left;">遍历键值对 <code>for k, v in d.items():</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>d.keys() / d.values()</code></td>
+<td style="text-align: left;">获取所有键 / 获取所有值</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>d.pop(k)</code></td>
+<td style="text-align: left;">删除键 k 并返回对应的值</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>d.setdefault(k, v)</code></td>
+<td style="text-align: left;">key 不存在则设置默认值 v</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-set-">4.2 集合 (Set) - 去重与运算</h3>
 <ul>
-<li><strong><a href="computer-science/">computer science</a></strong> - from basic python grammer to the most advanced ML, NLP and LLM</li>
+<li><strong>定义</strong>：<code>s = {1, 2, 3}</code> 或 <code>set(iterable)</code></li>
+<li><strong>运算</strong>：<ul>
+<li>交集：<code>s1 &amp; s2</code></li>
+<li>并集：<code>s1 | s2</code></li>
+<li>差集：<code>s1 - s2</code></li>
+<li>对称差：<code>s1 ^ s2</code></li>
 </ul>
-<h3 id="_4">📚 英文学习</h3>
-<ul>
-<li><strong><a href="English/CET-6/">CET-6 大学英语六级</a></strong> - CET-6 Exam Preparation</li>
+</li>
 </ul>
-<h3 id="_5">📐 数学</h3>
-<ul>
-<li><strong><a href="math/">数学基础</a></strong> - Mathematical Foundations</li>
-</ul>
-<h3 id="_6">🤖人工智能</h3>
-<ul>
-<li><strong><a href="computer-science/huggingface/">NLP / LLM</a></strong> - 主要记录 Hugging Face LLM Course 与相关大模型笔记</li>
-</ul>
-<h3 id="_7">大学物理</h3>
-<h2 id="-generall-physics">- <strong><a href="phy/">大学物理</a></strong> - generall physics</h2>
-<h2 id="_8">🎯 开始学习</h2>
-<ul>
-<li>👈 点击左侧边栏快速导航</li>
-<li>☝️ 或使用顶部导航菜单浏览</li>
-</ul>
-<hr />
-<h2 id="_9">📖 更新日志</h2>
-<h3 id="_10">此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本</h3>
-<ul>
-<li>2026-02-07: 创建学习笔记仓库，完成初始框架搭建</li>
-<li>2026-02-08: 页面美化</li>
-<li>2026-02-10：修复了side_bar不显示的问题，修改路径为绝对路径</li>
-<li>2026-02-11: 新增了python第七小节</li>
-<li>2026-02-14: 增加了六级内容，完善了python部分，增加了随笔集部分（没错情人节就这样coding）</li>
-<li>2026-02-27：AI板块源起，记录LLM的学习过程</li>
-<li>2026-03-01：解决了版面样式显示的问题和代码渲染不成功的问题，但是右侧sidebar显示貌似还有问题</li>
-<li>2026-03-28：修改成vue3架构</li>
-<li>2026-04-13：修改成mkdoc架构</li>
-</ul>
-<hr />
+<h1 id="05_scope_and_statemd">05_Scope_And_State.md</h1>
+<h2 id="5-cs61a">5. 作用域与状态管理 (CS61A 重点)</h2>
+<h3 id="51-nonlocal">5.1 nonlocal 关键字</h3>
+<p>用于在闭包（嵌套函数）中修改外部非全局变量。</p>
+<pre><code class="language-python">def make_counter():
+    count = 0
+    def counter():
+        nonlocal count  # 必须声明，否则 count += 1 会报 UnboundLocalError
+        count += 1
+        return count
+    return counter
+</code></pre>
+<h3 id="52">5.2关键字</h3>
+<p>在函数内部修改局部变量</p>
+<pre><code class="language-python">x = 10
+def modify():
+    global x
+    x = 20
+</code></pre>
+<h3 id="_1">递归限制</h3>
+<p>Python 默认递归深度约为 1000 层。</p>
+<pre><code class="language-python">import sys
+sys.setrecursionlimit(2000) # 手动提升递归深度限制
+</code></pre>
+<h1 id="06_builtin_algorithmsmd">06_Builtin_Algorithms.md</h1>
+<h2 id="6">6. 算法必备内置函数</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">函数</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>enumerate(it)</code></td>
+<td style="text-align: left;">返回 <code>(index, value)</code></td>
+<td style="text-align: left;"><code>for i, v in enumerate(['a', 'b']):</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sorted(it, key=f)</code></td>
+<td style="text-align: left;">返回排序后的新列表</td>
+<td style="text-align: left;"><code>sorted(d, key=lambda x: d[x])</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>reversed(it)</code></td>
+<td style="text-align: left;">返回反向迭代器</td>
+<td style="text-align: left;"><code>for x in reversed([1, 2, 3]):</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>all(it)</code></td>
+<td style="text-align: left;">逻辑“与”：全部为 True 才返回 True</td>
+<td style="text-align: left;"><code>all([True, True, False])</code> -&gt; <code>False</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>any(it)</code></td>
+<td style="text-align: left;">逻辑“或”：任一为 True 则返回 True</td>
+<td style="text-align: left;"><code>any([0, 0, 1])</code> -&gt; <code>True</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>min/max(it, key=f)</code></td>
+<td style="text-align: left;">根据规则取最值</td>
+<td style="text-align: left;"><code>max(['a', 'abc'], key=len)</code> -&gt; <code>'abc'</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sum(it, start=0)</code></td>
+<td style="text-align: left;">序列求和</td>
+<td style="text-align: left;"><code>sum([1, 2, 3])</code> -&gt; <code>6</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="07_dictionary_advanced_examplesmd">07_Dictionary_Advanced_Examples.md</h1>
+<h3 id="72">7.2 进阶代码示例</h3>
+<h4 id="a-setdefault">方案 A：使用 setdefault (内置方法)</h4>
+<pre><code class="language-python">def group_by(s, fn):
+    grouped = {}
+    for i in s:
+        # setdefault(key, default): 
+        # 1. 若 key 不存在，将 key: [] 存入并返回 []
+        # 2. 若 key 存在，直接返回对应的列表
+        grouped.setdefault(fn(i), []).append(i)
+    return grouped
+</code></pre>
+<h4 id="b-defaultdict">方案 B: 使用defaultdict</h4>
+<pre><code class="language-python">from collections import defaultdict
+
+def group_by(s, fn):
+    # 初始化时指定 factory 函数为 list
+    # 访问任何不存在的键都会自动创建一个新列表
+    grouped = defaultdict(list) 
+    for i in s:
+        grouped[fn(i)].append(i)
+    return dict(grouped)
+</code></pre>
+<h1 id="08_dictionary_operations_tablemd">08_Dictionary_Operations_Table.md</h1>
+<h3 id="81">8.1 常见字典操作表</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">语法</th>
+<th style="text-align: left;">复杂度</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>成员检查</strong></td>
+<td style="text-align: left;"><code>key in d</code></td>
+<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;">检查的是键(key)而非值</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>安全取值</strong></td>
+<td style="text-align: left;"><code>d.get(key, default)</code></td>
+<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;">避免 KeyError 的推荐做法</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>删除并返回</strong></td>
+<td style="text-align: left;"><code>val = d.pop(key)</code></td>
+<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;">若键不存在可加默认值 <code>pop(k, def)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>合并字典</strong></td>
+<td style="text-align: left;"><code>d1.update(d2)</code></td>
+<td style="text-align: left;">$O(M)$</td>
+<td style="text-align: left;">将 d2 的内容覆盖合并到 d1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>视图获取</strong></td>
+<td style="text-align: left;"><code>d.keys() / d.values()</code></td>
+<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;">返回的是动态视图，非列表</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>清空</strong></td>
+<td style="text-align: left;"><code>d.clear()</code></td>
+<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;">原地清空所有项</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>💡 持续追求知识，不断完善笔记</p>
+<p><strong>CS61A 核心提示</strong>：字典是<strong>可变对象 (Mutable)</strong>。在递归中传递字典时，所有递归层级共享同一个字典实例（除非显式使用 <code>.copy()</code>）。</p>
+</blockquote>
+<h1 id="09_mutation_vs_reassignmentmd">09_Mutation_vs_Reassignment.md</h1>
+<h2 id="9-mutation-vs-reassignment">9. 突变 (Mutation) vs. 重赋值 (Reassignment)</h2>
+<p>在 Python 中没有“指针”这个词，但所有变量本质上都是“标签（Label）”，指向内存中的对象。你看到的“指针效果”其实是引用（Reference）。
+判断是否有“指针效果”，关键在于区分：你是修改了“标签指向的对象”（Mutation），还是把“标签撕下来贴到了新地方”（Reassignment）。
+这是理解 Python 内存模型的关键。</p>
+<h3 id="91">9.1 核心区别</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">行为</th>
+<th style="text-align: left;">操作示例</th>
+<th style="text-align: left;">指针效果 (指向相同对象)</th>
+<th style="text-align: left;">内存说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>突变 (Mutation)</strong></td>
+<td style="text-align: left;"><code>s.append(t)</code>, <code>s[0] = x</code></td>
+<td style="text-align: left;"><strong>有</strong></td>
+<td style="text-align: left;">原地修改对象内容，所有指向该对象的变量都会看到变化。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>重赋值 (Reassignment)</strong></td>
+<td style="text-align: left;"><code>t = 0</code>, <code>s = [1, 2]</code></td>
+<td style="text-align: left;"><strong>无</strong></td>
+<td style="text-align: left;">将变量名（标签）指向一个全新的对象，原对象不受影响。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>浅拷贝 (Shallow Copy)</strong></td>
+<td style="text-align: left;"><code>b = a[:]</code>, <code>a + [t]</code></td>
+<td style="text-align: left;"><strong>部分有</strong></td>
+<td style="text-align: left;">创建一个新容器，但容器内的“子元素”依然指向原有的对象。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92">9.2 如何判断？</h3>
+<ol>
+<li><strong>看是否调用了改变对象的方法</strong>：<code>append</code>, <code>extend</code>, <code>pop</code>, <code>insert</code> 都是在原地修改（指针指向没变，内容变了）。</li>
+<li><strong>看是否存在 <code>=</code> 直接给变量名赋值</strong>：<code>s = ...</code> 是让 <code>s</code> 离弃旧爱，寻找新欢。</li>
+<li><strong>看索引赋值</strong>：<code>s[0] = ...</code> 是突变。虽然有 <code>=</code>，但它是修改 <code>s</code> 这个容器内部的“指针”。</li>
+</ol>
+<h1 id="10_environment_diagram_analysismd">10_Environment_Diagram_Analysis.md</h1>
+<h2 id="10-environment-diagrams">10. 环境图 (Environment Diagrams) 操作拆解</h2>
+<p>根据你提供的讲义图示，我们将操作归纳如下表：</p>
+<h3 id="101">10.1 操作结果对照表</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">操作类型</th>
+<th style="text-align: left;">典型示例</th>
+<th style="text-align: left;">对原对象 <code>s</code> 的影响</th>
+<th style="text-align: left;">对 <code>t</code> 的指向影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Append</strong></td>
+<td style="text-align: left;"><code>s.append(t)</code></td>
+<td style="text-align: left;"><code>s</code> 内部增加一个“指针”指向 <code>t</code> 所在的对象。</td>
+<td style="text-align: left;">无影响。但若随后 <code>t=0</code>，<code>s</code> 内部依然指向原来的列表。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Extend</strong></td>
+<td style="text-align: left;"><code>s.extend(t)</code></td>
+<td style="text-align: left;"><code>s</code> 复制 <code>t</code> 中所有元素的“指针”放入自己内部。</td>
+<td style="text-align: left;">无影响。<code>s</code> 和 <code>t</code> 现在共享元素的指向。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Addition</strong></td>
+<td style="text-align: left;"><code>a = s + [t]</code></td>
+<td style="text-align: left;"><strong>无影响</strong>。创建一个全新的列表对象 <code>a</code>。</td>
+<td style="text-align: left;">无影响。<code>a</code> 的最后一个元素指向 <code>t</code> 的对象。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Slicing</strong></td>
+<td style="text-align: left;"><code>b = a[1:]</code></td>
+<td style="text-align: left;"><strong>无影响</strong>。创建一个全新的列表对象 <code>b</code>。</td>
+<td style="text-align: left;"><strong>关键</strong>：<code>b</code> 里的元素和 <code>a</code> 里的元素指向同一个对象。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="102-t-0-s">10.2 为什么 <code>t = 0</code> 后 <code>s</code> 不变？</h3>
+<p>在图中第一行：
+1. 执行 <code>s.append(t)</code>：<code>s</code> 的末尾存了一个地址，指向 <code>[5, 6]</code>。
+2. 执行 <code>t = 0</code>：变量 <code>t</code> 这个标签被拨开了，指向了整数 <code>0</code>。
+3. <strong>结果</strong>：<code>s</code> 里的地址没变，它依然死死地指向那个 <code>[5, 6]</code> 的列表对象。</p>
+<blockquote>
+<p><strong>CS61A 黄金定律</strong>：赋值语句 <code>target = expr</code> 永远不会改变 <code>expr</code> 所指向的对象，它只改变 <code>target</code> 这个名字的指向。</p>
 </blockquote>
 
 
@@ -3003,12 +3295,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="assets/javascripts/extra.js"></script>
+        <script src="../../../assets/javascripts/extra.js"></script>
       
     
   </body>

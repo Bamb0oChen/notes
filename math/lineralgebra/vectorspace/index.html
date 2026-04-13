@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../orthonormal/">
       
-        <link rel="next" href="exercise/">
+      
+        <link rel="next" href="../../ode/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>学习笔记</title>
+        <title>向量空间和数据表示 - 学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              📒 学习笔记仓库
+              向量空间和数据表示
             
           </span>
         </div>
@@ -178,7 +180,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -193,37 +195,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📒 学习笔记仓库
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -239,148 +214,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 学科索引
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📚 学科索引">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💻 计算机科学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 英文学习
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📐 数学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖人工智能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        大学物理
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#-generall-physics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        - 大学物理 - generall physics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 开始学习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📖 更新日志
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📖 更新日志">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -392,7 +225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exercise/" class="md-nav__link">
+      <a href="../../../exercise/" class="md-nav__link">
         
   
   
@@ -466,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/" class="md-nav__link">
+      <a href="../../../Diary/" class="md-nav__link">
         
   
   
@@ -494,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/2025/" class="md-nav__link">
+      <a href="../../../Diary/2025/" class="md-nav__link">
         
   
   
@@ -522,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/amusementpark/" class="md-nav__link">
+      <a href="../../../Diary/amusementpark/" class="md-nav__link">
         
   
   
@@ -550,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/senrenbanka/" class="md-nav__link">
+      <a href="../../../Diary/senrenbanka/" class="md-nav__link">
         
   
   
@@ -578,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/star_white/" class="md-nav__link">
+      <a href="../../../Diary/star_white/" class="md-nav__link">
         
   
   
@@ -660,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/" class="md-nav__link">
+      <a href="../../../English/" class="md-nav__link">
         
   
   
@@ -735,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/" class="md-nav__link">
+      <a href="../../../English/CET-6/" class="md-nav__link">
         
   
   
@@ -763,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/sammary1/" class="md-nav__link">
+      <a href="../../../English/CET-6/sammary1/" class="md-nav__link">
         
   
   
@@ -791,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/sammary2/" class="md-nav__link">
+      <a href="../../../English/CET-6/sammary2/" class="md-nav__link">
         
   
   
@@ -819,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing1/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing1/" class="md-nav__link">
         
   
   
@@ -847,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing2/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing2/" class="md-nav__link">
         
   
   
@@ -875,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing3/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing3/" class="md-nav__link">
         
   
   
@@ -903,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing4/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing4/" class="md-nav__link">
         
   
   
@@ -931,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing5/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing5/" class="md-nav__link">
         
   
   
@@ -959,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing6/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing6/" class="md-nav__link">
         
   
   
@@ -987,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing7/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing7/" class="md-nav__link">
         
   
   
@@ -1015,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/word1/" class="md-nav__link">
+      <a href="../../../English/CET-6/word1/" class="md-nav__link">
         
   
   
@@ -1105,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/" class="md-nav__link">
+      <a href="../../../computer-science/" class="md-nav__link">
         
   
   
@@ -1180,7 +1013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/" class="md-nav__link">
         
   
   
@@ -1208,7 +1041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Function%26Environment/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Function%26Environment/" class="md-nav__link">
         
   
   
@@ -1236,7 +1069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Generator/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Generator/" class="md-nav__link">
         
   
   
@@ -1264,7 +1097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Object-Oriented/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Object-Oriented/" class="md-nav__link">
         
   
   
@@ -1292,7 +1125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Structure_Basic/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Structure_Basic/" class="md-nav__link">
         
   
   
@@ -1320,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/lazy_evaluation/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/lazy_evaluation/" class="md-nav__link">
         
   
   
@@ -1348,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/python/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/python/" class="md-nav__link">
         
   
   
@@ -1431,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs224n/" class="md-nav__link">
+      <a href="../../../computer-science/cs224n/" class="md-nav__link">
         
   
   
@@ -1459,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs224n/pybasis/" class="md-nav__link">
+      <a href="../../../computer-science/cs224n/pybasis/" class="md-nav__link">
         
   
   
@@ -1542,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/" class="md-nav__link">
         
   
   
@@ -1570,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter1/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter1/" class="md-nav__link">
         
   
   
@@ -1598,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter2/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter2/" class="md-nav__link">
         
   
   
@@ -1626,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter3/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter3/" class="md-nav__link">
         
   
   
@@ -1654,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter4/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter4/" class="md-nav__link">
         
   
   
@@ -1737,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/" class="md-nav__link">
         
   
   
@@ -1765,7 +1598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/NLP/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/NLP/" class="md-nav__link">
         
   
   
@@ -1793,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/fine_tune_a_model/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/fine_tune_a_model/" class="md-nav__link">
         
   
   
@@ -1821,7 +1654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/test/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/test/" class="md-nav__link">
         
   
   
@@ -1849,7 +1682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/the_use_of_transformer/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/the_use_of_transformer/" class="md-nav__link">
         
   
   
@@ -1877,7 +1710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/transformer/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/transformer/" class="md-nav__link">
         
   
   
@@ -1960,7 +1793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/ms/" class="md-nav__link">
+      <a href="../../../computer-science/ms/" class="md-nav__link">
         
   
   
@@ -2000,18 +1833,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2032,7 +1867,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2050,7 +1885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -2075,18 +1910,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2107,7 +1944,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2125,7 +1962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -2153,7 +1990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/mapping/" class="md-nav__link">
+      <a href="../mapping/" class="md-nav__link">
         
   
   
@@ -2181,7 +2018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/orthonormal/" class="md-nav__link">
+      <a href="../orthonormal/" class="md-nav__link">
         
   
   
@@ -2206,10 +2043,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="math/lineralgebra/vectorspace/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    向量空间和数据表示
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2225,6 +2089,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MNIST数据集
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决问题：算法——PAC降维
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pca-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码：PCA 对 MNIST 数据进行降维
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2292,7 +2209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/ode/" class="md-nav__link">
+      <a href="../../ode/" class="md-nav__link">
         
   
   
@@ -2320,7 +2237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/ode/ode/" class="md-nav__link">
+      <a href="../../ode/ode/" class="md-nav__link">
         
   
   
@@ -2403,7 +2320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/possibilities/" class="md-nav__link">
+      <a href="../../possibilities/" class="md-nav__link">
         
   
   
@@ -2431,7 +2348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/possibilities/basic/" class="md-nav__link">
+      <a href="../../possibilities/basic/" class="md-nav__link">
         
   
   
@@ -2514,7 +2431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/" class="md-nav__link">
+      <a href="../../two-para-cal/" class="md-nav__link">
         
   
   
@@ -2542,7 +2459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/geomentry/" class="md-nav__link">
+      <a href="../../two-para-cal/geomentry/" class="md-nav__link">
         
   
   
@@ -2570,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/series/" class="md-nav__link">
+      <a href="../../two-para-cal/series/" class="md-nav__link">
         
   
   
@@ -2660,7 +2577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/" class="md-nav__link">
+      <a href="../../../phy/" class="md-nav__link">
         
   
   
@@ -2688,7 +2605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/methology/" class="md-nav__link">
+      <a href="../../../phy/methology/" class="md-nav__link">
         
   
   
@@ -2716,7 +2633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/ydx/" class="md-nav__link">
+      <a href="../../../phy/ydx/" class="md-nav__link">
         
   
   
@@ -2771,82 +2688,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#mnist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 学科索引
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📚 学科索引">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💻 计算机科学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 英文学习
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📐 数学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖人工智能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        大学物理
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#-generall-physics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        - 大学物理 - generall physics
+        MNIST数据集
       
     </span>
   </a>
@@ -2854,10 +2699,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#pac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 开始学习
+        解决问题：算法——PAC降维
       
     </span>
   </a>
@@ -2865,30 +2710,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#pca-mnist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 更新日志
+        代码：PCA 对 MNIST 数据进行降维
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="📖 更新日志">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2909,51 +2737,88 @@
 
 
 
-<h1 id="_1">📒 学习笔记仓库</h1>
-<p>欢迎来到我的学习笔记仓库！这里记录我的计算机科学、英文学习与数学笔记，当然，也欢迎观看我的<a href="Diary/">随笔集</a>和<a href="exercise/">健身笔记</a>，持续更新中。</p>
-<hr />
-<h2 id="_2">📚 学科索引</h2>
-<h3 id="_3">💻 计算机科学</h3>
+<h1 id="_1">向量空间和数据表示</h1>
+<pre><code>在学习本章前，默认你已经掌握了线性代数的相关内容（向量空间，特征值，特征向量）
+</code></pre>
+<p>我们将以一个经典的机器学习问题——MNIST 手写数字图像的处理为例，讨论高维数据在实际问题中遇到的「维度灾难」以及我们如何借助数学工具有效应对这一挑战。</p>
+<p>MNIST 数据集是机器学习领域中一个广泛使用的标准数据集，由大量手写数字构成，其每幅图像通常为 28×28 的灰度图像，即每幅图像可以被看作 784 维（28 × 28 = 784）的向量。这种高维表示虽然在一定程度上保留了图像的细节信息，但也给数据处理带来了不少问题。</p>
+<h2 id="mnist">MNIST数据集</h2>
+<p>在实际应用中，由于图像的每个像素往往存在高度冗余的信息，直接在 784 维空间中进行处理往往让计算量骤增，称为「维度灾难」。其主要表现为：</p>
 <ul>
-<li><strong><a href="computer-science/">computer science</a></strong> - from basic python grammer to the most advanced ML, NLP and LLM</li>
+<li>高维空间中数据点间距离的直观意义失效，数据稀疏性增加，传统的欧氏距离等度量手段不再适用。因为所有点之间的差异趋于相同，导致距离度量失去了区分度；</li>
+<li>模型在高维空间下容易陷入维数过多所带来的数据噪声和计算不稳定性；</li>
+<li>模型在训练时易于过拟合，同时训练复杂度和存储需求显著增加。模型不仅需要捕捉数据的主要结构，还需要处理高维空间中各种冗余信息，增加了有效模型构建的难度。
+因此，从数据压缩和降维的角度出发，有效地提取图像中的主要特征、去除冗余信息，是机器学习中十分重要的一步。</li>
 </ul>
-<h3 id="_4">📚 英文学习</h3>
+<h2 id="pac">解决问题：算法——PAC降维</h2>
+<p>主成分分析（PCA）是机器学习中最常用的降维算法之一，其核心思想在于：</p>
+<ol>
+<li>找到数据中方差最大的几个方向，这些方向通常包含了数据中大部分的有效信息；</li>
+<li>
+<p>将原始数据投影到这些方向上，从而降低数据维数，同时尽可能保留数据的变异信息。
+具体操作流程如下：</p>
+</li>
+<li>
+<p>对原始数据进行均值归一化处理；</p>
+</li>
+<li>计算数据的协方差矩阵，协方差矩阵反映了数据各个维度之间的相关性；</li>
+</ol>
+<p>协方差矩阵$C$的计算公式为：</p>
+<p>$\frac{1}{N -1}{\textstyle \sum_{i = 1}^{N}} (x_i - \bar{x})(x_i - \bar{x})^T$</p>
+<p>其中
+$N$为样本数量，
+$x_i$为第$i$个样本向量，
+$\bar{x}$为样本均值向量；</p>
 <ul>
-<li><strong><a href="English/CET-6/">CET-6 大学英语六级</a></strong> - CET-6 Exam Preparation</li>
+<li>对协方差矩阵进行特征值分解，找到相应的特征向量；</li>
+<li>按照特征值从大到小排序，选取前$k$个特征向量构成投影矩阵；</li>
+<li>利用投影矩阵将高维数据映射$k$维空间中，得到降维后的数据表示。</li>
+<li>
+<p>这种方法直接利用向量空间中基和维度的概念，将数据的主要「方向」提取出来，从而构造出一个新的特征空间。算法上看，PCA 不仅能够在一定程度上缓解「维度灾难」，还为后续的聚类、分类等任务提供了更简洁、更有效的数据表示。</p>
+<p>为什么要取特征值？
+在前面的学习中，我们知道特征向量是一种在矩阵变化后保持方向不变的向量，这反映了矩阵的特征。与此同时，我们同样可以从特征值中发现矩阵对这个方向的“加长能力”，这反映了矩阵在这个方向的权重</p>
+</li>
 </ul>
-<h3 id="_5">📐 数学</h3>
-<ul>
-<li><strong><a href="math/">数学基础</a></strong> - Mathematical Foundations</li>
-</ul>
-<h3 id="_6">🤖人工智能</h3>
-<ul>
-<li><strong><a href="computer-science/huggingface/">NLP / LLM</a></strong> - 主要记录 Hugging Face LLM Course 与相关大模型笔记</li>
-</ul>
-<h3 id="_7">大学物理</h3>
-<h2 id="-generall-physics">- <strong><a href="phy/">大学物理</a></strong> - generall physics</h2>
-<h2 id="_8">🎯 开始学习</h2>
-<ul>
-<li>👈 点击左侧边栏快速导航</li>
-<li>☝️ 或使用顶部导航菜单浏览</li>
-</ul>
-<hr />
-<h2 id="_9">📖 更新日志</h2>
-<h3 id="_10">此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本</h3>
-<ul>
-<li>2026-02-07: 创建学习笔记仓库，完成初始框架搭建</li>
-<li>2026-02-08: 页面美化</li>
-<li>2026-02-10：修复了side_bar不显示的问题，修改路径为绝对路径</li>
-<li>2026-02-11: 新增了python第七小节</li>
-<li>2026-02-14: 增加了六级内容，完善了python部分，增加了随笔集部分（没错情人节就这样coding）</li>
-<li>2026-02-27：AI板块源起，记录LLM的学习过程</li>
-<li>2026-03-01：解决了版面样式显示的问题和代码渲染不成功的问题，但是右侧sidebar显示貌似还有问题</li>
-<li>2026-03-28：修改成vue3架构</li>
-<li>2026-04-13：修改成mkdoc架构</li>
-</ul>
-<hr />
-<blockquote>
-<p>💡 持续追求知识，不断完善笔记</p>
-</blockquote>
+<h2 id="pca-mnist">代码：PCA 对 MNIST 数据进行降维</h2>
+<p>下面给出基于 sklearn 中 PCA 接口的具体代码实现：</p>
+<pre><code class="language-py">&quot;&quot;&quot;
+1. 数据预处理：对MNIST图像数据进行展平（将28×28的二维图像转换成784维向量），并进行标准化。
+2. 计算协方差矩阵，通过样本均值归一化后的数据构造协方差矩阵。
+3. 对协方差矩阵进行特征值分解，选取前 k 个特征向量构成投影矩阵。
+4. 将原始数据投影到低维空间，得到降维结果。
+&quot;&quot;&quot;
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from torchvision import datasets, transforms
+
+# 下载MNIST数据集（这里只使用测试集的一部分）
+transform = transforms.Compose([transforms.ToTensor()])
+mnist_test = datasets.MNIST(root='./data', train=False, download=True, transform=transform)
+
+# 提取部分数据进行试验：例如选择前2000个样本证明算法思路
+num_samples = 2000
+data = mnist_test.data[:num_samples].numpy().reshape(num_samples, -1).astype(np.float32)
+labels = mnist_test.targets[:num_samples].numpy()
+
+# 数据标准化：扣除均值，使得每个特征的均值为0
+data_mean = np.mean(data, axis=0)
+data_centered = data - data_mean
+
+# PCA降维至二维
+pca = PCA(n_components=2)
+data_pca = pca.fit_transform(data_centered)
+
+# 可视化结果（二维散点图）
+plt.figure(figsize=(8,6))
+# 分别取第一主成分和第二主成分作为x/y坐标
+scatter = plt.scatter(data_pca[:, 0], data_pca[:, 1], c=labels, cmap='viridis', s=15)
+plt.legend(*scatter.legend_elements(), title=&quot;Digits&quot;)
+plt.title(&quot;MNIST数据PCA降维到二维&quot;)
+plt.xlabel(&quot;主成分1&quot;)
+plt.ylabel(&quot;主成分2&quot;)
+plt.show()
+</code></pre>
 
 
 
@@ -3003,12 +2868,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="assets/javascripts/extra.js"></script>
+        <script src="../../../assets/javascripts/extra.js"></script>
       
     
   </body>

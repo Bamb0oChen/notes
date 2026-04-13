@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../">
       
-        <link rel="next" href="exercise/">
+      
+        <link rel="next" href="../orthonormal/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>学习笔记</title>
+        <title>矩阵计算和向量映射 - 学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              📒 学习笔记仓库
+              矩阵计算和向量映射
             
           </span>
         </div>
@@ -178,7 +180,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -193,37 +195,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📒 学习笔记仓库
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -239,148 +214,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 学科索引
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📚 学科索引">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💻 计算机科学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 英文学习
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📐 数学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖人工智能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        大学物理
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#-generall-physics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        - 大学物理 - generall physics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 开始学习
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📖 更新日志
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📖 更新日志">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -392,7 +225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exercise/" class="md-nav__link">
+      <a href="../../../exercise/" class="md-nav__link">
         
   
   
@@ -466,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/" class="md-nav__link">
+      <a href="../../../Diary/" class="md-nav__link">
         
   
   
@@ -494,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/2025/" class="md-nav__link">
+      <a href="../../../Diary/2025/" class="md-nav__link">
         
   
   
@@ -522,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/amusementpark/" class="md-nav__link">
+      <a href="../../../Diary/amusementpark/" class="md-nav__link">
         
   
   
@@ -550,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/senrenbanka/" class="md-nav__link">
+      <a href="../../../Diary/senrenbanka/" class="md-nav__link">
         
   
   
@@ -578,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Diary/star_white/" class="md-nav__link">
+      <a href="../../../Diary/star_white/" class="md-nav__link">
         
   
   
@@ -660,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/" class="md-nav__link">
+      <a href="../../../English/" class="md-nav__link">
         
   
   
@@ -735,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/" class="md-nav__link">
+      <a href="../../../English/CET-6/" class="md-nav__link">
         
   
   
@@ -763,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/sammary1/" class="md-nav__link">
+      <a href="../../../English/CET-6/sammary1/" class="md-nav__link">
         
   
   
@@ -791,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/sammary2/" class="md-nav__link">
+      <a href="../../../English/CET-6/sammary2/" class="md-nav__link">
         
   
   
@@ -819,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing1/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing1/" class="md-nav__link">
         
   
   
@@ -847,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing2/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing2/" class="md-nav__link">
         
   
   
@@ -875,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing3/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing3/" class="md-nav__link">
         
   
   
@@ -903,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing4/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing4/" class="md-nav__link">
         
   
   
@@ -931,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing5/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing5/" class="md-nav__link">
         
   
   
@@ -959,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing6/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing6/" class="md-nav__link">
         
   
   
@@ -987,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/translation_and_writing7/" class="md-nav__link">
+      <a href="../../../English/CET-6/translation_and_writing7/" class="md-nav__link">
         
   
   
@@ -1015,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="English/CET-6/word1/" class="md-nav__link">
+      <a href="../../../English/CET-6/word1/" class="md-nav__link">
         
   
   
@@ -1105,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/" class="md-nav__link">
+      <a href="../../../computer-science/" class="md-nav__link">
         
   
   
@@ -1180,7 +1013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/" class="md-nav__link">
         
   
   
@@ -1208,7 +1041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Function%26Environment/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Function%26Environment/" class="md-nav__link">
         
   
   
@@ -1236,7 +1069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Generator/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Generator/" class="md-nav__link">
         
   
   
@@ -1264,7 +1097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Object-Oriented/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Object-Oriented/" class="md-nav__link">
         
   
   
@@ -1292,7 +1125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/Structure_Basic/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/Structure_Basic/" class="md-nav__link">
         
   
   
@@ -1320,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/lazy_evaluation/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/lazy_evaluation/" class="md-nav__link">
         
   
   
@@ -1348,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/UCB%20CS61A/python/" class="md-nav__link">
+      <a href="../../../computer-science/UCB%20CS61A/python/" class="md-nav__link">
         
   
   
@@ -1431,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs224n/" class="md-nav__link">
+      <a href="../../../computer-science/cs224n/" class="md-nav__link">
         
   
   
@@ -1459,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs224n/pybasis/" class="md-nav__link">
+      <a href="../../../computer-science/cs224n/pybasis/" class="md-nav__link">
         
   
   
@@ -1542,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/" class="md-nav__link">
         
   
   
@@ -1570,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter1/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter1/" class="md-nav__link">
         
   
   
@@ -1598,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter2/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter2/" class="md-nav__link">
         
   
   
@@ -1626,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter3/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter3/" class="md-nav__link">
         
   
   
@@ -1654,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/cs338/chapter4/" class="md-nav__link">
+      <a href="../../../computer-science/cs338/chapter4/" class="md-nav__link">
         
   
   
@@ -1737,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/" class="md-nav__link">
         
   
   
@@ -1765,7 +1598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/NLP/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/NLP/" class="md-nav__link">
         
   
   
@@ -1793,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/fine_tune_a_model/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/fine_tune_a_model/" class="md-nav__link">
         
   
   
@@ -1821,7 +1654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/test/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/test/" class="md-nav__link">
         
   
   
@@ -1849,7 +1682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/the_use_of_transformer/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/the_use_of_transformer/" class="md-nav__link">
         
   
   
@@ -1877,7 +1710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/huggingface/transformer/" class="md-nav__link">
+      <a href="../../../computer-science/huggingface/transformer/" class="md-nav__link">
         
   
   
@@ -1960,7 +1793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="computer-science/ms/" class="md-nav__link">
+      <a href="../../../computer-science/ms/" class="md-nav__link">
         
   
   
@@ -2000,18 +1833,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2032,7 +1867,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2050,7 +1885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -2075,18 +1910,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2107,7 +1944,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2125,7 +1962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -2150,10 +1987,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="math/lineralgebra/mapping/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    矩阵计算和向量映射
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2169,6 +2033,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核空间
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        像空间
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xavier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决问题 Xavier 的数据处理判断
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2181,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/orthonormal/" class="md-nav__link">
+      <a href="../orthonormal/" class="md-nav__link">
         
   
   
@@ -2209,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/lineralgebra/vectorspace/" class="md-nav__link">
+      <a href="../vectorspace/" class="md-nav__link">
         
   
   
@@ -2292,7 +2209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/ode/" class="md-nav__link">
+      <a href="../../ode/" class="md-nav__link">
         
   
   
@@ -2320,7 +2237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/ode/ode/" class="md-nav__link">
+      <a href="../../ode/ode/" class="md-nav__link">
         
   
   
@@ -2403,7 +2320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/possibilities/" class="md-nav__link">
+      <a href="../../possibilities/" class="md-nav__link">
         
   
   
@@ -2431,7 +2348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/possibilities/basic/" class="md-nav__link">
+      <a href="../../possibilities/basic/" class="md-nav__link">
         
   
   
@@ -2514,7 +2431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/" class="md-nav__link">
+      <a href="../../two-para-cal/" class="md-nav__link">
         
   
   
@@ -2542,7 +2459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/geomentry/" class="md-nav__link">
+      <a href="../../two-para-cal/geomentry/" class="md-nav__link">
         
   
   
@@ -2570,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="math/two-para-cal/series/" class="md-nav__link">
+      <a href="../../two-para-cal/series/" class="md-nav__link">
         
   
   
@@ -2660,7 +2577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/" class="md-nav__link">
+      <a href="../../../phy/" class="md-nav__link">
         
   
   
@@ -2688,7 +2605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/methology/" class="md-nav__link">
+      <a href="../../../phy/methology/" class="md-nav__link">
         
   
   
@@ -2716,7 +2633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phy/ydx/" class="md-nav__link">
+      <a href="../../../phy/ydx/" class="md-nav__link">
         
   
   
@@ -2774,79 +2691,18 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 学科索引
+        核空间
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📚 学科索引">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💻 计算机科学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 英文学习
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📐 数学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖人工智能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        大学物理
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#-generall-physics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        - 大学物理 - generall physics
+        像空间
       
     </span>
   </a>
@@ -2854,41 +2710,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#xavier" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 开始学习
+        解决问题 Xavier 的数据处理判断
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📖 更新日志
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📖 更新日志">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2909,51 +2737,178 @@
 
 
 
-<h1 id="_1">📒 学习笔记仓库</h1>
-<p>欢迎来到我的学习笔记仓库！这里记录我的计算机科学、英文学习与数学笔记，当然，也欢迎观看我的<a href="Diary/">随笔集</a>和<a href="exercise/">健身笔记</a>，持续更新中。</p>
-<hr />
-<h2 id="_2">📚 学科索引</h2>
-<h3 id="_3">💻 计算机科学</h3>
-<ul>
-<li><strong><a href="computer-science/">computer science</a></strong> - from basic python grammer to the most advanced ML, NLP and LLM</li>
-</ul>
-<h3 id="_4">📚 英文学习</h3>
-<ul>
-<li><strong><a href="English/CET-6/">CET-6 大学英语六级</a></strong> - CET-6 Exam Preparation</li>
-</ul>
-<h3 id="_5">📐 数学</h3>
-<ul>
-<li><strong><a href="math/">数学基础</a></strong> - Mathematical Foundations</li>
-</ul>
-<h3 id="_6">🤖人工智能</h3>
-<ul>
-<li><strong><a href="computer-science/huggingface/">NLP / LLM</a></strong> - 主要记录 Hugging Face LLM Course 与相关大模型笔记</li>
-</ul>
-<h3 id="_7">大学物理</h3>
-<h2 id="-generall-physics">- <strong><a href="phy/">大学物理</a></strong> - generall physics</h2>
-<h2 id="_8">🎯 开始学习</h2>
-<ul>
-<li>👈 点击左侧边栏快速导航</li>
-<li>☝️ 或使用顶部导航菜单浏览</li>
-</ul>
-<hr />
-<h2 id="_9">📖 更新日志</h2>
-<h3 id="_10">此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本</h3>
-<ul>
-<li>2026-02-07: 创建学习笔记仓库，完成初始框架搭建</li>
-<li>2026-02-08: 页面美化</li>
-<li>2026-02-10：修复了side_bar不显示的问题，修改路径为绝对路径</li>
-<li>2026-02-11: 新增了python第七小节</li>
-<li>2026-02-14: 增加了六级内容，完善了python部分，增加了随笔集部分（没错情人节就这样coding）</li>
-<li>2026-02-27：AI板块源起，记录LLM的学习过程</li>
-<li>2026-03-01：解决了版面样式显示的问题和代码渲染不成功的问题，但是右侧sidebar显示貌似还有问题</li>
-<li>2026-03-28：修改成vue3架构</li>
-<li>2026-04-13：修改成mkdoc架构</li>
-</ul>
-<hr />
-<blockquote>
-<p>💡 持续追求知识，不断完善笔记</p>
-</blockquote>
+<h1 id="_1">矩阵计算和向量映射</h1>
+<p>在深度学习中，全连接层的权重矩阵实际上就是一种线性映射，通过对输入数据的线性组合生成新的表示。</p>
+<h2 id="_2">核空间</h2>
+<p>线性映射的核空间（Null Space），又称零空间，是指所有被映射到零向量的原始向量所构成的集合。形式上，对于线性映射$T:V \to W$
+，核空间定义为：
+$Null(T) = {v \in V|T(v) = 0}$</p>
+<p>核空间描述的是线性映射「失去」信息的部分。举例来说，假设一个变换将某些方向上的特征完全压缩为零，那么这些方向就构成了核空间。在应用上，核空间的维数与非零输出部分的维数之间满足著名的秩 - 零度定理（Rank-Nullity Theorem）：
+$dim(V) = dim(Null(T)) + dim(Range(T))$</p>
+<h2 id="_3">像空间</h2>
+<p>其中<code>Range</code>指的是线性映射 T 从 V 中的向量变换得到的向量的集合，可以称作<code>值域</code>、<code>像空间</code>或者<code>列空间</code>，下一节会介绍到。这一定理为我们理解数据降维提供了理论支撑。</p>
+<p>从物理视角来看，核空间可以对应于某一系统的静止状态。例如，在电路网络中，节点导纳矩阵的某些特定组合可能会使节点电压变为零，这一现象正是核空间的直观体现。通过这种映射关系，我们能够直观地理解当某些输入信息被「丢失」时，系统可能呈现的零响应态。</p>
+<p>人话：
+核空间就是和原有向量正交的部分，在映射中会产生0向量导致向量丢失，所以要避免
+而像空间就是能被映射的
+谱半径就是最大的特征值绝对值，反映了最强的映射能力</p>
+<h2 id="xavier">解决问题 Xavier 的数据处理判断</h2>
+<pre><code class="language-py">import torch
+import torch.nn as nn
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 设置随机种子保证可重复性
+torch.manual_seed(42)
+np.random.seed(42)
+
+# 设备配置
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+# 数据加载与预处理
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.1307,), (0.3081,))
+])
+train_dataset = torchvision.datasets.MNIST(
+    root='./data',
+    train=True,
+    download=True,
+    transform=transform
+)
+train_loader = torch.utils.data.DataLoader(
+    dataset=train_dataset,
+    batch_size=128,
+    shuffle=True
+)
+
+# 定义较深的全连接神经网络模型（使用4个隐藏层）
+class DeepFCNet(nn.Module):
+    def __init__(self, input_dim=784, hidden_dim=256, output_dim=10, num_hidden=4):
+        super(DeepFCNet, self).__init__()
+        layers = []
+        # 第一层
+        layers.append(nn.Linear(input_dim, hidden_dim))
+        layers.append(nn.ReLU())
+        # 中间的隐藏层
+        for _ in range(num_hidden-1):
+            layers.append(nn.Linear(hidden_dim, hidden_dim))
+            layers.append(nn.ReLU())
+        # 输出层
+        layers.append(nn.Linear(hidden_dim, output_dim))
+        self.layers = nn.Sequential(*layers)
+
+    def forward(self, x):
+        x = x.view(x.size(0), -1)  # 展平图像
+        x = self.layers(x)
+        return x
+
+# 初始化方法定义
+def xavier_init(m):
+    if isinstance(m, nn.Linear):
+        nn.init.xavier_normal_(m.weight)
+        nn.init.zeros_(m.bias)
+
+def normal_init(m):
+    if isinstance(m, nn.Linear):
+        # 注意：这里使用的随机正态分布初始化标准差是固定值，
+        # 可能和网络规模不匹配，从而更容易出现梯度不稳定问题
+        nn.init.normal_(m.weight, mean=0.0, std=0.1)
+        nn.init.zeros_(m.bias)
+
+# 训练函数（包含梯度记录）
+def train_model(init_method, train_loader, num_epochs=5):
+    # 使用较深的模型
+    model = DeepFCNet().to(device)
+    model.apply(init_method)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.SGD(model.parameters(), lr=0.01)
+
+    # 用于记录各层梯度的统计信息，统计所有全连接层参数的梯度
+    gradient_stats = {
+        'steps': [],
+        'mean': [],
+        'std': [],
+        'losses': []
+    }
+
+    model.train()
+    step_counter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            images = images.to(device)
+            labels = labels.to(device)
+            # 前向传播
+            outputs = model(images)
+            loss = criterion(outputs, labels)
+            # 反向传播
+            optimizer.zero_grad()
+            loss.backward()
+
+            # 每隔一定步数记录梯度统计信息
+            if step_counter % 50 == 0:
+                all_grads = []
+                # 遍历网络中所有全连接层，收集其梯度
+                for module in model.modules():
+                    if isinstance(module, nn.Linear) and module.weight.grad is not None:
+                        all_grads.append(module.weight.grad.cpu().detach().numpy())
+                if all_grads:                    
+                    grads_concat = np.concatenate([g.flatten() for g in all_grads])
+                    gradient_stats['steps'].append(step_counter)
+                    gradient_stats['mean'].append(np.abs(grads_concat).mean())
+                    gradient_stats['std'].append(grads_concat.std())
+                    gradient_stats['losses'].append(loss.item())
+
+            # 参数更新
+            optimizer.step()
+            step_counter += 1
+    return gradient_stats
+
+# 分别训练两种初始化模型
+
+print(&quot;Training Xavier Initialized Model…&quot;)
+xavier_stats = train_model(xavier_init, train_loader)
+
+print(&quot;\nTraining Normal Initialized Model…&quot;)
+normal_stats = train_model(normal_init, train_loader)
+
+# 可视化结果
+plt.figure(figsize=(15, 5))
+
+# 1. 梯度均值对比
+plt.subplot(1, 3, 1)
+plt.plot(xavier_stats['steps'], xavier_stats['mean'], label='Xavier', marker='o')
+plt.plot(normal_stats['steps'], normal_stats['mean'], label='Normal', marker='o')
+plt.xlabel('Training Steps')
+plt.ylabel('Gradient Absolute Mean')
+plt.title('Gradient Mean Comparison')
+plt.legend()
+
+# 2. 梯度标准差对比
+plt.subplot(1, 3, 2)
+plt.plot(xavier_stats['steps'], xavier_stats['std'], label='Xavier', marker='o')
+plt.plot(normal_stats['steps'], normal_stats['std'], label='Normal', marker='o')
+plt.xlabel('Training Steps')
+plt.ylabel('Gradient STD')
+plt.title('Gradient STD Comparison')
+plt.legend()
+
+# 3. 损失曲线对比
+plt.subplot(1, 3, 3)
+plt.plot(xavier_stats['steps'], xavier_stats['losses'], label='Xavier', marker='o')
+plt.plot(normal_stats['steps'], normal_stats['losses'], label='Normal', marker='o')
+plt.xlabel('Training Steps')
+plt.ylabel('Loss Value')
+plt.title('Training Loss Comparison')
+plt.legend()
+
+plt.tight_layout()
+plt.savefig('initialization_comparison.png', dpi=150)
+plt.show()
+</code></pre>
 
 
 
@@ -3003,12 +2958,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="assets/javascripts/extra.js"></script>
+        <script src="../../../assets/javascripts/extra.js"></script>
       
     
   </body>
