@@ -14,6 +14,29 @@ theme:
 plugins:
   - search
 
+# 样式/脚本接口：把自定义文件放进 docs/assets/ 下，然后在这里引用
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/extra.js
+
+# Sidebar（左侧导航）接口：使用 nav 显式声明。
+# 阶段 1 你可以先不写 nav，让 MkDocs 自动发现页面；
+# 等你要“固定目录结构”时，再取消注释并按需扩展。
+# nav:
+#   - 首页: index.md
+#   - 计算机科学:
+#       - 概览: computer-science/index.md
+#   - 英文学习:
+#       - 概览: English/index.md
+#   - 数学:
+#       - 概览: math/index.md
+#   - 大学物理:
+#       - 概览: phy/index.md
+#   - 随笔集:
+#       - 概览: Diary/index.md
+
 # 先保守使用 MkDocs 内置扩展，保证通用 Markdown 可渲染
 markdown_extensions:
   - toc:
