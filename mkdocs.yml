@@ -24,7 +24,9 @@ extra_css:
   - assets/stylesheets/extra.css
 
 extra_javascript:
+  # MathJax 配置在 extra.js 里，必须先于 MathJax 脚本加载
   - assets/javascripts/extra.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # Sidebar（左侧导航）接口：使用 nav 显式声明。
 # 阶段 1 你可以先不写 nav，让 MkDocs 自动发现页面；
@@ -48,3 +50,6 @@ markdown_extensions:
       permalink: false
   - tables
   - fenced_code
+  # 让 $...$ / $$...$$ 进入数学渲染管线
+  - pymdownx.arithmatex:
+      generic: true
