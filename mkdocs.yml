@@ -9,6 +9,11 @@ docs_dir: docs
 theme:
   name: material
   language: zh
+  # 深黑蓝底白字（默认使用深色方案）
+  palette:
+    - scheme: slate
+      primary: black
+      accent: light blue
 
 # 基础搜索（Material 会自动接入）
 plugins:
