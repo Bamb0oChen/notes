@@ -12,7 +12,7 @@ theme:
   # 深黑蓝底白字（默认使用深色方案）
   palette:
     - scheme: slate
-      primary: black
+      primary: blue
       accent: light blue
 
 # 基础搜索（Material 会自动接入）
