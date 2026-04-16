@@ -1,4 +1,4 @@
-# 影响题的写法
+## 影响题的写法
 
 Directions: For this part, you are allowed 30 minutes to write an essay that begins with thesentence"It is believed that teachers(family/library) can exert a profound influence on their students' academicpursuit and personal development. "You can make comments, cite examples or use your personalexperience to develop your essay. You should write at least 150 words but no more than 200 words
 
