@@ -1,4 +1,4 @@
-# CS224N NumPy 与 PyTorch 知识点总结
+## CS224N NumPy 与 PyTorch 知识点总结
 
 ## 一、 NumPy 核心知识点
 
