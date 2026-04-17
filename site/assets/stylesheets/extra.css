@@ -6,7 +6,7 @@
 
 [data-md-color-scheme="slate"] {
     /* 背景/文字 */
-    --md-default-bg-color: #050a14;
+    --md-default-bg-color: #091224;
     /* 深黑蓝底 */
     --md-default-fg-color: #e6edf3;
     /* 主文字（近白） */
@@ -18,7 +18,7 @@
     --md-typeset-a-color: #63b3ff;
     --md-accent-fg-color: #63b3ff;
     /* 顶部栏/品牌色 */
-    --md-primary-fg-color: #050a14;
+    --md-primary-fg-color: #437ff7;
     --md-primary-bg-color: #e6edf3;
     /* 代码块 */
     --md-code-bg-color: #0b1324;
