@@ -3,8 +3,15 @@
 
 site_name: 学习笔记
 
+# GitHub Pages 仓库站点（repo pages）会部署在 /notes/ 子路径下。
+# 不设置会导致某些模板（尤其是 404 页面）生成以 /assets 开头的绝对路径，线上会 404。
+site_url: https://yanzhuchen0901.github.io/notes/
+
 # MkDocs 约定文档源目录为 docs/
 docs_dir: docs
+
+# 显式写出来，避免未来改动时产生不一致
+use_directory_urls: true
 
 theme:
   name: material
