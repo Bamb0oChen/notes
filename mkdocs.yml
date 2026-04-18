@@ -24,6 +24,15 @@ theme:
     - scheme: slate
       primary: blue
       accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色主题
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色主题
 
 # 基础搜索（Material 会自动接入）
 plugins:

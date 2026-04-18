@@ -1,45 +1,91 @@
-{% set giscus = config.extra.giscus %}
-{% if
-  page
-  and not page.is_homepage
-  and giscus
-  and giscus.enabled
-%}
-  <section class="md-source-file">
+{% set giscus = config.extra.giscus %} {% if page and not page.is_homepage and giscus and giscus.enabled %}
+<section class="md-source-file">
     <h2 class="md-source-file__fact">评论</h2>
-    {% if
-      giscus.repo_id
-      and giscus.category_id
-      and "REPLACE_WITH" not in giscus.repo_id
-      and "REPLACE_WITH" not in giscus.category_id
-    %}
-      <script
-        src="https://giscus.app/client.js"
-        data-repo="{{ giscus.repo }}"
-        data-repo-id="{{ giscus.repo_id }}"
-        data-category="{{ giscus.category }}"
-        data-category-id="{{ giscus.category_id }}"
-        data-mapping="{{ giscus.mapping | d('pathname', true) }}"
-        data-strict="{{ giscus.strict | d('0', true) }}"
-        data-reactions-enabled="{{ giscus.reactions_enabled | d('1', true) }}"
-        data-emit-metadata="{{ giscus.emit_metadata | d('0', true) }}"
-        data-input-position="{{ giscus.input_position | d('top', true) }}"
-        data-lang="{{ giscus.lang | d('zh-CN', true) }}"
-        data-theme="{{ giscus.theme | d('dark', true) }}"
-        crossorigin="anonymous"
-        async
-      ></script>
+    {% if giscus.repo_id and giscus.category_id and "REPLACE_WITH" not in giscus.repo_id and "REPLACE_WITH" not in giscus.category_id %}
+    <script src="https://giscus.app/client.js" data-repo="{{ giscus.repo }}" data-repo-id="{{ giscus.repo_id }}" data-category="{{ giscus.category }}" data-category-id="{{ giscus.category_id }}" data-mapping="{{ giscus.mapping | d('pathname', true) }}" data-strict="{{ giscus.strict | d('0', true) }}"
+        data-reactions-enabled="{{ giscus.reactions_enabled | d('1', true) }}" data-emit-metadata="{{ giscus.emit_metadata | d('0', true) }}" data-input-position="{{ giscus.input_position | d('top', true) }}" data-lang="{{ giscus.lang | d('zh-CN', true) }}"
+        data-theme="{{ giscus.theme | d('dark', true) }}" crossorigin="anonymous" async></script>
+
+    <script>
+        (function() {
+            function getMaterialScheme() {
+                var el = document.body || document.documentElement;
+                if (el && el.getAttribute) {
+                    var scheme = el.getAttribute("data-md-color-scheme");
+                    if (scheme) return scheme;
+                }
+                var root = document.documentElement;
+                return root ? root.getAttribute("data-md-color-scheme") : null;
+            }
+
+            function getGiscusThemeFromScheme(scheme) {
+                return scheme === "slate" ? "dark" : "light";
+            }
+
+            function setGiscusTheme(theme) {
+                var iframe = document.querySelector("iframe.giscus-frame");
+                if (!iframe || !iframe.contentWindow) return;
+                iframe.contentWindow.postMessage({
+                        giscus: {
+                            setConfig: {
+                                theme: theme
+                            }
+                        }
+                    },
+                    "https://giscus.app"
+                );
+            }
+
+            function syncOnce() {
+                var scheme = getMaterialScheme();
+                setGiscusTheme(getGiscusThemeFromScheme(scheme));
+            }
+
+            // 1) 初次加载尽快同步
+            syncOnce();
+
+            // 2) 等 iframe 真正插入后再同步一次（避免 race）
+            var tries = 0;
+            var timer = window.setInterval(function() {
+                tries++;
+                if (document.querySelector("iframe.giscus-frame")) {
+                    window.clearInterval(timer);
+                    syncOnce();
+                } else if (tries > 50) {
+                    window.clearInterval(timer);
+                }
+            }, 100);
+
+            // 3) 监听主题切换（Material 会更新 data-md-color-scheme）
+            var observed = [document.documentElement, document.body].filter(Boolean);
+            observed.forEach(function(target) {
+                try {
+                    new MutationObserver(function(mutations) {
+                        for (var i = 0; i < mutations.length; i++) {
+                            if (mutations[i].type === "attributes" && mutations[i].attributeName === "data-md-color-scheme") {
+                                syncOnce();
+                                break;
+                            }
+                        }
+                    }).observe(target, {
+                        attributes: true,
+                        attributeFilter: ["data-md-color-scheme"]
+                    });
+                } catch (e) {
+                    // ignore
+                }
+            });
+        })();
+    </script>
     {% else %}
-      <div class="admonition info">
+    <div class="admonition info">
         <p class="admonition-title">评论区待配置</p>
         <p>
-          已启用 Giscus 评论区模板，但当前还缺少
-          <code>repo_id</code> 和 <code>category_id</code>。
-          在 GitHub 仓库开启 Discussions 并完成 Giscus 配置后，
-          把对应值填入 <code>mkdocs.yml</code> 的
-          <code>extra.giscus</code> 即可生效。
+            已启用 Giscus 评论区模板，但当前还缺少
+            <code>repo_id</code> 和 <code>category_id</code>。 在 GitHub 仓库开启 Discussions 并完成 Giscus 配置后， 把对应值填入 <code>mkdocs.yml</code> 的
+            <code>extra.giscus</code> 即可生效。
         </p>
-      </div>
+    </div>
     {% endif %}
-  </section>
+</section>
 {% endif %}
