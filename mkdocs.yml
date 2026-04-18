@@ -2,6 +2,8 @@
 # 说明：不依赖复杂插件；导航先交给 MkDocs 自动发现页面（不完美但可用）。
 
 site_name: 学习笔记
+repo_url: https://github.com/yanzhuchen0901/notes
+repo_name: yanzhuchen0901/notes
 
 # GitHub Pages 仓库站点（repo pages）会部署在 /notes/ 子路径下。
 # 不设置会导致某些模板（尤其是 404 页面）生成以 /assets 开头的绝对路径，线上会 404。
@@ -16,6 +18,7 @@ use_directory_urls: true
 theme:
   name: material
   language: zh
+  custom_dir: overrides
   # 深黑蓝底白字（默认使用深色方案）
   palette:
     - scheme: slate
@@ -34,6 +37,21 @@ extra_javascript:
   # MathJax 配置在 extra.js 里，必须先于 MathJax 脚本加载
   - assets/javascripts/extra.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  giscus:
+    enabled: true
+    repo: yanzhuchen0901/notes
+    repo_id: REPLACE_WITH_GISCUS_REPO_ID
+    category: General
+    category_id: REPLACE_WITH_GISCUS_CATEGORY_ID
+    mapping: pathname
+    strict: 0
+    reactions_enabled: 1
+    emit_metadata: 0
+    input_position: top
+    lang: zh-CN
+    theme: dark
 
 # Sidebar（左侧导航）接口：使用 nav 显式声明。
 # 阶段 1 你可以先不写 nav，让 MkDocs 自动发现页面；
