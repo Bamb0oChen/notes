@@ -42,13 +42,13 @@ extra:
   giscus:
     enabled: true
     repo: yanzhuchen0901/notes
-    repo_id: REPLACE_WITH_GISCUS_REPO_ID
-    category: General
-    category_id: REPLACE_WITH_GISCUS_CATEGORY_ID
+    repo_id: R_kgDORKPyfQ
+    category: Announcements
+    category_id: DIC_kwDORKPyfc4C7H9I
     mapping: pathname
     strict: 0
     reactions_enabled: 1
-    emit_metadata: 0
+    emit_metadata: 1
     input_position: top
     lang: zh-CN
     theme: dark
