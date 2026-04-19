@@ -29,17 +29,28 @@
 但是，引用最广的，还是我们上面提到的top-K路由
 4. Top-K 路由
    1. 计算偏好得分（$s_{i,t}$）
-   $$s_{i,t} = \text{Softmax}_i (u_t^{lT} e_i^l)$$
+
+   $$
+   s_{i,t} = \text{Softmax}_i (u_t^{lT} e_i^l)
+   $$
+
    $u_t^l$：当前时刻输入的 Token 向量。$e_i^l$：第 $i$ 个专家的“特征标签”（Router 权重）。
    逻辑： 路由网络让输入的 Token 去和每一个专家的标签做“内积”计算。通过 Softmax，模型得到了这个 Token 对所有 $N$ 个专家的匹配概率分布。
    
    2. 执行 Top-K 筛选（$g_{i,t}$）这是实现**稀疏激活（Sparsity）**的关键一步：
-    $$g_{i,t} = \begin{cases} s_{i,t}, & s_{i,t} \in \text{Topk}(\{s_{j,t} \mid 1 \le j \le N\}, K) \\ 0, & \text{otherwise} \end{cases}$$
+
+    $$
+    g_{i,t} = \begin{cases} s_{i,t}, & s_{i,t} \in \text{Topk}(\{s_{j,t} \mid 1 \le j \le N\}, K) \\ 0, & \text{otherwise} \end{cases}
+    $$
     
     逻辑： 模型不会把 Token 发给所有专家。它会按得分排序，只选出得分最高的 $K$ 个专家（通常 $K=2$）。结果： 没被选中的专家，其门控值 $g$ 直接设为 0。这意味着在这一步计算中，剩下的专家完全不被激活，从而节省了巨大的计算量。
    
    3. 加权汇总（$h_t^l$）
-   $$h_t^l = \sum_{i=1}^N (g_{i,t} \text{FFN}_i (u_t^l)) + u_t^l$$
+
+   $$
+   h_t^l = \sum_{i=1}^N (g_{i,t} \text{FFN}_i (u_t^l)) + u_t^l
+   $$
+
    逻辑： 只有被选中的那 $K$ 个专家会计算输出结果。每个专家的输出会乘以它对应的得分 $g_{i,t}$（作为权重），然后加权求和。残差连接： 最后再加上输入的 $u_t^l$。这保证了即使路由选错了专家，原始信息也能流向下一层，增加了模型的容错率。
 
 ![MOE](../../images/MOE.png)
@@ -50,6 +61,8 @@
 
 于是，一种惩罚机制产生了
 
-$$\text{loss} = \alpha \cdot N \cdot \sum_{i=1}^N f_i \cdot P_i$$
+$$
+\text{loss} = \alpha \cdot N \cdot \sum_{i=1}^N f_i \cdot P_i
+$$
 
 $f_i$ (实际派单比例)： 真正有多少比例的 Token 进到了这个专家的大门。$P_i$ (预期偏好程度)： 路由网络给这个专家的平均打分。惩罚机理： * 如果一个专家 $f_i$ 很大（很多人选他），且 $P_i$ 很大（路由也很偏爱他），两者的乘积就会变得非常大，从而导致巨大的 Loss 惩罚。为了降低这个 Loss，模型会被迫尝试把 Token 派给那些还没被“重用”的专家。

@@ -46,6 +46,8 @@ class ChangeStats:
     inline_adjacent_fixes: int = 0
     inline_newline_fixes: int = 0
     inline_doubledollar_to_block: int = 0
+    display_singleline_to_multiline: int = 0
+    display_blankline_fixes: int = 0
 
 
 def iter_markdown_files(root: Path) -> Iterable[Path]:
@@ -220,6 +222,93 @@ def rewrite_inline_doubledollar_to_block(text: str) -> tuple[str, int]:
     return "".join(out_lines), fixes
 
 
+DISPLAY_SINGLELINE_RE = re.compile(r"^(?P<indent>[ \t]*)\$\$(?P<content>.+?)\$\$(?P<trailing>[ \t]*)$")
+DISPLAY_DELIM_LINE_RE = re.compile(r"^(?P<indent>[ \t]*)\$\$[ \t]*$")
+
+
+def _line_ending(line: str) -> str:
+    if line.endswith("\r\n"):
+        return "\r\n"
+    if line.endswith("\n"):
+        return "\n"
+    return ""
+
+
+def normalize_display_doubledollar_blocks(text: str) -> tuple[str, ChangeStats]:
+    """Normalize display-math `$$` blocks.
+
+    Goals (whitespace/newlines only):
+    - Convert single-line `$$...$$` (even when the line is otherwise empty) into
+      a 3-line block with `$$` delimiters on their own lines.
+    - Ensure a blank line before an opening `$$` and after a closing `$$` so the
+      Markdown parser doesn't keep it inside a paragraph.
+    """
+
+    stats = ChangeStats()
+    lines = text.splitlines(keepends=True)
+
+    # First pass: single-line $$...$$ -> multi-line
+    expanded: list[str] = []
+    for line in lines:
+        stripped = line.strip("\r\n")
+        m = DISPLAY_SINGLELINE_RE.match(stripped)
+        if not m:
+            expanded.append(line)
+            continue
+
+        indent = m.group("indent")
+        content = m.group("content")
+        # Skip if content itself contains $$ to avoid surprises
+        if "$$" in content:
+            expanded.append(line)
+            continue
+
+        le = _line_ending(line)
+        expanded.append(f"{indent}$$" + le)
+        expanded.append(f"{indent}{content}" + le)
+        expanded.append(f"{indent}$$" + le)
+        stats.display_singleline_to_multiline += 1
+
+    # Second pass: ensure blank lines around $$ blocks
+    out: list[str] = []
+    in_block = False
+    need_blank_before_next = False
+
+    for line in expanded:
+        le = _line_ending(line)
+        core = line.strip("\r\n")
+
+        if need_blank_before_next:
+            if core.strip() != "":
+                out.append(le)  # blank line
+                stats.display_blankline_fixes += 1
+            need_blank_before_next = False
+
+        m_delim = DISPLAY_DELIM_LINE_RE.match(core)
+        if m_delim:
+            indent = m_delim.group("indent")
+
+            # Opening delimiter: ensure a blank line before it
+            if not in_block:
+                if out:
+                    prev_core = out[-1].strip("\r\n")
+                    if prev_core.strip() != "":
+                        out.append(le)
+                        stats.display_blankline_fixes += 1
+                in_block = True
+            else:
+                # Closing delimiter: ensure a blank line after it (unless already present)
+                in_block = False
+                need_blank_before_next = True
+
+            out.append(f"{indent}$$" + le)
+            continue
+
+        out.append(line)
+
+    return "".join(out), stats
+
+
 def process_non_fenced_segment(segment: str) -> tuple[str, ChangeStats]:
     stats = ChangeStats()
 
@@ -233,6 +322,11 @@ def process_non_fenced_segment(segment: str) -> tuple[str, ChangeStats]:
 
     protected, n_nl = fix_newlines_inside_inline_math(protected)
     stats.inline_newline_fixes += n_nl
+
+    # Display-math blocks: normalize $$ blocks to be recognized as blocks.
+    protected, disp_stats = normalize_display_doubledollar_blocks(protected)
+    stats.display_singleline_to_multiline += disp_stats.display_singleline_to_multiline
+    stats.display_blankline_fixes += disp_stats.display_blankline_fixes
 
     restored = restore_inline_code(protected, code_spans)
     return restored, stats
@@ -258,6 +352,8 @@ def process_markdown(text: str) -> tuple[str, ChangeStats]:
         stats_total.inline_adjacent_fixes += seg_stats.inline_adjacent_fixes
         stats_total.inline_newline_fixes += seg_stats.inline_newline_fixes
         stats_total.inline_doubledollar_to_block += seg_stats.inline_doubledollar_to_block
+        stats_total.display_singleline_to_multiline += seg_stats.display_singleline_to_multiline
+        stats_total.display_blankline_fixes += seg_stats.display_blankline_fixes
         out.append(fixed)
         buffer = []
 
@@ -321,6 +417,8 @@ def main(argv: list[str]) -> int:
         stats.inline_adjacent_fixes += file_stats.inline_adjacent_fixes
         stats.inline_newline_fixes += file_stats.inline_newline_fixes
         stats.inline_doubledollar_to_block += file_stats.inline_doubledollar_to_block
+        stats.display_singleline_to_multiline += file_stats.display_singleline_to_multiline
+        stats.display_blankline_fixes += file_stats.display_blankline_fixes
 
         if sha256_text(original) != sha256_text(fixed):
             stats.files_changed += 1
@@ -334,6 +432,8 @@ def main(argv: list[str]) -> int:
     print(f"Fixes: adjacent inline math: {stats.inline_adjacent_fixes}")
     print(f"Fixes: newlines inside $...$: {stats.inline_newline_fixes}")
     print(f"Fixes: inline $$...$$ -> block: {stats.inline_doubledollar_to_block}")
+    print(f"Fixes: display $$...$$ single-line -> multi-line: {stats.display_singleline_to_multiline}")
+    print(f"Fixes: blank lines around $$ blocks: {stats.display_blankline_fixes}")
 
     if args.check and stats.files_changed > 0:
         print("\nFiles that would change (first 30):")

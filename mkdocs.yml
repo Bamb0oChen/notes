@@ -87,3 +87,7 @@ markdown_extensions:
   # 让 $...$ / $$...$$ 进入数学渲染管线
   - pymdownx.arithmatex:
       generic: true
+      block_syntax:
+        - dollar
+        - square
+        - begin
