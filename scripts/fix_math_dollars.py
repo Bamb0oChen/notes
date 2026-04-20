@@ -50,15 +50,38 @@ class ChangeStats:
     display_blankline_fixes: int = 0
 
 
-def iter_markdown_files(root: Path) -> Iterable[Path]:
+def _norm_include_prefix(prefix: str) -> str:
+    prefix = prefix.replace("\\", "/")
+    prefix = prefix.lstrip("./")
+    prefix = prefix.strip("/")
+    return prefix
+
+
+def _is_included(rel_posix: str, include_prefixes: list[str]) -> bool:
+    if not include_prefixes:
+        return True
+    for prefix in include_prefixes:
+        if rel_posix == prefix or rel_posix.startswith(prefix + "/"):
+            return True
+    return False
+
+
+def iter_markdown_files(root: Path, include_prefixes: list[str] | None = None) -> Iterable[Path]:
     docs_dir = root / "docs"
     if not docs_dir.is_dir():
         return []
+
+    include_prefixes = include_prefixes or []
+    include_prefixes = [_norm_include_prefix(p) for p in include_prefixes if p.strip()]
 
     for path in docs_dir.rglob("*.md"):
         # Skip built assets folders if any
         if "assets" in path.parts and path.parts[path.parts.index("assets") - 1] == "docs":
             # docs/assets/**
+            continue
+
+        rel_posix = path.relative_to(docs_dir).as_posix()
+        if not _is_included(rel_posix, include_prefixes):
             continue
         yield path
 
@@ -401,6 +424,15 @@ def main(argv: list[str]) -> int:
         action="store_true",
         help="Do not write files; exit 1 if changes would be made.",
     )
+    parser.add_argument(
+        "--include",
+        action="append",
+        default=[],
+        help=(
+            "Only process Markdown files under docs/ that match these path prefixes "
+            "(repeatable). Example: --include '数学基础/常微分方程'"
+        ),
+    )
     args = parser.parse_args(argv)
 
     root: Path = args.root
@@ -408,7 +440,7 @@ def main(argv: list[str]) -> int:
     stats = ChangeStats()
     changed_paths: list[Path] = []
 
-    for md_path in iter_markdown_files(root):
+    for md_path in iter_markdown_files(root, include_prefixes=args.include):
         stats.files_scanned += 1
         original = md_path.read_text(encoding="utf-8")
         fixed, file_stats = process_markdown(original)
