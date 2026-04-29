@@ -1,37 +1,8 @@
-这一块不止有missing semester的过程
+这一块不止有[missing semester](https://missing-semester-cn.github.io/)的过程
 
 在后期的学习中有关bash unix git相关的底层知识都放在这里
 
-[Learn Git Branching](https://learngitbranching.js.org/?demo=&locale=zh_CN)
-
-全流程学习大概5小时
-
-|指令|拓展|作用|
-|---|---|---|
-|git commit||基础提交|
-|git rebase||将提交链转移到某此提交|
-||-i|打开可视化界面|
-|git checkout <name>|-b|创建并转移到分支中|
-||<name>^|从节点向上移动HEAD|
-||<name>~<num>|从节点向上移动n次HEAD|
-|git revert <branch>||重新创建一个新提交，覆盖原先的提交|
-|git reset <name>||更改提交为未提交状态|
-||--soft|保留暂存更改|
-||--hard|删除暂存更改|
-||--mixed|保留工作区，重置暂存区|
-|git cherry-pick <commit1> <commit2> ....||复制粘贴你想要的commit|
-|git tag <tag> <commit>||增加tag|
-|git describe <branch>||在链上查找到最近的tag|
-|<remote name>/<branch name>||仓库/分支|
-|git fetch||下载未同步的操作|
-|git pull||fetch和merge的缩写|
-||-rebase|先fetch再rebase|
-|git fakeTeamwork||在远端仓库做一次提交|
-||<name> <nums>|指定次数|
-|git push||从本地到云端|
-
-
-LECTURE 1-2 bash shell
+## LECTURE 1-2 bash shell
 
 * **参数与通配符**：通过 `flag` 调节行为，通过 `globbing`（如 `*`, `{}`）高效批量操作。
 * **流与重定向**：利用 `stdin` / `stdout` / `stderr` 和管道 `|` 实现数据流转，使用 `>` / `<` 等符号控制数据去向。
@@ -74,7 +45,17 @@ LECTURE 1-2 bash shell
 | `jobs` | | 查看当前 Shell 启动的后台任务 |
 | `kill -9 <PID>` | `-9` | 强制终止进程 |
 
-LECTURE 3 Vim
+## LECTURE 3 Vim
+
+学习资源：
+
+[vimgolf](https://www.vimgolf.com/)
+
+像一个高尔夫球手一样用最少的步数实现vim的效果！
+
+[vim中文用户手册](https://yianwillis.github.io/vimcdoc/doc/usr_toc.html)
+
+用中文理解vim!
 
 * **Vim 的哲学：** 区别于常见的“非模式化编辑器”（如 VS Code、Notepad），Vim 是一个模式化编辑器。这意味着键盘不再仅仅是用来输入字符的，而是作为一种操作“语言”来控制光标移动和文本处理。
 * **模式（Modes）：** * **Normal（普通模式）：** 默认模式，用于移动光标、删除、复制等操作。
@@ -111,3 +92,38 @@ LECTURE 3 Vim
 | `:q` |退出编辑器 |
 | `:q!` |强制退出（不保存） |
 
+## LECTURE 4 debugging & profilling
+
+
+
+## LECTURE 5 git
+
+学习资料：
+
+[Learn Git Branching](https://learngitbranching.js.org/?demo=&locale=zh_CN)
+
+用游戏来解决git，全流程学习大概5小时
+
+|指令|拓展|作用|
+|---|---|---|
+|git commit||基础提交|
+|git rebase||将提交链转移到某此提交|
+||-i|打开可视化界面|
+|git checkout <name>|-b|创建并转移到分支中|
+||<name>^|从节点向上移动HEAD|
+||<name>~<num>|从节点向上移动n次HEAD|
+|git revert <branch>||重新创建一个新提交，覆盖原先的提交|
+|git reset <name>||更改提交为未提交状态|
+||--soft|保留暂存更改|
+||--hard|删除暂存更改|
+||--mixed|保留工作区，重置暂存区|
+|git cherry-pick <commit1> <commit2> ....||复制粘贴你想要的commit|
+|git tag <tag> <commit>||增加tag|
+|git describe <branch>||在链上查找到最近的tag|
+|<remote name>/<branch name>||仓库/分支|
+|git fetch||下载未同步的操作|
+|git pull||fetch和merge的缩写|
+||-rebase|先fetch再rebase|
+|git fakeTeamwork||在远端仓库做一次提交|
+||<name> <nums>|指定次数|
+|git push||从本地到云端|
