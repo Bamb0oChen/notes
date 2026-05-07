@@ -84,6 +84,10 @@ markdown_extensions:
       permalink: false
   - tables
   - fenced_code
+  - pymdownx.highlight:
+      pygments_lang_class: true
+      anchor_linenums: true
+  - pymdownx.superfences
   # 让 $...$ / $$...$$ 进入数学渲染管线
   - pymdownx.arithmatex:
       generic: true
