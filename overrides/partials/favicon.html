@@ -1,0 +1,76 @@
+{#
+  Dynamic favicon switching for MkDocs Material.
+  - Light theme  -> favicon-day.ico
+  - Dark theme   -> favicon-night.ico
+#}
+
+{% set favicon_day = 'favicon-day.ico' %}
+{% set favicon_night = 'favicon-night.ico' %}
+
+<link rel="icon" href="{{ favicon_day | url }}" type="image/x-icon" sizes="any" data-dynamic-favicon="true">
+
+<script>
+  (() => {
+    const dayHref = "{{ favicon_day | url }}";
+    const nightHref = "{{ favicon_night | url }}";
+
+    const getMaterialScheme = () => {
+      const docEl = document.documentElement;
+      const schemeAttr = docEl.getAttribute("data-md-color-scheme") || document.body?.getAttribute?.("data-md-color-scheme");
+      if (schemeAttr) return schemeAttr;
+
+      try {
+        const raw = localStorage.getItem("__palette");
+        if (raw) {
+          const palette = JSON.parse(raw);
+          const scheme = palette?.color?.scheme;
+          if (typeof scheme === "string" && scheme.length) return scheme;
+        }
+      } catch {
+        // ignore
+      }
+
+      if (window.matchMedia?.("(prefers-color-scheme: dark)")?.matches) return "slate";
+      return "default";
+    };
+
+    const applyFavicon = () => {
+      const scheme = getMaterialScheme();
+      const href = scheme === "slate" ? nightHref : dayHref;
+
+      const links = Array.from(document.querySelectorAll('link[rel~="icon"][data-dynamic-favicon="true"]'));
+      if (links.length === 0) return;
+
+      for (const link of links) {
+        if (link.href !== href) link.href = href;
+      }
+    };
+
+    // Initial set
+    applyFavicon();
+
+    // React to MkDocs Material palette toggle (attribute changes)
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.type === "attributes" && m.attributeName === "data-md-color-scheme") {
+          applyFavicon();
+          return;
+        }
+      }
+    });
+    observer.observe(document.documentElement, { attributes: true });
+
+    // React to system theme changes (only relevant if user follows system)
+    const media = window.matchMedia?.("(prefers-color-scheme: dark)");
+    if (media) {
+      const handler = () => applyFavicon();
+      if (typeof media.addEventListener === "function") media.addEventListener("change", handler);
+      else if (typeof media.addListener === "function") media.addListener(handler);
+    }
+
+    // React to palette changes written in another tab
+    window.addEventListener("storage", (e) => {
+      if (e.key === "__palette") applyFavicon();
+    });
+  })();
+</script>

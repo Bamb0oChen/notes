@@ -38,3 +38,7 @@
 | `:w` |保存文件 |
 | `:q` |退出编辑器 |
 | `:q!` |强制退出（不保存） |
+
+![](../../images/vim-basics.png)
+
+![](../../images/vim-advanced.png)
