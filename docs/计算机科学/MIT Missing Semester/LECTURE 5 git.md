@@ -25,3 +25,19 @@
 | `git fakeTeamwork` |  | 在远端仓库做一次提交 |
 |  | `<name> <nums>` | 指定次数 |
 | `git push` |  | 从本地到云端 |
+
+当然，我们git的commit开发命名也存在着规范
+
+| 类别 | 含义 | 示例 |
+| :--- | :--- | :--- |
+| feat | 新功能（feature） | `feat: 增加用户注册功能` |
+| fix | 修复 bug | `fix: 修复登录页面崩溃的问题` |
+| docs | 文档变更 | `docs: 更新README文件` |
+| style | 代码风格变动（不影响代码逻辑） | `style: 删除多余的空行` |
+| refactor | 代码重构（既不是新增功能也不是修复bug的代码更改） | `refactor: 重构用户验证逻辑` |
+| perf | 性能优化 | `perf: 优化图片加载速度` |
+| test | 添加或修改测试 | `test: 增加用户模块的单元测试` |
+| chore | 杂项（构建过程或辅助工具的变动） | `chore: 更新依赖库` |
+| build | 构建系统或外部依赖项的变更 | `build: 升级webpack到版本5` |
+| ci | 持续集成配置的变更 | `ci: 修改GitHub Actions配置文件` |
+| revert | 回滚之前的提交 | `revert: 回滚feat: 增加用户注册功能` |

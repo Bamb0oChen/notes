@@ -19,6 +19,10 @@ theme:
   name: material
   language: zh
   custom_dir: overrides
+  features:
+    # 一级目录显示为顶部导航；进入某个一级目录后，左侧栏显示其下级目录。
+    - navigation.tabs
+    - navigation.tabs.sticky
   # 深黑蓝底白字（默认使用深色方案）
   palette:
     - scheme: slate
