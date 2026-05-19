@@ -84,7 +84,7 @@ mkdocs build
 ## 3. 发布逻辑（GitHub Pages）
 
 当前 `mkdocs.yml` 中已设置：
-- `site_url: https://yanzhuchen0901.github.io/notes/`
+- `site_url: https://Bamb0oChen.github.io/notes/`
 
 建议发布流程（不强制，按你的 CI 实际情况调整）：
 1. 本地 `mkdocs build` 确保无报错

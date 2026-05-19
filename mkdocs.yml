@@ -2,12 +2,12 @@
 # 说明：不依赖复杂插件；导航先交给 MkDocs 自动发现页面（不完美但可用）。
 
 site_name: 学习笔记
-repo_url: https://github.com/yanzhuchen0901/notes
-repo_name: yanzhuchen0901/notes
+repo_url: https://github.com/Bamb0oChen/notes
+repo_name: Bamb0oChen/notes
 
 # GitHub Pages 仓库站点（repo pages）会部署在 /notes/ 子路径下。
 # 不设置会导致某些模板（尤其是 404 页面）生成以 /assets 开头的绝对路径，线上会 404。
-site_url: https://yanzhuchen0901.github.io/notes/
+site_url: https://Bamb0oChen.github.io/notes/
 
 # MkDocs 约定文档源目录为 docs/
 docs_dir: docs
@@ -54,7 +54,7 @@ extra_javascript:
 extra:
   giscus:
     enabled: true
-    repo: yanzhuchen0901/notes
+    repo: Bamb0oChen/notes
     repo_id: R_kgDORKPyfQ
     category: Announcements
     category_id: DIC_kwDORKPyfc4C7H9I
