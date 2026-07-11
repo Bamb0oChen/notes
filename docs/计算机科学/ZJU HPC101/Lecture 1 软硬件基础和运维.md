@@ -2,8 +2,7 @@
 
 首先，让我们来看看一个服务器的网络组件架构
 
-<center>![](../../images/sever.png)</center>
-
+![](../../images/sever.png)
 
 华为企业路由器（顶部）
 
