@@ -86,3 +86,18 @@ Intel 会把 L3 切成很多 Slice，但是注意，L3缓存是共享的，不�
 在win和linux上，我们分别可以用这两种方法来实现我们的Lx大小查找
 
 ![](../../images/cacheinwin.png)
+
+![](../../images/cacheinlin.png)
+
+### OS (Operating System)
+
+我们现在有很多的操作系统
+
+win(get) linux(get) debian macOS(get) iOS(get) Ubuntu(get) HarmonyOS Android
+
+这些操作系统在主机的运行中主要起到一个资源分配的作用
+
+例如下面这段代码
+![](../../images/OS1.png)
+
+当一个事件输入的时候
