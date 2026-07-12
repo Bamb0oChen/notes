@@ -313,4 +313,90 @@ int main() {
     return 0;
 }
 ```
-在这个过程中，我们需要自己管理线程的生命周期
+在这个过程中，我们需要自己管理线程的生命周期和内存范围（加锁）
+
+```c
+int sum = 0;
+
+void* worker(void* arg) {
+    pthread_mutex_lock(&lock);
+
+    sum++;
+
+    pthread_mutex_unlock(&lock);
+}
+```
+
+这就是上面说的manual synchronization
+
+但这也是pthread的问题所在，你可以看见我们很多的代码都是重复性的工作，所谓 结构性 代码
+
+而openMP就像自动档汽车了
+
+```c
+#include <stdio.h>
+#include <omp.h>
+
+int main() {
+
+    int a[1000000];
+    long long sum = 0;
+
+    for(int i=0;i<1000000;i++)
+        a[i]=i;
+
+    #pragma omp parallel for reduction(+:sum)
+    for(int i=0;i<1000000;i++)
+        sum += a[i];
+
+    printf("sum=%lld\n",sum);
+
+    return 0;
+}
+```
+```c
+#pragma omp parallel for reduction(+:sum)
+```
+这句代码实现了自动分配进程，拆解循环，和累加，所以真的很牛
+
+![](../../images/openmp.png)
+
+这是一些常见的代码行
+
+### 虚拟内存
+
+![](../../images/2026-07-12-13-33-45.png)
+
+虚拟内存存在的意义是让每个进程都觉得自己独占整个内存，而实际上多个进程共享同一块物理内存。
+
+我们的程序必须知道自己被放到哪里。
+
+如果 A 被放到 0x1000，下次放到 0x5000，程序很多地址都要修改。这就是早期 DOS 的问题。
+
+我们采用page table的形式，将我们的虚拟内存映射到不连续的物理内存中，这样就实现了内存的连续
+
+这个时候，上面提到的isolation和protection就很好理解了，但是，为什么有effiency，假设这样一个场景，AB是我们上面说的滨兴程序，他们都要从一块内存中读取，这个时候我们直接让他们用一个页表就行了，比复制和队列简单多了
+
+## Amdahl's Law 阿姆达尔定律
+
+从直觉上来看，增加CPU的核心数会使得我们并行计算的速度加快，但是事实真的如此吗
+
+首先我们要知道，在tlp的场景中，我们分成两种处理方式，并行计算和串行计算，这里我们令可以并行的比例为p
+
+阿姆达尔定律认为我们对的速度提升是
+
+$$S(N) = \frac{1}{(1-p)+\frac{P}{N}}$$
+
+当核心数无限的时候，我们的处理加速度最终会变成
+
+$$\frac{1}{1-P}$$
+
+阿姆达尔定律告诉我们：程序的最大加速比由串行部分决定，而不是由 CPU 核数决定。 核心越多，并行部分越快，但串行部分永远不会消失，因此总加速比存在理论上限。这也是为什么并行程序设计不仅要增加线程，更要尽可能减少串行代码。
+
+## Summary
+
+⭐ Important concepts that you should remember today:
+• Operating System:a resource abstractor and resource allocator.
+• Process: a unit of resource allocation and protection.
+• Thread: basic unit of execution within a process.
+• Others: Memory Hierarchy, Stack Frame, etc.
