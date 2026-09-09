@@ -2,11 +2,16 @@
 
 首先什么是linux？
 
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-09-17.png)
+
 Linux本质上是一种操作系统体系，他和win，macOS（unix），都是不同的操作系统
 
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-11-17.png)
 [九分钟带你了解八大主流操作系统](https://www.bilibili.com/video/BV1aE3wzME7i/?spm_id_from=333.337.search-card.all.click)
 
 那么很多人就会问：我们都用win或者mac，我们为啥要学linux呢？
+
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-09-48.png)
 
 ai时代下，有以下几点
 
@@ -45,6 +50,8 @@ mkdir -p ~/adventure/castle/treasure ~/adventure/forest ~/adventure/cave
 echo "Gold!" > ~/adventure/castle/treasure/chest.txt
 echo "Bear!" > ~/adventure/forest/danger.txt
 cd ~
+
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-10-29.png)
 
 ------------------------------
 ## 第一关：走出出生点

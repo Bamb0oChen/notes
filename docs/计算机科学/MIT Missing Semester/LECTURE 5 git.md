@@ -3,7 +3,7 @@
 在开始学指令以前，我们先讲清楚 Git、GitHub 和 GitLab 到底是什么。
 
 ## 什么是 Git？
-
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-12-15.png)
 我们写代码的时候肯定遇到过这种文件：
 
 ```text
@@ -61,6 +61,8 @@ Git 仓库不只存在于某一台中央服务器上。
 
 我们经常把远端仓库放在 GitHub 或 GitLab 上，但这并不意味着 Git 必须联网，也不意味着 Git 就是 GitHub。
 
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-12-56.png)
+
 ## 什么是 GitHub？
 
 [GitHub](https://github.com/) 是一个托管 Git 仓库的网站。
@@ -104,7 +106,7 @@ A ← B ← C
 `main` 是一个分支名，它指向提交 `C`。分支并不是把整个项目复制一遍，而是一个会随着新提交移动的指针。
 
 如果我们从 `C` 建立一个新分支并继续开发，就可能得到：
-
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-12-32.png)
 ```text
 A ← B ← C ← D        main
          \
