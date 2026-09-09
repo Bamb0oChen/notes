@@ -67,6 +67,10 @@ Git 仓库不只存在于某一台中央服务器上。
 
 [GitHub](https://github.com/) 是一个托管 Git 仓库的网站。
 
+这个网站就是部署在github上的，同时也欢迎关注我的[博客](https://github.com/Bamb0oChen)
+
+![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-09-16-16-34.png)
+
 除了替我们保存远端仓库，它还提供了很多围绕软件协作的功能：
 
 - Pull Request：讨论和合并代码修改；
