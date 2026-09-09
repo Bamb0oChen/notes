@@ -6,11 +6,11 @@
 
 卧槽还是得看原书，其实这种分成三种情况
 
-![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-08-21-16-11.png)
+![](../../images/2026-09-08-21-16-11.png)
 
-![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-08-21-16-46.png)
+![](../../images/2026-09-08-21-16-46.png)
 
-![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-08-21-16-58.png)
+![](../../images/2026-09-08-21-16-58.png)
 
 当然，我们乘法怎么算呢？
 
@@ -84,7 +84,7 @@ $$
 
 一开始人们肯定怀着从整数二进制中的幻想而来，认为我们的数也可以像用了泰勒展开被逼近，但是这种做法后来马上被证明是愚蠢的，比如下面这个例子
 
-![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-08-22-56-15.png)
+![](../../images/2026-09-08-22-56-15.png)
 
 所以这个时候聪明的科学家想：我把他变成整数然后在缩回来不就好了
 
@@ -126,13 +126,13 @@ $$
 
 当然你也会发现，无穷大怎么表示？0怎么表示？这些问题我们把exp同时看作一个token，然后我们在读入的时候会选择不同的策略
 
-![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-08-23-13-17.png)
+![](../../images/2026-09-08-23-13-17.png)
 
-![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-08-23-13-24.png)
+![](../../images/2026-09-08-23-13-24.png)
 
 这张图真清楚啊
 
-![](D:/Users/cyz/Documents/AAA_develop/asserts/notes-main/docs/images/2026-09-08-23-20-50.png)
+![](../../images/2026-09-08-23-20-50.png)
 
 但是聪明人一眼就能看出来——你这只能存有理数啊
 
