@@ -10,7 +10,7 @@ hello 程序的生命周期是从一个高级 C 语言程序开始的，因为�
 linux> gcc -o hello hello.c
 ```
 
-![](../../../../../../../Desktop/asserts/notes-main/docs/images/2026-09-08-17-26-49.png)
+![](../../images/2026-09-08-17-26-49.png)
 
 这个地方展示了我们一张图片在进入我们电脑的执行过程
 
@@ -40,10 +40,10 @@ main:
 
 下面是我们hello文件的执行方式
 
-![](../../../../../../../Desktop/asserts/notes-main/docs/images/2026-09-08-19-40-24.png)
+![](../../images/2026-09-08-19-40-24.png)
 
-![](../../../../../../../Desktop/asserts/notes-main/docs/images/2026-09-08-19-40-31.png)
+![](../../images/2026-09-08-19-40-31.png)
 
-![](../../../../../../../Desktop/asserts/notes-main/docs/images/2026-09-08-19-40-39.png)
+![](../../images/2026-09-08-19-40-39.png)
 
 接下来其实还有网络和操作系统的部分，不过这两个部分我在其他的板块讲的深得多这里就不赘述（私自品味）了
