@@ -59,6 +59,7 @@ plugins:
 
 # 样式/脚本接口：把自定义文件放进 docs/assets/ 下，然后在这里引用
 extra_css:
+  - assets/fonts/source-han-sans.css
   - assets/stylesheets/extra.css
 
 extra_javascript:

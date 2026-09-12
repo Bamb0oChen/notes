@@ -65,11 +65,33 @@ body {
     background-color: var(--notes-surface);
 }
 
-/* 系统字体优先，不依赖外部字体服务。 */
-:root {
-    --md-text-font: "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
-    --md-code-font: "Cascadia Code", "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+/* 三套站内托管字体，不依赖访客安装或外部字体服务。 */
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterVariable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
 }
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../fonts/JetBrainsMono-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+:root {
+    --md-text-font: "Inter", "Source Han Sans CN", sans-serif;
+    --md-code-font: "JetBrains Mono", "Source Han Sans CN", monospace;
+}
+.md-typeset code, .md-typeset pre { font-variant-ligatures: none; }
 [data-md-color-scheme="slate"] {
     --notes-border: #35465c;
     --notes-inline-bg: #202e41;
