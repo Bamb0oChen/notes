@@ -15,6 +15,19 @@ docs_dir: docs
 # 显式写出来，避免未来改动时产生不一致
 use_directory_urls: true
 
+# 空白占位页保留在源码中，写完后再从排除清单移除。
+exclude_docs: |
+  数学基础/二元微积分/5.二类曲线积分和曲面积分.md
+  数学基础/概率论与数理统计/第9章 区间估计和假设检验.md
+  计算机科学/ZJU HPC101/Lecture 7 CUDA基础.md
+  计算机科学/ZJU HPC101/Lecture 8 机器学习基础.md
+  计算机科学/ZJU HPC101/Lecture 9 机器学习高级话题.md
+  计算机科学/ZJU HPC101/华为ICT架构学习.md
+
+validation:
+  links:
+    anchors: warn
+
 theme:
   name: material
   language: zh

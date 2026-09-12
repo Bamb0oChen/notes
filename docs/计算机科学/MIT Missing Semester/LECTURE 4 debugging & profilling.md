@@ -63,6 +63,8 @@ Disconnected from user something（格式不匹配）
 
 ---
 
+<span id="perf-数据解读"></span>
+
 ## Perf 数据解读
 
 ### 示例输出
@@ -158,6 +160,8 @@ Performance counter stats for 'ls':
 
 ---
 
+<span id="火焰图生成"></span>
+
 - 火焰图生成
 
 ### 安装 FlameGraph 脚本
@@ -199,6 +203,8 @@ explorer.exe .   # 在 Windows 中打开文件夹
 | `Invalid field requested` | 参数语法错误 | 简化命令：`perf script \| ...` |
 
 ---
+
+<span id="火焰图查看方法"></span>
 
 - 火焰图查看方法
 
@@ -285,6 +291,8 @@ Children   Self    Command    Symbol
 2. **向上看调用链** → 找到调用的源头
 3. **悬停查看详情** → 确认函数名和占比
 
+<span id="测试程序编写"></span>
+
 ### Bash 测试脚本（轻量级）
 
 ```bash
@@ -309,6 +317,8 @@ echo "Test completed!"
 ```
 
 ---
+
+<span id="常见问题速查"></span>
 
 - 常见问题速查
 
