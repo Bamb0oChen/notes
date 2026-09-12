@@ -32,10 +32,12 @@ theme:
   name: material
   language: zh
   custom_dir: overrides
+  font: false
   features:
     # 一级目录显示为顶部导航；进入某个一级目录后，左侧栏显示其下级目录。
     - navigation.tabs
     - navigation.tabs.sticky
+    - content.code.copy
   # 深黑蓝底白字（默认使用深色方案）
   palette:
     - scheme: slate
@@ -100,6 +102,10 @@ markdown_extensions:
   - toc:
       permalink: false
   - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - fenced_code
   - pymdownx.highlight:
       pygments_lang_class: true
