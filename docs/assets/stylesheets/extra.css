@@ -168,6 +168,47 @@ body {
 .md-typeset table:not([class]) tr:nth-child(even) td { background: var(--notes-surface); }
 .md-typeset img { height: auto; border-radius: .3rem; }
 .md-typeset div.arithmatex { overflow-x: auto; }
+
+/* 左侧导航：目录、文章与当前页分层；不影响右侧页内目录。 */
+.md-nav--primary .md-nav__link {
+    line-height: 1.55;
+}
+.md-nav--primary .md-nav__item--nested > .md-nav__link {
+    font-weight: 650;
+}
+.md-nav--primary .md-nav__item:not(.md-nav__item--nested) > .md-nav__link {
+    font-weight: 400;
+}
+.md-nav--primary .md-nav__item > a.md-nav__link--active {
+    color: var(--md-typeset-a-color);
+    font-weight: 650;
+    background: var(--notes-surface);
+    border-radius: .25rem;
+    box-shadow: inset 3px 0 0 var(--md-typeset-a-color);
+    padding: .35rem .55rem;
+}
+/* 桌面树形导航；手机保留 Material 原有的逐级抽屉。 */
+@media (min-width: 76.25em) {
+    .md-nav--primary .md-nav[data-md-level] > .md-nav__list {
+        padding-left: 0;
+    }
+    .md-nav--primary .md-nav[data-md-level]:not([data-md-level="1"]) > .md-nav__list {
+        margin: .35rem 0 .75rem .3rem;
+        padding-left: .8rem;
+        border-left: 1px solid var(--notes-border);
+    }
+    .md-nav--primary .md-nav__item--nested > .md-nav__link {
+        margin-top: .7rem;
+        color: var(--md-default-fg-color);
+    }
+    .md-nav--primary .md-nav__item:not(.md-nav__item--nested) > .md-nav__link:not(.md-nav__link--active) {
+        color: var(--md-default-fg-color--light);
+    }
+    .md-nav--primary .md-nav__item > .md-nav__link:hover,
+    .md-nav--primary .md-nav__item > .md-nav__link:focus-visible {
+        color: var(--md-typeset-a-color);
+    }
+}
 @media (max-width: 44.984375em) {
     .md-content__inner { padding-inline: .2rem; }
     .md-typeset { font-size: .8rem; line-height: 1.8; }
