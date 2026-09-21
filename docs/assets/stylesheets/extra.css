@@ -1,3 +1,17 @@
+.notes-visitors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .4rem 1.1rem;
+    padding: 1rem;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    color: var(--md-default-fg-color--light);
+    font-size: .65rem;
+}
+.notes-visitors strong { color: var(--md-typeset-a-color); font-variant-numeric: tabular-nums; }
+.notes-visitors small { flex-basis: 100%; text-align: center; }
+.notes-visitors a { text-decoration: underline; }
+
 /* Material for MkDocs 自定义样式。
    目标：深黑蓝底 + 白字（尽量保持对比度与可读性）。 */
 

@@ -63,6 +63,7 @@ extra_css:
   - assets/stylesheets/extra.css
 
 extra_javascript:
+  - assets/javascripts/visitors.js
   # MathJax 配置在 extra.js 里，必须先于 MathJax 脚本加载
   - assets/javascripts/extra.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

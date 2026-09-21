@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block footer %}
+  <div class="notes-visitors" aria-label="访问统计">
+    <span id="busuanzi_container_site_uv" style="display:none">本站域名访客数 <strong id="busuanzi_value_site_uv"></strong></span>
+    <span id="busuanzi_container_site_pv" style="display:none">总浏览量 <strong id="busuanzi_value_site_pv"></strong></span>
+    <span id="busuanzi_container_page_pv" style="display:none">本页阅读量 <strong id="busuanzi_value_page_pv"></strong></span>
+    <small>统计由 <a href="https://busuanzi.ibruce.info/" target="_blank" rel="noopener noreferrer">不蒜子</a> 提供（第三方访问统计）</small>
+  </div>
+  {{ super() }}
+{% endblock %}
