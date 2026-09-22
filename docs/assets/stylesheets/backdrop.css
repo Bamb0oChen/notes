@@ -5,6 +5,7 @@ body {
   --notes-glass-border: rgba(210, 226, 242, .12);
   --notes-backdrop-tint: rgba(0, 0, 0, .28);
   --notes-chrome: rgba(7, 10, 15, .88);
+  --notes-header-glass: rgba(7, 10, 15, .96);
   --notes-chrome-text: #e6edf3;
 }
 .notes-backdrop {
@@ -23,6 +24,11 @@ body {
   color: var(--notes-chrome-text);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+.md-header, .md-tabs {
+  background: var(--notes-header-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 .md-header { box-shadow: none; border-bottom: 1px solid var(--notes-glass-border); }
 .md-tabs { border-bottom: 1px solid var(--notes-glass-border); }
@@ -43,6 +49,7 @@ body {
   --notes-glass-border: rgba(130, 145, 160, .25);
   --notes-backdrop-tint: rgba(255, 255, 255, .28);
   --notes-chrome: rgba(255, 255, 255, .88);
+  --notes-header-glass: rgba(255, 255, 255, .96);
   --notes-chrome-text: #243247;
   --md-primary-bg-color: #243247;
   --md-primary-bg-color--light: #43536a;
@@ -113,6 +120,25 @@ body {
   }
   .md-sidebar--secondary:hover,
   .md-sidebar--secondary:focus-within { transform: translateX(0); }
+  .md-sidebar--secondary::after {
+    content: "悬浮以打开右侧导航栏";
+    position: absolute;
+    right: calc(100% - 8px);
+    top: calc(35% + .5rem);
+    padding: .3rem .55rem;
+    border: 1px solid var(--notes-glass-border);
+    border-radius: .4rem;
+    background: var(--notes-glass);
+    color: var(--md-default-fg-color--light);
+    font-size: .6rem;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  .md-sidebar--secondary:hover::after,
+  .md-sidebar--secondary:focus-within::after {
+    opacity: 0;
+    pointer-events: none;
+  }
   .md-sidebar--secondary .md-sidebar__scrollwrap {
     height: 100%;
     max-height: 100% !important;
