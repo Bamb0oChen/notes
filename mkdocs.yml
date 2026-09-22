@@ -72,7 +72,7 @@ extra_javascript:
 extra:
   # 主图放到 docs/assets/images/，再填写相对 docs/ 的路径。
   # 例如 assets/images/notes-background.webp；留空不请求图片。
-  notes_background: assets/images/notes-background-desktop.png
+  notes_background: assets/images/notes-background-desktop-final.png
   notes_background_mobile: assets/images/notes-background-mobile.png
   giscus:
     enabled: true

@@ -19,19 +19,8 @@ body {
 }
 .notes-backdrop img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .notes-backdrop picture { display: block; width: 100%; height: 100%; }
-.notes-backdrop .notes-original-region { display: none; }
 @media (min-width: 60em) {
   .notes-backdrop picture img { object-position: right center; }
-  .notes-backdrop .notes-original-region {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: auto;
-    max-width: none;
-    object-fit: contain;
-  }
 }
 .notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); }
 .md-header, .md-tabs, .md-footer, .notes-visitors {
