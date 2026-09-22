@@ -70,6 +70,16 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
+  # 按此顺序展示精选阅读；path 为相对 docs/ 的 Markdown 路径。
+  featured_reading:
+    - path: 计算机科学/Cursh Course CS/计算机网络.md
+      topic: 网络基础
+    - path: 计算机科学/Cursh Course CS/虚拟内存与分页技术.md
+      topic: 操作系统
+    - path: 计算机科学/ZJU HPC101/Lecture 5 OpenMP.md
+      topic: 并行计算
+    - path: 计算机科学/苹果生态/iPhone安全设计.md
+      topic: 苹果生态
   # 主图放到 docs/assets/images/，再填写相对 docs/ 的路径。
   # 例如 assets/images/notes-background.webp；留空不请求图片。
   notes_background: assets/images/notes-background-desktop-final.png

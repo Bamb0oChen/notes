@@ -1,4 +1,14 @@
 /* The image layer is intentionally empty until extra.notes_background is set. */
+.notes-reading { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--notes-glass-border); }
+.notes-reading h2 { margin: 0 0 .65rem; font-size: .75rem; font-weight: 650; }
+.notes-reading ul { margin: 0; padding: 0; list-style: none; }
+.notes-reading li + li { margin-top: .4rem; }
+.notes-reading a { display: block; padding: .5rem .55rem; border-radius: .35rem; color: var(--md-default-fg-color); }
+.notes-reading small { display: block; margin-bottom: .15rem; font-size: .55rem; color: var(--md-default-fg-color--light); }
+.notes-reading span { display: block; font-size: .7rem; line-height: 1.6; overflow-wrap: anywhere; }
+.notes-reading a:hover, .notes-reading a:focus-visible { color: var(--md-typeset-a-color); background: var(--notes-surface); }
+.notes-reading a:focus-visible { outline: 2px solid var(--md-typeset-a-color); outline-offset: 2px; }
+.md-nav--primary .notes-reading { display: none; }
 body {
   isolation: isolate;
   --notes-glass: rgba(7, 10, 15, .82);
