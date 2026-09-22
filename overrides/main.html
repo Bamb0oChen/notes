@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{% block container %}
+  <div class="notes-backdrop" aria-hidden="true">
+    {% if config.extra.notes_background %}
+      <picture>
+        {% if config.extra.notes_background_mobile %}
+          <source media="(max-width: 59.984375em)" srcset="{{ config.extra.notes_background_mobile | url }}">
+        {% endif %}
+        <img src="{{ config.extra.notes_background | url }}" alt="" decoding="async" fetchpriority="low">
+      </picture>
+    {% endif %}
+  </div>
+  {{ super() }}
+{% endblock %}
+
 {% block footer %}
   <div class="notes-visitors" aria-label="访问统计">
     <span id="busuanzi_container_site_uv" style="display:none">本站域名访客数 <strong id="busuanzi_value_site_uv"></strong></span>

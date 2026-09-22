@@ -1,0 +1,68 @@
+/* The image layer is intentionally empty until extra.notes_background is set. */
+body {
+  isolation: isolate;
+  --notes-glass: rgba(7, 10, 15, .82);
+  --notes-glass-border: rgba(210, 226, 242, .12);
+}
+.notes-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 15% 10%, #293c46 0, transparent 55%),
+    radial-gradient(ellipse at 95% 70%, #292c3c 0, transparent 60%), #11171e;
+}
+.notes-backdrop img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.notes-backdrop picture { display: block; width: 100%; height: 100%; }
+.notes-backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .28); }
+.md-header, .md-tabs, .md-footer, .notes-visitors {
+  background: rgba(7, 10, 15, .88);
+  color: #e6edf3;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.md-header { box-shadow: none; border-bottom: 1px solid var(--notes-glass-border); }
+.md-tabs { border-bottom: 1px solid var(--notes-glass-border); }
+.md-main__inner { margin-top: 1.5rem; margin-bottom: 2rem; gap: .8rem; }
+.md-content {
+  min-width: 0;
+  background: var(--notes-glass);
+  border: 1px solid var(--notes-glass-border);
+  border-radius: .85rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.md-content__inner { margin-top: 0; padding: 1.8rem 1.6rem 2rem; }
+/* Keep the optional light reading mode usable against the same photograph. */
+[data-md-color-scheme="default"] { --notes-glass: rgba(250, 251, 253, .91); --notes-glass-border: rgba(130, 145, 160, .25); }
+@media (min-width: 60em) {
+  .md-sidebar--secondary .md-sidebar__scrollwrap {
+    padding: .85rem .65rem;
+    background: var(--notes-glass);
+    border: 1px solid var(--notes-glass-border);
+    border-radius: .7rem;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+@media (min-width: 76.25em) {
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    padding: .85rem .65rem;
+    background: var(--notes-glass);
+    border: 1px solid var(--notes-glass-border);
+    border-radius: .7rem;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .md-nav--primary .md-nav__title { background: transparent; box-shadow: none; }
+}
+@media (max-width: 59.984375em) {
+  .md-main__inner { margin: .7rem .5rem 1rem; }
+  .md-content__inner { padding: 1.15rem .8rem 1.5rem; margin-inline: 0; }
+  .md-content { border-radius: .65rem; }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  body { --notes-glass: rgba(7, 10, 15, .94); }
+  [data-md-color-scheme="default"] { --notes-glass: rgba(250, 251, 253, .97); }
+}
