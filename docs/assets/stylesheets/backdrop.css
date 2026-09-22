@@ -6,6 +6,7 @@ body {
   --notes-backdrop-tint: transparent;
   --notes-chrome: rgba(7, 10, 15, .88);
   --notes-header-glass: rgba(7, 10, 15, .96);
+  --notes-tabs-glass: rgba(7, 10, 15, .68);
   --notes-chrome-text: #e6edf3;
 }
 .notes-backdrop {
@@ -45,13 +46,29 @@ body {
   -webkit-backdrop-filter: blur(20px);
 }
 .md-header { box-shadow: none; border-bottom: 1px solid var(--notes-glass-border); }
-.md-tabs { border-bottom: 1px solid var(--notes-glass-border); }
-/* Sticky tabs are nested inside the header: use its single glass layer,
-   otherwise two 96% masks combine into an effectively opaque background. */
-.md-header .md-tabs {
+.md-tabs {
+  background: var(--notes-tabs-glass);
+  border-bottom: 1px solid var(--notes-glass-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+/* Material can move sticky tabs inside the header. Remove the parent's
+   painted layer and put the strong mask on the first row only. */
+.md-header:has(.md-tabs) {
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+.md-header:has(.md-tabs)::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2.4rem;
+  background: var(--notes-header-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  pointer-events: none;
+  z-index: -1;
 }
 .md-main__inner { margin-top: 1.5rem; margin-bottom: 2rem; gap: .8rem; }
 .md-content {
@@ -71,6 +88,7 @@ body {
   --notes-backdrop-tint: transparent;
   --notes-chrome: rgba(255, 255, 255, .88);
   --notes-header-glass: rgba(255, 255, 255, .96);
+  --notes-tabs-glass: rgba(255, 255, 255, .68);
   --notes-chrome-text: #243247;
   --md-primary-bg-color: #243247;
   --md-primary-bg-color--light: #43536a;
@@ -147,9 +165,8 @@ body {
     right: calc(100% - 8px);
     top: calc(35% + .5rem);
     padding: .3rem .55rem;
-    border: 1px solid var(--notes-glass-border);
-    border-radius: .4rem;
-    background: var(--notes-glass);
+    border: none;
+    background: transparent;
     color: var(--md-default-fg-color--light);
     font-size: .6rem;
     line-height: 1.5;
