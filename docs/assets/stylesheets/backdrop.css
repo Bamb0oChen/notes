@@ -3,7 +3,7 @@ body {
   isolation: isolate;
   --notes-glass: rgba(7, 10, 15, .82);
   --notes-glass-border: rgba(210, 226, 242, .12);
-  --notes-backdrop-tint: rgba(0, 0, 0, .28);
+  --notes-backdrop-tint: transparent;
   --notes-chrome: rgba(7, 10, 15, .88);
   --notes-header-glass: rgba(7, 10, 15, .96);
   --notes-chrome-text: #e6edf3;
@@ -18,6 +18,20 @@ body {
 }
 .notes-backdrop img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .notes-backdrop picture { display: block; width: 100%; height: 100%; }
+.notes-backdrop .notes-original-region { display: none; }
+@media (min-width: 60em) {
+  .notes-backdrop picture img { object-position: right center; }
+  .notes-backdrop .notes-original-region {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+  }
+}
 .notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); }
 .md-header, .md-tabs, .md-footer, .notes-visitors {
   background: var(--notes-chrome);
@@ -54,7 +68,7 @@ body {
 [data-md-color-scheme="default"] {
   --notes-glass: rgba(255, 255, 255, .82);
   --notes-glass-border: rgba(130, 145, 160, .25);
-  --notes-backdrop-tint: rgba(255, 255, 255, .28);
+  --notes-backdrop-tint: transparent;
   --notes-chrome: rgba(255, 255, 255, .88);
   --notes-header-glass: rgba(255, 255, 255, .96);
   --notes-chrome-text: #243247;
@@ -128,7 +142,7 @@ body {
   .md-sidebar--secondary:hover,
   .md-sidebar--secondary:focus-within { transform: translateX(0); }
   .md-sidebar--secondary::after {
-    content: "悬浮以打开右侧导航栏";
+    content: "悬\A 浮\A 以\A 打\A 开\A 右\A 侧\A 导\A 航\A 栏";
     position: absolute;
     right: calc(100% - 8px);
     top: calc(35% + .5rem);
@@ -139,8 +153,9 @@ body {
     color: var(--md-default-fg-color--light);
     font-size: .6rem;
     line-height: 1.5;
-    white-space: nowrap;
-    writing-mode: vertical-rl;
+    white-space: pre;
+    text-align: center;
+    writing-mode: horizontal-tb;
     text-orientation: upright;
     letter-spacing: .12em;
   }

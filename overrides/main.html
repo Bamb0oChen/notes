@@ -9,6 +9,9 @@
         {% endif %}
         <img src="{{ config.extra.notes_background | url }}" alt="" decoding="async" fetchpriority="low">
       </picture>
+      {% if config.extra.notes_background_mobile %}
+        <img class="notes-original-region" src="{{ config.extra.notes_background_mobile | url }}" alt="" decoding="async">
+      {% endif %}
     {% endif %}
   </div>
   {{ super() }}
