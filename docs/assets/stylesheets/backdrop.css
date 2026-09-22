@@ -32,6 +32,13 @@ body {
 }
 .md-header { box-shadow: none; border-bottom: 1px solid var(--notes-glass-border); }
 .md-tabs { border-bottom: 1px solid var(--notes-glass-border); }
+/* Sticky tabs are nested inside the header: use its single glass layer,
+   otherwise two 96% masks combine into an effectively opaque background. */
+.md-header .md-tabs {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
 .md-main__inner { margin-top: 1.5rem; margin-bottom: 2rem; gap: .8rem; }
 .md-content {
   min-width: 0;
@@ -133,6 +140,9 @@ body {
     font-size: .6rem;
     line-height: 1.5;
     white-space: nowrap;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: .12em;
   }
   .md-sidebar--secondary:hover::after,
   .md-sidebar--secondary:focus-within::after {
