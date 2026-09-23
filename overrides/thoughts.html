@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% block content %}
+<section class="thoughts" id="thoughts" data-api="{{ config.extra.thoughts_api | e }}">
+  <header class="thoughts-heading">
+    <div><span class="thoughts-eyebrow">BAMB0OCHEN · FIELD NOTES</span><h1>随想</h1><p>想到什么，就留下什么。</p></div>
+    <button type="button" id="thoughts-login" hidden>作者登录</button>
+  </header>
+  <p id="thoughts-status" role="status" aria-live="polite">正在整理这些片刻……</p>
+  <div id="thoughts-owner" hidden>
+    <div class="thoughts-toolbar"><span>Bamb0oChen · 我的随想</span><button type="button" id="thoughts-new">写一条</button><button type="button" id="thoughts-logout">退出</button></div>
+    <form id="thoughts-editor" hidden>
+      <label for="thoughts-title">标题 <small>可留空</small></label>
+      <input id="thoughts-title" maxlength="120" placeholder="给这一刻起个名字">
+      <label for="thoughts-body">正文</label>
+      <textarea id="thoughts-body" rows="8" maxlength="20000" required placeholder="一个念头、一段近况，或者今天想记住的事……"></textarea>
+      <div class="thoughts-editor-meta"><small id="thoughts-draft-note">未发布内容不会出现在公开列表。</small><small id="thoughts-count">0 / 20000</small></div>
+      <div class="thoughts-actions"><button type="submit" name="intent" value="published" class="thoughts-primary">发布</button><button type="submit" name="intent" value="draft">保存草稿</button><button type="button" id="thoughts-cancel">收起</button></div>
+    </form>
+  </div>
+  <div id="thoughts-feed" class="thoughts-feed" aria-label="随想卡片"></div>
+  <button type="button" id="thoughts-more" hidden>加载更早的随想</button>
+  <noscript>请启用 JavaScript 查看随想。</noscript>
+</section>
+<script src="{{ 'assets/javascripts/thoughts.js' | url }}" defer></script>
+{% endblock %}

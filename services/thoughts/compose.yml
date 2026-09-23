@@ -1,0 +1,14 @@
+services:
+  thoughts:
+    build: .
+    env_file: .env
+    ports:
+      - "127.0.0.1:8770:8770"
+    volumes:
+      - thoughts-data:/data
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  thoughts-data:

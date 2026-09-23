@@ -13,6 +13,13 @@ math/lineralgebra/data/
 # MkDocs build output
 site/
 
+# 随想服务凭据和本地数据库
+services/thoughts/.env
+services/thoughts/data/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+
 # Node artifacts (legacy from Vite/Vue)
 node_modules/
 dist/
