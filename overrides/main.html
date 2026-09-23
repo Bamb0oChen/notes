@@ -3,11 +3,19 @@
 {% block container %}
   <div class="notes-backdrop" aria-hidden="true">
     {% if config.extra.notes_background %}
-      <picture>
+      <picture class="notes-backdrop__dark">
         {% if config.extra.notes_background_mobile %}
           <source media="(max-width: 59.984375em)" srcset="{{ config.extra.notes_background_mobile | url }}">
         {% endif %}
         <img src="{{ config.extra.notes_background | url }}" alt="" decoding="async" fetchpriority="low">
+      </picture>
+    {% endif %}
+    {% if config.extra.notes_background_light %}
+      <picture class="notes-backdrop__light">
+        {% if config.extra.notes_background_light_mobile %}
+          <source media="(max-width: 59.984375em)" srcset="{{ config.extra.notes_background_light_mobile | url }}">
+        {% endif %}
+        <img src="{{ config.extra.notes_background_light | url }}" alt="" decoding="async" loading="eager">
       </picture>
     {% endif %}
   </div>

@@ -87,6 +87,8 @@ extra:
   # 例如 assets/images/notes-background.webp；留空不请求图片。
   notes_background: assets/images/notes-background-desktop-final.png
   notes_background_mobile: assets/images/notes-background-mobile.png
+  notes_background_light: assets/images/notes-background-light-desktop.png
+  notes_background_light_mobile: assets/images/notes-background-light-mobile.jpg
   giscus:
     enabled: true
     repo: Bamb0oChen/notes
