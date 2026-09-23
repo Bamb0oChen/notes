@@ -1,0 +1,31 @@
+/* Confined to the opening quote: no changes to article, hero, or sidebars. */
+.md-typeset .index-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(96px, 15vw, 192px);
+  align-items: center;
+  gap: clamp(8px, 2vw, 24px);
+  margin: 1.35em 0;
+  padding: 1rem;
+  border: 1px solid var(--notes-glass-border);
+  border-radius: .55rem;
+  background: var(--md-code-bg-color);
+  color: var(--md-code-fg-color);
+}
+.md-typeset .index-intro__words {
+  min-width: 0;
+  font-family: var(--md-code-font-family, var(--md-code-font)), monospace;
+  font-size: clamp(11px, 1vw, 14px);
+  line-height: 1.65;
+}
+.md-typeset .index-intro__words p { margin: 0 0 .65em; }
+.md-typeset .index-intro__words p:last-child { margin-bottom: 0; }
+.md-typeset .index-intro__avatar {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 6px;
+}
+@media (max-width: 40em) {
+  .md-typeset .index-intro { padding: .6rem; grid-template-columns: minmax(0, 1fr) 96px; gap: 8px; }
+}

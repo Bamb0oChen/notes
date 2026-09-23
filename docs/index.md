@@ -2,16 +2,15 @@
 
 ## Hi Here is Bamb0ochen
 
-    前天看到了小兔
-    おとといは兎を見たの
-    
-    昨天是小鹿
-    昨日は鹿
-
-    今天是……你
-    今日は…あなた
-
-    欢迎失足落进我的空间
+<div class="index-intro">
+  <div class="index-intro__words">
+    <p>前天看到了小兔<br>おとといは兎を見たの</p>
+    <p>昨天是小鹿<br>昨日は鹿</p>
+    <p>今天是……你<br>今日は…あなた</p>
+    <p>欢迎失足落进我的空间</p>
+  </div>
+  <img class="index-intro__avatar" src="assets/images/intro-avatar-dots.svg" alt="双马尾人物的暖白点阵字符头像" width="480" height="408">
+</div>
 
 ![](./images/night.png)
 
@@ -64,4 +63,3 @@
 ---
 
 > 💡 路漫漫其修远，吾上下而求索
-
