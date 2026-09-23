@@ -59,5 +59,3 @@ cudaMemcpy(c, cudaC, sizeof(c), cudaMemcpyDeviceToHost);
 
 return;
 ```
-
-以上就是cuda的一个向量化实例
