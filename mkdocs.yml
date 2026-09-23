@@ -65,6 +65,7 @@ extra_css:
   - assets/stylesheets/backdrop.css
 
 extra_javascript:
+  - assets/javascripts/backdrop.js
   - assets/javascripts/visitors.js
   # MathJax 配置在 extra.js 里，必须先于 MathJax 脚本加载
   - assets/javascripts/extra.js

@@ -55,6 +55,14 @@ body {
 @media (min-width: 60em) {
   .notes-backdrop picture img { object-position: right center; }
   .notes-backdrop .notes-backdrop__light img { object-position: left center; }
+  .notes-backdrop .notes-backdrop__light img[data-framed] {
+    position: absolute;
+    left: var(--backdrop-x);
+    top: var(--backdrop-y);
+    width: var(--backdrop-width);
+    height: var(--backdrop-height);
+    max-width: none;
+  }
 }
 .notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); }
 .md-header, .md-tabs, .md-footer, .notes-visitors {
@@ -217,4 +225,9 @@ body {
   .md-sidebar--secondary { transition: none; }
   .notes-backdrop__light, .md-content, .md-sidebar__scrollwrap, .md-header,
   .md-header::before, .md-tabs, .md-footer, .notes-visitors { transition: none; }
+}
+/* Compact desktops need a little more room for the face than the TOC rail.
+   This affects only daylight mode; the mobile and dark layouts are unchanged. */
+@media (min-width: 60em) and (max-width: 85em) and (hover: hover) and (pointer: fine) {
+  [data-md-color-scheme="default"] .md-content { margin-right: 14.4rem; }
 }
