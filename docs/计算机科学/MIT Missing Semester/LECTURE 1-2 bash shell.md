@@ -44,6 +44,48 @@ wsl --install
 
 ls指令能够解释当前环境下的文件夹，cd 文件夹名 能够进入相应的文件夹，pwd则显示了我们当前的路径
 
+在开始之前，我们不妨来上一个扫盲课
+
+pwd - print working directory
+
+ls  - list 展示内容
+ls -a 展示所有内容
+ls -l 展示详细信息
+ls -la 上面的简单组合
+ls 文件名 显示文件夹下的内容内容
+
+cd - change directory
+cd .  本目录
+cd ~  回到根目录
+cd .. 退一个目录
+
+claer 清除终端的代码
+
+history 展示最近的代码
+注：上下能直接调用
+
+touch 创建文件，若已存在，只会改变修改时间
+
+mkdir 创建文件夹
+mkdir-p A/B/C 能够直接创建嵌套文件夹
+
+nano 修改文件
+cat 只查看文件
+less 之查看文件，用滚动的方式输出
+vim 用vim文本标记其操作文件
+相关的文档点击[这里](./LECTURE%203%20Vim.md)
+
+head -20 输出头20行，参数可替换
+tail -20 输出尾20行，同上
+
+echo "txt" 展示文本txt
+whoami 展示当前的用户
+有关用户和组的概念，点击[这里](../服务器搭建与运维/2.%20服务器系统搭建.md) 3.4.3
+
+uname     展示你unix内核的名称
+uname -a
+uptime
+
 ## 实验准备（在 WSL 中执行以下命令创建实验环境）
 
 mkdir -p ~/adventure/castle/treasure ~/adventure/forest ~/adventure/cave
@@ -52,22 +94,17 @@ echo "Bear!" > ~/adventure/forest/danger.txt
 cd ~
 
 ![](../../images/2026-09-09-16-10-29.png)
-
 ------------------------------
 ## 第一关：走出出生点
 
-* 
 * 任务：进入 adventure 目录，并查看里面有哪些地方可以去。
 * 命令参考：
 
 cd adventure
 ls
 
-* 
-
 ## 第二关：寻找宝藏
 
-* 
 * 任务：从当前位置进入城堡（castle），再进入宝库（treasure），查看里面有什么文件。然后不切换目录，直接查看文件里的内容。
 * 命令参考：
 
@@ -75,29 +112,21 @@ cd castle/treasure
 ls
 cat chest.txt
 
-* 
-
 ## 第三关：瞬间移动（绝对路径）
 
-* 
 * 任务：无论你当前在哪个目录，用一行命令直接跳跃到森林（forest）目录。
 * 命令参考：
 
 cd ~/adventure/forest
 
-* 
-
 ## 第四关：查看隐藏的线索
 
-* 
 * 任务：返回家目录（~），使用特殊参数查看所有文件（包括隐藏文件），并确认当前所处的完整路径。
 * 命令参考：
 
 cd ~
 ls -a   # 查看隐藏文件
 pwd     # 显示当前绝对路径
-
-* 
 
 ------------------------------
 ## ✍️ 互动随堂测试

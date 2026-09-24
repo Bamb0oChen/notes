@@ -1,3 +1,5 @@
+![](../../images/2026-09-24-12-20-50.png)
+
 学习资源：
 
 - [vimgolf](https://www.vimgolf.com/)：像一个高尔夫球手一样用最少的步数实现 Vim 的效果
