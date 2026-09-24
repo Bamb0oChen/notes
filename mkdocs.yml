@@ -30,6 +30,7 @@ validation:
 
 theme:
   name: material
+  favicon: assets/images/notes-favicon.png
   language: zh
   custom_dir: overrides
   font: false

@@ -49,49 +49,149 @@ ls指令能够解释当前环境下的文件夹，cd 文件夹名 能够进入�
 pwd - print working directory
 
 ls  - list 展示内容
+
 ls -a 展示所有内容
+
 ls -l 展示详细信息
+
 ls -la 上面的简单组合
+
 ls 文件名 显示文件夹下的内容内容
 
 cd - change directory
+
 cd .  本目录
+
 cd ~  回到根目录
+
 cd .. 退一个目录
 
 claer 清除终端的代码
 
 history 展示最近的代码
+
 注：上下能直接调用
 
 touch 创建文件，若已存在，只会改变修改时间
 
 mkdir 创建文件夹
+
 mkdir-p A/B/C 能够直接创建嵌套文件夹
 
 nano 修改文件
+
 cat 只查看文件
+
 less 之查看文件，用滚动的方式输出
+
 vim 用vim文本标记其操作文件
+
 相关的文档点击[这里](./LECTURE%203%20Vim.md)
 
 head -20 输出头20行，参数可替换
+
 tail -20 输出尾20行，同上
 
 echo "txt" 展示文本txt
+
 whoami 展示当前的用户
+
 有关用户和组的概念，点击[这里](../服务器搭建与运维/2.%20服务器系统搭建.md) 3.4.3
 
 uname     展示你unix内核的名称
-uname -a
-uptime
+
+uname -a 展示完整的概览
+
+uptime   展示运行时间和负载
+
+cp <file><destination> 复制文件
+
+cp -r 递归复制，用于实现文件夹复制 
+
+cp -v 展示复制过程
+
+mv 移动
+
+mv -v 移动的详细信息
+
+rm 删除
+
+rm -r 递归删除
+
+rmdir 删除空文件夹
+
+rm -i 删除并展示信息
+
+rm -v 删除并展示过程
+
+rm -f 强制删除
+
+sudo 管理员权限执行，毁天灭地，日常命令无法执行很有可能是没有sudo
+
+chmod 修改文件 chomd+x能够让文件成为可执行文件
+
+chown 修改文件的所有权限，往往修改归属的用户组
+
+find 寻找文件夹和文件，这个地方请自行了解正则表达式
+
+locate 能够实现搜索文件并直接广义返回相关文件
+
+注意 locate基于我们的索引，可以通过sudo updatedb来实现刷新
+
+grep 获取文件信息
+
+grep -i 能够实现忽略大小写
+
+比如 grep -r "error" Logs 就能够实现直接的获取
+
+df -h 用美化格式展示现在的储存压力
+
+du diskusage 展示某个文件对硬盘的储存压力
+
+top 展示当前的进程和相关占用
+
+htop 对top的优化，单独安装
+
+ps aux 展示当前所有进程的详细信息，不过这是一个快照
+
+apt 这是一个软件包安装程式
+
+常用的像
+
+sudo apt upgrade
+
+sudo apt update
+
+sudo apt install htop
+
+sudo apt remove htop
+
+sudo apt autoremove
+
+man 用于打开文档
+
+--help 参数用于快查参数
+
+wget 从web获取下载
+
+wget -b在后台下载
+
+tar 用于归档压缩和解压缩
+
+tar -czf 压缩文件
+
+tar -xzf 解压缩文件
+
+tar -cf 未解压查看
 
 ## 实验准备（在 WSL 中执行以下命令创建实验环境）
 
+```bash
 mkdir -p ~/adventure/castle/treasure ~/adventure/forest ~/adventure/cave
 echo "Gold!" > ~/adventure/castle/treasure/chest.txt
 echo "Bear!" > ~/adventure/forest/danger.txt
 cd ~
+```
 
 ![](../../images/2026-09-09-16-10-29.png)
 ------------------------------
@@ -99,35 +199,35 @@ cd ~
 
 * 任务：进入 adventure 目录，并查看里面有哪些地方可以去。
 * 命令参考：
-
+```bash
 cd adventure
 ls
-
+```
 ## 第二关：寻找宝藏
 
 * 任务：从当前位置进入城堡（castle），再进入宝库（treasure），查看里面有什么文件。然后不切换目录，直接查看文件里的内容。
 * 命令参考：
-
+```bash
 cd castle/treasure
 ls
 cat chest.txt
-
+```
 ## 第三关：瞬间移动（绝对路径）
 
 * 任务：无论你当前在哪个目录，用一行命令直接跳跃到森林（forest）目录。
 * 命令参考：
-
+```bash
 cd ~/adventure/forest
-
+```
 ## 第四关：查看隐藏的线索
 
 * 任务：返回家目录（~），使用特殊参数查看所有文件（包括隐藏文件），并确认当前所处的完整路径。
 * 命令参考：
-
+```bash
 cd ~
 ls -a   # 查看隐藏文件
 pwd     # 显示当前绝对路径
-
+```
 ------------------------------
 ## ✍️ 互动随堂测试
 
