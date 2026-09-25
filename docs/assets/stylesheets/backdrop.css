@@ -156,6 +156,52 @@ body {
   .md-content__inner { padding: 1.15rem .8rem 1.5rem; margin-inline: 0; }
   .md-content { border-radius: .65rem; }
 }
+/* Material's drawer is also used on tablets, up to the primary-sidebar
+   breakpoint. Paint one glass shell instead of stacking opaque blue panels. */
+@media screen and (max-width: 76.234375em) {
+  .md-sidebar--primary {
+    background: var(--notes-glass);
+    color: var(--notes-chrome-text);
+    border-inline-end: 1px solid var(--notes-glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--primary .md-nav--primary,
+  .md-nav--primary .md-nav__title ~ .md-nav__list {
+    background: transparent;
+  }
+  .md-nav--primary .md-nav__title,
+  .md-nav--primary .md-nav__title[for="__drawer"],
+  .md-nav--primary .md-nav__source {
+    background: transparent;
+    color: var(--notes-chrome-text);
+    box-shadow: none;
+    border-bottom: 1px solid var(--notes-glass-border);
+  }
+  .md-nav--primary .md-nav__source { padding-block: .3rem; }
+  .md-nav--primary .md-nav__item { border-top-color: var(--notes-glass-border); }
+  /* All levels share the shell. Hide only the covered parent labels, not
+     their descendant submenus, to avoid ghost text through translucent glass. */
+  .md-sidebar--primary .md-nav--primary .md-nav {
+    background: transparent;
+  }
+  .md-sidebar--primary .md-nav:has(> .md-nav__list > .md-nav__item > .md-toggle:checked) > .md-nav__title,
+  .md-sidebar--primary .md-nav:has(> .md-nav__list > .md-nav__item > .md-toggle:checked) > .md-nav__source,
+  .md-sidebar--primary .md-nav:has(> .md-nav__list > .md-nav__item > .md-toggle:checked) > .md-nav__list > .md-nav__item > .md-nav__link {
+    visibility: hidden;
+  }
+  .md-sidebar--primary .md-nav:has(> .md-nav__list > .md-nav__item > .md-toggle:checked) > .md-nav__list {
+    box-shadow: none;
+  }
+  .md-sidebar--primary .md-nav:has(> .md-nav__list > .md-nav__item > .md-toggle:checked) > .md-nav__list > .md-nav__item {
+    border-top-color: transparent;
+  }
+  .md-nav--primary .md-nav__link:focus-visible {
+    outline: 2px solid var(--md-typeset-a-color);
+    outline-offset: -2px;
+  }
+}
 @supports not (backdrop-filter: blur(1px)) {
   body { --notes-glass: rgba(7, 10, 15, .94); }
   [data-md-color-scheme="default"] { --notes-glass: rgba(250, 251, 253, .97); }
