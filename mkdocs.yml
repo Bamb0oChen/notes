@@ -58,6 +58,12 @@ theme:
 plugins:
   - search
 
+# 随想在构建时从 Markdown 汇总，不需要运行后端。
+hooks:
+  - hooks/thoughts.py
+not_in_nav: |
+  随想/第一阶段/**
+
 # 样式/脚本接口：把自定义文件放进 docs/assets/ 下，然后在这里引用
 extra_css:
   - assets/stylesheets/intro.css
@@ -74,8 +80,6 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
-  # 部署随想 API 后填写 HTTPS 地址，不含末尾斜线；留空时不请求任何后端。
-  thoughts_api: ""
   # 按此顺序展示精选阅读；path 为相对 docs/ 的 Markdown 路径。
   featured_reading:
     - path: 计算机科学/Cursh Course CS/计算机网络.md

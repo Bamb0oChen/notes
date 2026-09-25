@@ -1,25 +1,35 @@
 {% extends "main.html" %}
 {% block content %}
-<section class="thoughts" id="thoughts" data-api="{{ config.extra.thoughts_api | e }}">
+<section class="thoughts" id="thoughts">
   <header class="thoughts-heading">
-    <div><span class="thoughts-eyebrow">BAMB0OCHEN · FIELD NOTES</span><h1>随想</h1><p>想到什么，就留下什么。</p></div>
-    <button type="button" id="thoughts-login" hidden>作者登录</button>
+    <span class="thoughts-eyebrow">BAMB0OCHEN · FIELD NOTES</span>
+    <h1>随想</h1>
+    <p>想到什么，就留下什么。</p>
   </header>
-  <p id="thoughts-status" role="status" aria-live="polite">正在整理这些片刻……</p>
-  <div id="thoughts-owner" hidden>
-    <div class="thoughts-toolbar"><span>Bamb0oChen · 我的随想</span><button type="button" id="thoughts-new">写一条</button><button type="button" id="thoughts-logout">退出</button></div>
-    <form id="thoughts-editor" hidden>
-      <label for="thoughts-title">标题 <small>可留空</small></label>
-      <input id="thoughts-title" maxlength="120" placeholder="给这一刻起个名字">
-      <label for="thoughts-body">正文</label>
-      <textarea id="thoughts-body" rows="8" maxlength="20000" required placeholder="一个念头、一段近况，或者今天想记住的事……"></textarea>
-      <div class="thoughts-editor-meta"><small id="thoughts-draft-note">未发布内容不会出现在公开列表。</small><small id="thoughts-count">0 / 20000</small></div>
-      <div class="thoughts-actions"><button type="submit" name="intent" value="published" class="thoughts-primary">发布</button><button type="submit" name="intent" value="draft">保存草稿</button><button type="button" id="thoughts-cancel">收起</button></div>
-    </form>
+  <div class="thoughts-stage">
+    <div><span class="thoughts-eyebrow">ARCHIVE / 01</span><h2>第一阶段 · 群打卡记录</h2>
+    <p>从课堂、自习到项目开发。保留当时的记录，也保留那些还没完成的计划。</p></div>
+    <span class="thoughts-total">{{ thought_cards | length }}<small>篇记录</small></span>
   </div>
-  <div id="thoughts-feed" class="thoughts-feed" aria-label="随想卡片"></div>
-  <button type="button" id="thoughts-more" hidden>加载更早的随想</button>
-  <noscript>请启用 JavaScript 查看随想。</noscript>
+  <div class="thoughts-toolbar">
+    <label for="thoughts-month">按月份查看</label>
+    <select id="thoughts-month"><option value="">全部月份</option>{% for month in thought_months %}<option value="{{ month }}">{{ month }}</option>{% endfor %}</select>
+    <span id="thoughts-count" role="status" aria-live="polite">共 {{ thought_cards | length }} 篇 · 时间倒序</span>
+  </div>
+  <div id="thoughts-feed" class="thoughts-feed">
+    {% for card in thought_cards %}
+    <article class="thoughts-card" data-month="{{ card.month }}">
+      <header><time datetime="{{ card.date }}">{{ card.label }}</time><span>{{ card.stage }}</span></header>
+      <h2><a href="{{ card.url | url }}">{{ card.title | e }}</a></h2>
+      <p class="thoughts-card-body">{{ card.excerpt | e }}</p>
+      {% if card.image %}<a href="{{ card.url | url }}" tabindex="-1" aria-hidden="true"><img class="thoughts-card-image" src="{{ card.image.src | url }}" alt="{{ card.image.alt | e }}" loading="lazy"></a>{% endif %}
+      {% if card.note %}<p class="thoughts-record-note">原文有日期或条目说明，详见全文。</p>{% endif %}
+      <footer><div class="thoughts-tags">{% for tag in card.tags %}<span>{{ tag | e }}</span>{% endfor %}</div><a href="{{ card.url | url }}">阅读全文 <span aria-hidden="true">↗</span></a></footer>
+    </article>
+    {% endfor %}
+  </div>
+  <button type="button" id="thoughts-more" hidden>加载更早的记录</button>
+  <noscript><p>当前展示全部记录；可使用浏览器查找日期。</p></noscript>
 </section>
 <script src="{{ 'assets/javascripts/thoughts.js' | url }}" defer></script>
 {% endblock %}

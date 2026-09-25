@@ -1,46 +1,61 @@
-# 随想后端
+# 随想后端 · 密码管理
 
-笔记站的「随想」页在站内写作、发布、保存草稿、修改和删除。阅读公开，不需要登录；所有写入、草稿列表均需后端签发的作者会话。正文当前是保留换行的纯文本，不执行 HTML，也不解析 Markdown。
+公开帖子所有人可读；输入管理密码后，才能在笔记网页里发布、编辑、删除和查看草稿。正文是保留换行的纯文本，不执行 HTML，也不解析 Markdown。
 
-## 发布前必须完成
+不再需要 GitHub OAuth、Client Secret 或回调配置。**知道管理密码的人就具有完整管理权限**，不是按 GitHub 账号区分权限。请只由本人保管密码。
 
-1. 在自己的服务器部署此目录的服务，并通过独立 HTTPS 域名反向代理到 `127.0.0.1:8770`。服务没有预设任何现有服务器，也不会修改其他服务。
-   `nginx.example.conf` 提供独立虚拟主机示例，需要自行填域名/证书并合并进现有配置，不能直接覆盖主配置。
-2. 在 GitHub 创建 OAuth App。主页填笔记地址，Authorization callback URL 填 `https://你的API域名/auth/callback`。不需要 repo 权限、PAT 或 Device Flow。
-3. 从 `.env.example` 复制为 `.env`，填入 OAuth Client ID / Secret、完整前端随想 URL、完整回调 URL。不要提交 `.env`。
-4. 保持 `THOUGHTS_OWNER_ID=247085583`，这是当前通过 GitHub API 核实的 `Bamb0oChen` 数字 ID。后端不信任前端传入的用户名，也不以可修改的 login 字符串授予权限。
-5. 在此目录运行 `docker compose up -d --build`。
-6. 将根目录 `mkdocs.yml` 中 `extra.thoughts_api` 设置为 `https://你的API域名`，重新构建并部署笔记站。
-7. 真实验收：你的 GitHub 登录能发帖；另一个 GitHub 账号不能发布；无痕窗口看不到草稿；重启服务后已发布内容仍在。
+## 部署
 
-未配置 API 时，页面显示明确的「服务尚未连接」，不会展示假帖子或模拟登录。真实 GitHub OAuth 验收需以上配置完成。
+1. 在校内服务器或自己的服务器运行本服务。已有可用的校内 HTTPS 地址可以复用，不必另外购买域名；访问者的浏览器必须能连接这个 API。GitHub Pages 仅托管网页，不转发 API，也不能穿透校内网络。
+2. 复制本目录的 `.env.example` 为 `.env`（已被 Git 忽略）。
+3. 在可信电脑/服务器上执行 `python passwords.py`，交互输入两次至少 16 字符的随机管理密码。把输出的一行散列配置保存到服务器 `.env`。**保留输出的单引号**，避免 Docker Compose 把散列中的美元符号当变量。不要把明文密码写进命令、网页、Git 或聊天。
+4. 设置 `THOUGHTS_FRONTEND_URL` 为实际随想页面的完整 URL；它确定唯一允许的浏览器来源。默认示例指向线上笔记。
+5. 运行 `docker compose up -d --build`。SQLite 使用已有 `thoughts-data` volume；这次升级保留所有帖子，不重建数据库。
+6. 使用 HTTPS 反向代理接入 `127.0.0.1:8770`。`nginx.example.conf` 是独立虚拟主机示例，按实际入口/证书合并，不能覆盖现有 Nginx 主配置。可以使用已有 HTTPS 入口，不强制新域名。
+7. 设置根目录 `mkdocs.yml` 的 `extra.thoughts_api` 为 API 地址，重新构建并部署笔记。未设置时页面仍显示“服务尚未连接”，不会模拟成功。
+8. 真实验收：无痕窗口无需密码可读公开帖子、不能读草稿或写入；管理密码可解锁；退出后只读；重启服务后帖子仍在。
+
+Docker 环境也可先构建再交互生成散列（不需要安装宿主 Python）：
+
+```sh
+docker build -t notes-thoughts .
+docker run --rm -it --entrypoint python notes-thoughts passwords.py
+```
+
+## 更换密码与退出
+
+重新执行 `passwords.py`，替换 `.env` 中的散列，然后运行 `docker compose up -d --force-recreate`。不要只执行 restart：容器需要重新读取环境配置。
+
+新的散列会使所有旧会话失效，之前 OAuth 会话也不能用于密码管理。退出按钮撤销当前会话；未退出的会话最长有效 12 小时。没有默认密码、网页重置入口或后门；忘记密码时通过服务器重新配置。
 
 ## 安全与运行
 
-- GitHub Authorization Code + S256 PKCE + 一次性 state（10 分钟）。后端读取 `/user` 验证数字账号 ID。
-- OAuth 完成后使用 60 秒一次性交接码返回原页面，必须携带原浏览器 sessionStorage 中的校验串才能兑换。回调目标固定，不能传任意 return URL。
-- GitHub access token 仅在服务端请求身份时使用，不传入前端、不存数据库。站点随机会话有效 12 小时，数据库只存 SHA-256；退出会撤销。
-- 站点会话存于当前标签页 sessionStorage，避免第三方 Cookie 限制；正文用 textContent 渲染。仍需保持笔记域名及所有脚本可信，以防同源 XSS 窃取会话。
-- CORS 仅允许配置的前端 origin；CORS 不是鉴权，所有写接口另行检查会话。
-- 反向代理设置 `client_max_body_size 128k`，`/auth/start` 建议每 IP 每分钟 10 次；不要在日志记录 OAuth 回调 query（含 code）。容器默认禁用访问日志。
-- 编辑框会暂存到此浏览器 localStorage（未加密）。共享电脑不要写敏感内容；退出不会清理暂存。服务端草稿只有作者可读。
-- 已发布帖子编辑保存为草稿即撤下；删除需要确认，无法从 UI 恢复。版本检查阻止旧页面覆盖更新；列表使用游标分页。
-- SQLite 持久化于 `thoughts-data` volume。不要运行 `docker compose down -v`。定期用 SQLite backup API 创建备份（WAL 模式不要只复制一个正在写入的 db 文件），备份也包含私有草稿，请限制权限。
+- 密码散列使用带随机盐的 scrypt（N=131072、r=8、p=1、32 字节输出），依据 [OWASP 密码存储建议](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)。不存明文，也不用快速 SHA-256 直接散列密码。单次验证约需 128 MiB 工作内存，应给服务预留足够内存。
+- API 验证密码后签发随机会话。数据库只存会话令牌的 SHA-256 和凭据指纹；密码修改、会话过期或退出后，服务端拒绝所有管理请求。
+- 每来源 15 分钟最多 5 次登录尝试，全局最多 30 次（成功也计入），SQLite 持久化限速，重启不能清空限制。单进程同一时间只做一次 scrypt 验证；高并发尝试返回 429。
+- 默认不手工信任 X-Forwarded-For。容器经过代理时可能把所有人计作同一来源，限制会偏保守；若需要区分真实来源，只将 Uvicorn 的可信代理列表配置为确切的 Nginx 地址，绝不能设为通配符，并确保代理覆盖来自客户端的转发头。应用全局限制始终保留。
+- Nginx 还应限制请求体和登录频率。不要记录请求体、Authorization 或密码，容器默认禁用访问日志。公网必须使用 HTTPS，不能从 HTTPS 笔记页直连 HTTP 后端。
+- 密码不会写入浏览器 localStorage/sessionStorage；会话令牌存于当前标签页 sessionStorage，解决跨站 Cookie 限制。浏览器密码管理器可以按你的设置保存密码。本站脚本必须可信，防止同源 XSS 窃取会话。
+- CORS 仅允许配置的前端 origin；CORS 不是鉴权，写入和草稿接口始终校验会话。
+- 编辑框暂存于此浏览器 localStorage（未加密），退出时保留以免丢稿。共享电脑勿写敏感内容；需要清除时删除该站点的本地数据。服务器草稿不对匿名用户提供。
+- 已发布帖子保存为草稿即撤下；删除需要确认。版本检查防止旧页面覆盖更新，列表采用游标分页。
+- SQLite 持久化在 `thoughts-data` volume。不要运行 `docker compose down -v`。定期用 SQLite backup API 备份；WAL 模式不要只复制正在写入的 db 文件。备份包含草稿和会话数据，必须限制权限。
+- 当前按单实例设计；不要直接扩成多副本或多 worker，需先评估全局验证并发、数据库和限速。
 
 ## 本地测试
+
+从仓库根目录运行：
 
 ```powershell
 uv run --with fastapi --with httpx --with pytest python -m pytest services/thoughts/test_app.py -q
 ```
 
-浏览器回归：在 `localhost:8769` 运行 MkDocs 构建后的静态站，安装 Playwright，执行 `node services/thoughts/test_browser.cjs`；也可用 `PLAYWRIGHT_MODULE` 指定已有 Playwright 模块路径。脚本通过浏览器请求拦截注入临时数据，测试编辑/发布/删除/暂存恢复/移动端和主题，不写实际数据库、不代替真实 OAuth 验收。
+浏览器回归：在 `localhost:8769` 运行 MkDocs 构建后的静态站，安装 Playwright，执行 `node services/thoughts/test_browser.cjs`。可以用 `PLAYWRIGHT_MODULE` 指定已有模块。脚本仅拦截浏览器请求注入临时数据，不写真实数据库，也不代替部署后的验收。
 
-本地启动（在本目录；无 OAuth 配置时公开读取可用，登录返回 503）：
+本地启动（在本目录；无密码配置时可公开读取，登录返回 503）：
 
 ```powershell
-uv run --with fastapi --with httpx --with uvicorn python -m uvicorn app:app --host 127.0.0.1 --port 8770 --no-access-log
+uv run --with fastapi --with uvicorn python -m uvicorn app:app --host 127.0.0.1 --port 8770 --no-access-log
 ```
 
-生产不要使用本地默认 URL。多副本部署需先换共享数据库，当前按单实例设计。
-
-OAuth 流程依据 [GitHub 官方文档](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps)。
+本地带密码测试需要把散列设置为进程环境变量 `THOUGHTS_PASSWORD_HASH`；Uvicorn 不会自动读取 Compose 的 .env。生产不要使用本地默认前端 URL。

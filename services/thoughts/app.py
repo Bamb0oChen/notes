@@ -1,28 +1,25 @@
-"""Single-author notes API. Secrets and GitHub access tokens never reach the site."""
-import base64
+"""Single-author notes API with server-verified password sessions."""
 import hashlib
 import os
 import secrets
 import sqlite3
 import time
+import threading
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Literal
-from urllib.parse import urlencode, urlsplit
+from urllib.parse import urlsplit
 
-import httpx
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from passwords import validate_hash, verify_password
 from pydantic import BaseModel, Field, field_validator
 
 
 def digest(value):
     return hashlib.sha256(value.encode()).hexdigest()
-
-
-def challenge(value):
-    return base64.urlsafe_b64encode(hashlib.sha256(value.encode()).digest()).decode().rstrip('=')
 
 
 class PostInput(BaseModel):
@@ -39,9 +36,8 @@ class PostInput(BaseModel):
         return value.strip()
 
 
-class Exchange(BaseModel):
-    code: str = Field(min_length=32, max_length=128)
-    verifier: str = Field(min_length=43, max_length=128)
+class LoginInput(BaseModel):
+    password: str = Field(min_length=1, max_length=256)
 
 
 def create_app(config=None):
@@ -50,14 +46,15 @@ def create_app(config=None):
     frontend = cfg.get('THOUGHTS_FRONTEND_URL', 'http://localhost:8769/随想/')
     parsed = urlsplit(frontend)
     origin = f'{parsed.scheme}://{parsed.netloc}'
-    callback = cfg.get('THOUGHTS_CALLBACK_URL', 'http://localhost:8770/auth/callback')
-    for address in (frontend, callback):
-        target = urlsplit(address)
-        if target.scheme not in ('http', 'https') or not target.hostname or target.fragment or target.query:
-            raise ValueError('前端和 OAuth 回调必须是无 query/fragment 的完整 HTTP(S) URL')
-        if target.scheme == 'http' and target.hostname not in ('localhost', '127.0.0.1'):
-            raise ValueError('非本地地址必须使用 HTTPS')
-    owner_id = int(cfg.get('THOUGHTS_OWNER_ID', '247085583'))
+    if parsed.scheme not in ('http', 'https') or not parsed.hostname or parsed.fragment or parsed.query:
+        raise ValueError('前端必须是无 query/fragment 的完整 HTTP(S) URL')
+    if parsed.scheme == 'http' and parsed.hostname not in ('localhost', '127.0.0.1'):
+        raise ValueError('非本地地址必须使用 HTTPS')
+    password_hash = cfg.get('THOUGHTS_PASSWORD_HASH', '')
+    if password_hash:
+        validate_hash(password_hash)
+    credential = digest(password_hash)
+    password_lock = threading.Lock()
     database.parent.mkdir(parents=True, exist_ok=True)
 
     @contextmanager
@@ -83,6 +80,8 @@ def create_app(config=None):
             key TEXT PRIMARY KEY, kind TEXT NOT NULL, expires INTEGER NOT NULL,
             verifier TEXT NOT NULL DEFAULT '', browser_challenge TEXT NOT NULL DEFAULT ''
           );
+          CREATE TABLE IF NOT EXISTS login_attempts (client TEXT NOT NULL, attempted_at REAL NOT NULL);
+          CREATE INDEX IF NOT EXISTS login_attempts_time ON login_attempts(attempted_at);
           CREATE INDEX IF NOT EXISTS posts_public ON posts(status,published_at);
         ''')
 
@@ -90,6 +89,11 @@ def create_app(config=None):
     app.add_middleware(CORSMiddleware, allow_origins=[origin],
                        allow_methods=['GET', 'POST', 'PUT', 'DELETE'],
                        allow_headers=['Authorization', 'Content-Type'])
+
+    @app.exception_handler(RequestValidationError)
+    async def invalid_input(request: Request, exc: RequestValidationError):
+        # Pydantic's default response includes rejected input, which may contain a password.
+        return JSONResponse({'detail': '输入格式不正确或内容过长'}, status_code=422)
 
     @app.middleware('http')
     async def protect(request: Request, call_next):
@@ -109,14 +113,6 @@ def create_app(config=None):
         response.headers['X-Content-Type-Options'] = 'nosniff'
         return response
 
-    def consume(key, kind):
-        with db() as con:
-            row = con.execute('DELETE FROM auth WHERE key=? AND kind=? RETURNING *',
-                              (digest(key), kind)).fetchone()
-        if not row or row['expires'] <= time.time():
-            raise HTTPException(401, '登录链接已失效，请重新登录')
-        return row
-
     def put_auth(key, kind, expires, verifier='', browser_challenge=''):
         with db() as con:
             con.execute('DELETE FROM auth WHERE expires<=?', (int(time.time()),))
@@ -128,71 +124,49 @@ def create_app(config=None):
     def owner(authorization: str = Header(default='')):
         token = authorization.removeprefix('Bearer ')
         with db() as con:
-            row = con.execute("SELECT expires FROM auth WHERE key=? AND kind='session'",
-                              (digest(token),)).fetchone()
-        if not authorization.startswith('Bearer ') or not row or row['expires'] <= time.time():
-            raise HTTPException(401, '请使用作者账号登录')
+            row = con.execute("SELECT expires FROM auth WHERE key=? AND kind='password-session' AND verifier=?",
+                              (digest(token), credential)).fetchone()
+        if not password_hash or not authorization.startswith('Bearer ') or not row or row['expires'] <= time.time():
+            raise HTTPException(401, '请先输入管理密码解锁')
         return token
 
     @app.get('/health')
     def health():
-        return {'ok': True, 'login_configured': bool(cfg.get('GITHUB_CLIENT_ID') and cfg.get('GITHUB_CLIENT_SECRET'))}
+        return {'ok': True, 'login_configured': bool(password_hash)}
 
-    @app.get('/auth/start')
-    def start(browser_challenge: str = Query(pattern=r'^[A-Za-z0-9_-]{43}$')):
-        if not cfg.get('GITHUB_CLIENT_ID') or not cfg.get('GITHUB_CLIENT_SECRET'):
-            raise HTTPException(503, '作者登录尚未配置')
-        state, verifier = secrets.token_urlsafe(32), secrets.token_urlsafe(48)
-        put_auth(state, 'oauth', int(time.time()) + 600, verifier, browser_challenge)
-        return RedirectResponse('https://github.com/login/oauth/authorize?' + urlencode({
-            'client_id': cfg['GITHUB_CLIENT_ID'], 'redirect_uri': callback,
-            'scope': '', 'state': state, 'code_challenge': challenge(verifier),
-            'code_challenge_method': 'S256', 'allow_signup': 'false', 'login': 'Bamb0oChen',
-        }), status_code=303)
-
-    @app.get('/auth/callback')
-    async def oauth_callback(state: str = Query(max_length=128), code: str = Query(default='', max_length=512), error: str = ''):
-        row = consume(state, 'oauth')
-        if error or not code:
-            return RedirectResponse(frontend + '#thoughts-error=cancelled', status_code=303)
+    @app.post('/auth/login')
+    def login(payload: LoginInput, request: Request):
+        if not password_hash:
+            raise HTTPException(503, '管理密码尚未配置')
+        now = time.time()
+        client = digest(request.client.host if request.client else 'unknown')
+        # Persist the limits across process restarts; serialize admission across workers.
+        with db() as con:
+            con.execute('BEGIN IMMEDIATE')
+            con.execute('DELETE FROM login_attempts WHERE attempted_at<=?', (now - 900,))
+            total = con.execute('SELECT count(*) FROM login_attempts').fetchone()[0]
+            own = con.execute('SELECT count(*) FROM login_attempts WHERE client=?', (client,)).fetchone()[0]
+            limited = total >= 30 or own >= 5
+            if not limited:
+                con.execute('INSERT INTO login_attempts VALUES(?,?)', (client, now))
+        if limited:
+            raise HTTPException(429, '尝试次数过多，请 15 分钟后再试', headers={'Retry-After': '900'})
+        # scrypt intentionally uses memory; do not run many verifications concurrently.
+        if not password_lock.acquire(blocking=False):
+            raise HTTPException(429, '正在处理登录，请稍后再试', headers={'Retry-After': '5'})
         try:
-            async with httpx.AsyncClient(timeout=15) as client:
-                result = await client.post('https://github.com/login/oauth/access_token',
-                    headers={'Accept': 'application/json'}, data={
-                        'client_id': cfg['GITHUB_CLIENT_ID'], 'client_secret': cfg['GITHUB_CLIENT_SECRET'],
-                        'code': code, 'redirect_uri': callback, 'code_verifier': row['verifier'],
-                    })
-                result.raise_for_status()
-                github_token = result.json().get('access_token')
-                if not github_token:
-                    raise ValueError('OAuth exchange failed')
-                result = await client.get('https://api.github.com/user', headers={
-                    'Authorization': f'Bearer {github_token}', 'Accept': 'application/vnd.github+json',
-                    'X-GitHub-Api-Version': '2022-11-28',
-                })
-                result.raise_for_status()
-                account = result.json()
-        except (httpx.HTTPError, ValueError):
-            return RedirectResponse(frontend + '#thoughts-error=github', status_code=303)
-        # Immutable identity, not a username supplied by the browser.
-        if account.get('id') != owner_id:
-            return RedirectResponse(frontend + '#thoughts-error=forbidden', status_code=303)
-        handoff = secrets.token_urlsafe(32)
-        put_auth(handoff, 'handoff', int(time.time()) + 60, browser_challenge=row['browser_challenge'])
-        return RedirectResponse(frontend + '#thoughts-code=' + handoff, status_code=303)
-
-    @app.post('/auth/exchange')
-    def exchange(payload: Exchange):
-        row = consume(payload.code, 'handoff')
-        if not secrets.compare_digest(challenge(payload.verifier), row['browser_challenge']):
-            raise HTTPException(401, '登录浏览器不匹配')
+            valid = verify_password(payload.password, password_hash)
+        finally:
+            password_lock.release()
+        if not valid:
+            raise HTTPException(401, '管理密码不正确')
         token = secrets.token_urlsafe(48)
-        put_auth(token, 'session', int(time.time()) + 12 * 3600)
+        put_auth(token, 'password-session', int(time.time()) + 12 * 3600, credential)
         return {'token': token}
 
     @app.get('/auth/me')
     def me(token=Depends(owner)):
-        return {'login': 'Bamb0oChen', 'id': owner_id}
+        return {'login': 'Bamb0oChen', 'role': 'owner'}
 
     @app.post('/auth/logout', status_code=204)
     def logout(token=Depends(owner)):

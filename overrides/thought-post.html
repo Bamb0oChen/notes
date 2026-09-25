@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+<article class="thought-post">
+  <a class="thought-back" href="{{ '随想/' | url }}">← 返回随想</a>
+  <header class="thought-post-heading">
+    <span class="thoughts-eyebrow">{{ page.meta.stage | e }} · {{ page.meta.date_label | d(page.meta.date, true) | e }}</span>
+    <h1>{{ page.title | e }}</h1>
+    {% if page.meta.source_header %}<p class="thought-source">原始记录：{{ page.meta.source_header | e }}</p>{% endif %}
+    {% if page.meta.editor_note %}<aside class="thought-editor-note">{{ page.meta.editor_note | e }}</aside>{% endif %}
+  </header>
+  {{ page.content }}
+</article>
+{% endblock %}

@@ -1,24 +1,32 @@
 import sqlite3
 import time
-from urllib.parse import parse_qs, urlsplit
 
-import httpx
 import pytest
 from fastapi.testclient import TestClient
 
-from app import challenge, create_app, digest
+from app import create_app, digest
+from passwords import hash_password, validate_hash, verify_password
+
+PASSWORD = "test-only-strong-password-1234"
+
+
+@pytest.fixture(scope="session")
+def encoded():
+    return hash_password(PASSWORD)
+
+
+def config(path, encoded=""):
+    return {"THOUGHTS_DB": str(path), "THOUGHTS_FRONTEND_URL": "http://localhost:8769/thoughts/",
+            "THOUGHTS_PASSWORD_HASH": encoded}
 
 
 @pytest.fixture
-def service(tmp_path):
+def service(tmp_path, encoded):
     path = tmp_path / 'test.sqlite3'
-    app = create_app({
-        'THOUGHTS_DB': str(path), 'THOUGHTS_FRONTEND_URL': 'http://localhost:8769/thoughts/',
-        'GITHUB_CLIENT_ID': 'test-client', 'GITHUB_CLIENT_SECRET': 'test-secret',
-    })
+    app = create_app(config(path, encoded))
     with sqlite3.connect(path) as con:
-        con.execute('INSERT INTO auth(key,kind,expires) VALUES(?,?,?)',
-                    (digest('owner-token'), 'session', int(time.time()) + 600))
+        con.execute('INSERT INTO auth(key,kind,expires,verifier) VALUES(?,?,?,?)',
+                    (digest('owner-token'), 'password-session', int(time.time()) + 600, digest(encoded)))
     return TestClient(app), path
 
 
@@ -70,49 +78,120 @@ def test_keyset_and_logout(service):
     assert client.get('/auth/me', headers=AUTH).status_code == 401
 
 
-@pytest.mark.parametrize('account_id,allowed', [(247085583, True), (12345, False)])
-def test_oauth_identity_state_pkce_and_replay(service, monkeypatch, account_id, allowed):
-    client, _ = service
-    verifier = 'browser-verifier-' + 'a' * 48
-    start = client.get('/auth/start?browser_challenge=' + challenge(verifier), follow_redirects=False)
-    params = parse_qs(urlsplit(start.headers['location']).query)
-    assert params['code_challenge_method'] == ['S256']
-    state = params['state'][0]
-
-    class GitHub:
-        def __init__(self, **kwargs): pass
-        async def __aenter__(self): return self
-        async def __aexit__(self, *args): pass
-        async def post(self, url, data, **kwargs):
-            assert challenge(data['code_verifier']) == params['code_challenge'][0]
-            return httpx.Response(200, json={'access_token': 'secret-github-token'}, request=httpx.Request('POST', url))
-        async def get(self, url, **kwargs):
-            return httpx.Response(200, json={'id': account_id, 'login': 'Bamb0oChen'}, request=httpx.Request('GET', url))
-
-    monkeypatch.setattr(httpx, 'AsyncClient', GitHub)
-    assert client.get('/auth/callback?state=forged&code=test').status_code == 401
-    callback = client.get('/auth/callback', params={'state': state, 'code': 'test'}, follow_redirects=False)
-    assert client.get('/auth/callback', params={'state': state, 'code': 'test'}).status_code == 401
-    fragment = parse_qs(urlsplit(callback.headers['location']).fragment)
-    if not allowed:
-        assert fragment == {'thoughts-error': ['forbidden']}
-        return
-    code = fragment['thoughts-code'][0]
-    exchange = client.post('/auth/exchange', json={'code': code, 'verifier': verifier})
-    assert exchange.status_code == 200
-    assert 'secret-github-token' not in exchange.text
-    token = exchange.json()['token']
-    assert client.get('/auth/me', headers={'Authorization': 'Bearer ' + token}).status_code == 200
-    assert client.post('/auth/exchange', json={'code': code, 'verifier': verifier}).status_code == 401
+def test_password_login_and_session_storage(service):
+    client, path = service
+    assert client.post('/auth/login', json={'password': 'wrong'}).status_code == 401
+    response = client.post('/auth/login', json={'password': PASSWORD})
+    assert response.status_code == 200
+    token = response.json()['token']
+    assert len(token) >= 64
+    auth = {'Authorization': 'Bearer ' + token}
+    assert client.get('/auth/me', headers=auth).json() == {'login': 'Bamb0oChen', 'role': 'owner'}
+    assert client.post('/posts', headers=auth, json={'body': 'draft'}).status_code == 201
+    with sqlite3.connect(path) as con:
+        row = con.execute("SELECT * FROM auth WHERE key=?", (digest(token),)).fetchone()
+        assert row and row[1] == 'password-session'
+        assert PASSWORD not in str(row) and token not in str(row)
+        assert 43190 <= row[2] - time.time() <= 43200
+    assert client.post('/auth/logout', headers=auth).status_code == 204
+    assert client.get('/admin/posts', headers=auth).status_code == 401
 
 
-def test_wrong_browser_and_expired_session(service):
+def test_expired_and_legacy_sessions_are_rejected(service):
     client, path = service
     with sqlite3.connect(path) as con:
-        con.execute('INSERT INTO auth VALUES(?,?,?,?,?)', (digest('h' * 43), 'handoff', int(time.time()) + 60, '', challenge('a' * 43)))
-        con.execute("UPDATE auth SET expires=0 WHERE kind='session'")
-    assert client.post('/auth/exchange', json={'code': 'h' * 43, 'verifier': 'b' * 43}).status_code == 401
+        con.execute("UPDATE auth SET expires=0")
+        con.execute("INSERT INTO auth(key,kind,expires) VALUES(?,?,?)",
+                    (digest('legacy-oauth'), 'session', int(time.time()) + 600))
     assert client.get('/auth/me', headers=AUTH).status_code == 401
+    assert client.get('/admin/posts', headers={'Authorization': 'Bearer legacy-oauth'}).status_code == 401
+    assert client.get('/auth/start').status_code == 404
+    assert client.get('/auth/callback').status_code == 404
+    assert client.post('/auth/exchange', json={}).status_code == 404
+
+
+def test_password_rotation_and_posts_survive_restart(service, encoded):
+    client, path = service
+    post = client.post('/posts', headers=AUTH, json={'body': 'keep this', 'status': 'published'}).json()
+    with TestClient(create_app(config(path, encoded))) as restarted:
+        assert restarted.get('/auth/me', headers=AUTH).status_code == 200
+        assert restarted.get('/posts').json()['items'][0]['id'] == post['id']
+    replacement = hash_password(PASSWORD + '-changed')
+    with TestClient(create_app(config(path, replacement))) as changed:
+        assert changed.get('/auth/me', headers=AUTH).status_code == 401
+        assert changed.get('/posts').json()['items'][0]['body'] == 'keep this'
+        assert changed.post('/auth/login', json={'password': PASSWORD}).status_code == 401
+        assert changed.post('/auth/login', json={'password': PASSWORD + '-changed'}).status_code == 200
+    with TestClient(create_app(config(path))) as disabled:
+        assert disabled.get('/auth/me', headers=AUTH).status_code == 401
+
+
+def test_missing_config_is_read_only(tmp_path):
+    with TestClient(create_app(config(tmp_path / 'disabled.sqlite3'))) as client:
+        assert client.get('/health').json()['login_configured'] is False
+        assert client.get('/posts').status_code == 200
+        assert client.post('/auth/login', json={'password': PASSWORD}).status_code == 503
+
+
+def test_hash_validation_and_salt(encoded):
+    assert verify_password(PASSWORD, encoded)
+    assert not verify_password(PASSWORD + 'x', encoded)
+    assert hash_password(PASSWORD) != encoded
+    assert len(validate_hash(encoded)[0]) == 16
+    for invalid in ('plaintext-password', 'scrypt-v1$bad$bad', encoded + 'x'):
+        with pytest.raises(ValueError):
+            validate_hash(invalid)
+    with pytest.raises(ValueError):
+        hash_password('short')
+
+
+def test_invalid_config_fails_closed(tmp_path):
+    cfg = config(tmp_path / 'bad.sqlite3', 'plaintext-password')
+    with pytest.raises(ValueError):
+        create_app(cfg)
+    cfg = config(tmp_path / 'bad.sqlite3')
+    cfg['THOUGHTS_FRONTEND_URL'] = 'http://public.example/thoughts/'
+    with pytest.raises(ValueError):
+        create_app(cfg)
+
+
+@pytest.mark.parametrize('payload', [{}, {'password': 123}, {'password': 'x' * 257}, {'password': ''}])
+def test_invalid_login_never_echoes_password(service, payload):
+    client, _ = service
+    response = client.post('/auth/login', json=payload)
+    assert response.status_code == 422
+    assert response.json() == {'detail': '输入格式不正确或内容过长'}
+
+
+def test_login_throttling_persists_and_expires(service, encoded, monkeypatch):
+    client, path = service
+    monkeypatch.setattr('app.verify_password', lambda *args: False)
+    for _ in range(5):
+        assert client.post('/auth/login', json={'password': 'wrong'}).status_code == 401
+    response = client.post('/auth/login', json={'password': PASSWORD})
+    assert response.status_code == 429 and response.headers['retry-after'] == '900'
+    with TestClient(create_app(config(path, encoded))) as restarted:
+        assert restarted.post('/auth/login', json={'password': 'wrong'}).status_code == 429
+    with sqlite3.connect(path) as con:
+        con.execute('UPDATE login_attempts SET attempted_at=?', (time.time() - 901,))
+    assert client.post('/auth/login', json={'password': 'wrong'}).status_code == 401
+
+
+def test_global_login_throttle(service):
+    client, path = service
+    with sqlite3.connect(path) as con:
+        con.executemany('INSERT INTO login_attempts VALUES(?,?)',
+                        [(digest(str(i)), time.time()) for i in range(30)])
+    assert client.post('/auth/login', json={'password': PASSWORD}).status_code == 429
+    assert client.get('/posts').status_code == 200
+
+
+def test_security_headers(service):
+    client, _ = service
+    response = client.post('/auth/login', json={'password': 'wrong'})
+    assert response.headers['cache-control'] == 'no-store'
+    assert response.headers['referrer-policy'] == 'no-referrer'
+    assert response.headers['x-content-type-options'] == 'nosniff'
 
 
 def test_cors(service):
