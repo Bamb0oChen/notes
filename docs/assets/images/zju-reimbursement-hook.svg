@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 250" role="img" aria-labelledby="title desc">
+  <title id="title">浙江大学计财处报销流程简化示意</title>
+  <desc id="desc">根据浙江大学计划财务处2025年5月修订的财务报销办事指南概括：准备票据和材料，分类整理并填写报销申请，完成相关签字盖章，预约并递交办理，查询报销进度。不同业务的具体要求以原指南为准。</desc>
+  <rect width="1100" height="250" rx="18" fill="#f6f7f3"/>
+  <text x="32" y="42" fill="#173d36" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="24" font-weight="700">一笔报销，在计财处会经过什么？</text>
+  <text x="32" y="69" fill="#556860" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="14">从浙江大学公开办事指南中抽出的主线 · 不同业务还会有不同要求</text>
+  <g font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" text-anchor="middle">
+    <rect x="32" y="103" width="176" height="74" rx="12" fill="#dce9e1"/>
+    <text x="120" y="134" fill="#173d36" font-size="18" font-weight="700">准备票据</text>
+    <text x="120" y="159" fill="#44665a" font-size="13">材料真实、完整</text>
+    <rect x="247" y="103" width="176" height="74" rx="12" fill="#b8d5c5"/>
+    <text x="335" y="134" fill="#173d36" font-size="18" font-weight="700">整理与填单</text>
+    <text x="335" y="159" fill="#44665a" font-size="13">按业务分类汇总</text>
+    <rect x="462" y="103" width="176" height="74" rx="12" fill="#8fbba5"/>
+    <text x="550" y="134" fill="#143e35" font-size="18" font-weight="700">签字盖章</text>
+    <text x="550" y="159" fill="#244d41" font-size="13">按要求备齐手续</text>
+    <rect x="677" y="103" width="176" height="74" rx="12" fill="#4c9178"/>
+    <text x="765" y="134" fill="#ffffff" font-size="18" font-weight="700">预约与递交</text>
+    <text x="765" y="159" fill="#e7f3ed" font-size="13">进入办理环节</text>
+    <rect x="892" y="103" width="176" height="74" rx="12" fill="#226659"/>
+    <text x="980" y="134" fill="#ffffff" font-size="18" font-weight="700">查询进度</text>
+    <text x="980" y="159" fill="#e7f3ed" font-size="13">确认处理结果</text>
+  </g>
+  <g fill="#9b795a">
+    <path d="M218 138h18m-6-7 7 7-7 7" stroke="#9b795a" stroke-width="3" fill="none"/>
+    <path d="M433 138h18m-6-7 7 7-7 7" stroke="#9b795a" stroke-width="3" fill="none"/>
+    <path d="M648 138h18m-6-7 7 7-7 7" stroke="#9b795a" stroke-width="3" fill="none"/>
+    <path d="M863 138h18m-6-7 7 7-7 7" stroke="#9b795a" stroke-width="3" fill="none"/>
+  </g>
+  <text x="32" y="215" fill="#556860" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="13">来源：浙江大学计划财务处《财务报销办事指南》（2025 年 5 月修订）。此图是教学用简化示意。</text>
+</svg>
