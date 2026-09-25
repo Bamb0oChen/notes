@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" role="img" aria-labelledby="title desc">
-  <title id="title">考拉工作室 8.0 考核时间轴</title>
-  <desc id="desc">考核从 2026 年 10 月 1 日开始，到 2027 年 2 月 18 日大作业截止，共 141 天。五个横向条形分别显示计算机漫游、开发者素养、独立实践、组队开发和寒假完善的建议时间段。</desc>
+  <title id="title">考拉工作室 8.0 四个 Lab 的考核时间轴</title>
+  <desc id="desc">考核从 2026 年 10 月 1 日开始。Lab 1 在 10 月 15 日截止，Lab 2 在 11 月 15 日截止，Lab 3 和中期验收在 12 月 10 日截止，Lab 4 在 2027 年 2 月 18 日截止。</desc>
   <rect width="1120" height="440" rx="20" fill="#f7f8f5"/>
-  <text x="36" y="45" fill="#173d36" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="25" font-weight="700">考拉工作室 8.0 · 考核时间轴</text>
+  <text x="36" y="45" fill="#173d36" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="25" font-weight="700">考拉工作室 8.0 · 四个 Lab 的 DDL</text>
   <text x="36" y="73" fill="#52635d" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="15">2026.10.01 开始 → 2027.02.18 23:59 大作业截止 · 共 141 天</text>
 
   <g stroke="#d5ddd8" stroke-width="1" stroke-dasharray="4 5">
@@ -24,32 +24,36 @@
 
   <g font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="15" fill="#223d37">
     <text x="36" y="151">考核全程</text>
-    <text x="36" y="202">计算机漫游</text>
-    <text x="36" y="253">开发者素养</text>
-    <text x="36" y="304">独立实践</text>
-    <text x="36" y="355">组队开发与完善</text>
+    <text x="36" y="202">Lab 1 · 计算机漫游</text>
+    <text x="36" y="253">Lab 2 · 开发者素养</text>
+    <text x="36" y="304">Lab 3 · 独立实践</text>
+    <text x="36" y="355">Lab 4 · 大作业</text>
   </g>
   <rect x="230" y="129" width="840" height="28" rx="8" fill="#dce9e3"/>
   <rect x="230" y="129" width="840" height="28" rx="8" fill="#1e6658"/>
-  <text x="650" y="148" fill="#ffffff" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="14" font-weight="700" text-anchor="middle">10/01 — 02/18</text>
+  <text x="450" y="148" fill="#ffffff" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="14" font-weight="700" text-anchor="middle">10/01 — 02/18</text>
 
   <rect x="230" y="180" width="89" height="28" rx="7" fill="#b2c8bc"/>
   <rect x="319" y="231" width="185" height="28" rx="7" fill="#78aa94"/>
-  <rect x="504" y="282" width="179" height="28" rx="7" fill="#3f8b78"/>
-  <rect x="683" y="333" width="185" height="28" rx="7" fill="#285e56"/>
+  <rect x="504" y="282" width="149" height="28" rx="7" fill="#3f8b78"/>
+  <rect x="653" y="333" width="215" height="28" rx="7" fill="#285e56"/>
   <rect x="868" y="333" width="202" height="28" rx="7" fill="#c98954"/>
+
+  <line x1="647" y1="119" x2="647" y2="374" stroke="#a44e28" stroke-width="2" stroke-dasharray="5 4"/>
+  <rect x="593" y="367" width="108" height="25" rx="5" fill="#fff0e4"/>
+  <text x="647" y="384" fill="#873d23" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="12" font-weight="700" text-anchor="middle">中期 DDL 12/10</text>
 
   <g font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="12" fill="#173d36" text-anchor="middle">
     <text x="274" y="198">10/01–15</text>
     <text x="411" y="249">10/16–11/15</text>
   </g>
   <g font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">
-    <text x="593" y="300">11/16–12/15</text>
-    <text x="775" y="351">12/16–01/15</text>
+    <text x="578" y="300">11/16–12/10</text>
+    <text x="760" y="351">12/11–01/15</text>
     <text x="969" y="351">01/16–02/18 寒假</text>
   </g>
 
   <line x1="1067" y1="119" x2="1067" y2="371" stroke="#a44e28" stroke-width="3"/>
   <circle cx="1067" cy="143" r="5" fill="#a44e28"/>
-  <text x="36" y="407" fill="#52635d" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="14">下方分段为建议学习节奏；考核时间点只有开始日与大作业截止日。</text>
+  <text x="36" y="407" fill="#52635d" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="14">每条柱子的末端对应 DDL；Lab 4 按寒假前后分段，最终于 02/18 截止。</text>
 </svg>
