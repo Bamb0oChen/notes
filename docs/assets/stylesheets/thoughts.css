@@ -1,11 +1,7 @@
 .thoughts [hidden] { display: none !important; }
-.thoughts-heading { margin-bottom: 2rem; }
+.thoughts-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--notes-glass-border); }
 .thoughts-eyebrow { color: var(--md-default-fg-color--light); font-size: .55rem; letter-spacing: .16em; }
 .thoughts-heading h1 { margin: .5rem 0 .8rem; font-weight: 700; }
-.thoughts-heading p { margin: 0; color: var(--md-default-fg-color--light); font-size: .75rem; }
-.thoughts-stage { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 0 1.6rem; border-bottom: 1px solid var(--notes-glass-border); }
-.thoughts-stage h2 { font-size: 1.1rem; margin: .5rem 0; }
-.thoughts-stage p { font-size: .7rem; margin: .5rem 0 0; color: var(--md-default-fg-color--light); }
 .thoughts-total { font-size: 2.2rem; line-height: 1.2; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
 .thoughts-total small { display: block; font-size: .6rem; font-weight: 400; color: var(--md-default-fg-color--light); white-space: nowrap; }
 .thoughts-toolbar { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; padding: 1.2rem 0; font-size: .65rem; }
@@ -29,7 +25,10 @@
 .thought-back { font-size: .7rem; }
 .thought-post-heading { margin: 1.5rem 0 2rem; }
 .thought-post-heading h1 { margin: .6rem 0; }
+.md-typeset .thoughts-heading h1 { margin: .5rem 0 .8rem; }
+.md-typeset .thoughts-card h2 { margin: .7rem 0; padding: 0; border: 0; font-size: 1rem; }
+.md-typeset .thought-post-heading h1 { margin: .6rem 0; }
 .thought-source { font-size: .65rem; color: var(--md-default-fg-color--light); }
 .thought-editor-note { font-size: .65rem; padding: .8rem 1rem; border-left: 2px solid var(--md-typeset-a-color); background: var(--notes-glass); }
-@media (max-width: 50em) { .thoughts-feed { grid-template-columns: 1fr; } .thoughts-stage { align-items: flex-start; } .thoughts-total { font-size: 1.6rem; } #thoughts-count { width: 100%; margin-left: 0; } }
+@media (max-width: 50em) { .thoughts-feed { grid-template-columns: 1fr; } .thoughts-total { font-size: 1.6rem; } #thoughts-count { width: 100%; margin-left: 0; } }
 @media (prefers-reduced-motion: reduce) { .thoughts-card { transition: none; } }

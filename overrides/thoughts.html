@@ -2,15 +2,9 @@
 {% block content %}
 <section class="thoughts" id="thoughts">
   <header class="thoughts-heading">
-    <span class="thoughts-eyebrow">BAMB0OCHEN · FIELD NOTES</span>
     <h1>随想</h1>
-    <p>想到什么，就留下什么。</p>
-  </header>
-  <div class="thoughts-stage">
-    <div><span class="thoughts-eyebrow">ARCHIVE / 01</span><h2>第一阶段 · 群打卡记录</h2>
-    <p>从课堂、自习到项目开发。保留当时的记录，也保留那些还没完成的计划。</p></div>
     <span class="thoughts-total">{{ thought_cards | length }}<small>篇记录</small></span>
-  </div>
+  </header>
   <div class="thoughts-toolbar">
     <label for="thoughts-month">按月份查看</label>
     <select id="thoughts-month"><option value="">全部月份</option>{% for month in thought_months %}<option value="{{ month }}">{{ month }}</option>{% endfor %}</select>
@@ -19,7 +13,7 @@
   <div id="thoughts-feed" class="thoughts-feed">
     {% for card in thought_cards %}
     <article class="thoughts-card" data-month="{{ card.month }}">
-      <header><time datetime="{{ card.date }}">{{ card.label }}</time><span>{{ card.stage }}</span></header>
+      <header><time datetime="{{ card.date }}">{{ card.label }}</time></header>
       <h2><a href="{{ card.url | url }}">{{ card.title | e }}</a></h2>
       <p class="thoughts-card-body">{{ card.excerpt | e }}</p>
       {% if card.image %}<a href="{{ card.url | url }}" tabindex="-1" aria-hidden="true"><img class="thoughts-card-image" src="{{ card.image.src | url }}" alt="{{ card.image.alt | e }}" loading="lazy"></a>{% endif %}
