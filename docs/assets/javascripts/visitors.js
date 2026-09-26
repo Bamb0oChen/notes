@@ -4,23 +4,24 @@
       !location.pathname.startsWith('/notes/')) return;
   if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true) return;
 
-  // Snapshot of the old domain's counters on 2026-09-27. The provider keeps
-  // separate counters per domain, so add old PV only when viewing the new one.
+  // Snapshots from 2026-09-27. Busuanzi keeps separate counters per domain.
   if (location.hostname === 'bamb0ochen.com') {
-    const legacySitePv = 798;
-    const sitePv = document.getElementById('busuanzi_value_site_pv');
-    const legacyUv = document.getElementById('notes_visitors_legacy_uv');
-    const legacyNote = document.getElementById('notes_visitors_legacy_note');
-    if (legacyUv) legacyUv.style.display = 'inline';
-    if (legacyNote) legacyNote.style.display = 'inline';
-    if (sitePv) {
+    const mergeCounter = (id, history) => {
+      const value = document.getElementById(id);
+      if (!value) return;
       const observer = new MutationObserver(() => {
-        const currentSitePv = Number(sitePv.textContent);
-        if (!Number.isSafeInteger(currentSitePv) || currentSitePv < 0) return;
+        const current = Number(value.textContent);
+        if (!Number.isSafeInteger(current) || current < 0) return;
         observer.disconnect();
-        sitePv.textContent = String(legacySitePv + currentSitePv);
+        value.textContent = String(history + current);
       });
-      observer.observe(sitePv, { childList: true, characterData: true, subtree: true });
+      observer.observe(value, { childList: true, characterData: true, subtree: true });
+    };
+    mergeCounter('busuanzi_value_site_pv', 798);
+    // This is a sum of two domain-level UV counts, not a deduplicated UV.
+    mergeCounter('busuanzi_value_site_uv', 187);
+    if (['/notes/', '/notes/index.html'].includes(location.pathname)) {
+      mergeCounter('busuanzi_value_page_pv', 99);
     }
   }
 

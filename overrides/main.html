@@ -25,10 +25,9 @@
 {% block footer %}
   <div class="notes-visitors" aria-label="访问统计">
     <span id="busuanzi_container_site_pv" style="display:none">累计浏览量 <strong id="busuanzi_value_site_pv"></strong></span>
-    <span id="busuanzi_container_site_uv" style="display:none">当前域名访客数 <strong id="busuanzi_value_site_uv"></strong></span>
-    <span id="notes_visitors_legacy_uv" style="display:none">旧域名访客数 <strong>187</strong></span>
-    <span id="busuanzi_container_page_pv" style="display:none">本页阅读量（当前域名） <strong id="busuanzi_value_page_pv"></strong></span>
-    <small><span id="notes_visitors_legacy_note" style="display:none">累计浏览量包含旧域名历史 798 次；访客数分域名显示。</span>统计由 <a href="https://busuanzi.ibruce.info/" target="_blank" rel="noopener noreferrer">不蒜子</a> 提供。</small>
+    <span id="busuanzi_container_site_uv" style="display:none">累计访客数 <strong id="busuanzi_value_site_uv"></strong></span>
+    <span id="busuanzi_container_page_pv" style="display:none">本页阅读量 <strong id="busuanzi_value_page_pv"></strong></span>
+    <small>访客数可能包含跨域重复访客；文章历史阅读量尚未合并。统计由 <a href="https://busuanzi.ibruce.info/" target="_blank" rel="noopener noreferrer">不蒜子</a> 提供。</small>
   </div>
   {{ super() }}
 {% endblock %}
