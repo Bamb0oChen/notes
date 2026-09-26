@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>考拉工作室 8.0 · 第二段线索</title>
+  <style>
+    body { max-width: 48rem; margin: 4rem auto; padding: 0 1.5rem; background: #f7f8f5; color: #25302b; font: 1rem/1.8 system-ui, sans-serif; }
+    h1 { font-size: 1.7rem; }
+    code, pre { background: #e8ece7; border-radius: .3rem; padding: .2rem .4rem; }
+    pre { padding: 1rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <h1>你找到了第二段线索</h1>
+  <p>下面的文本先把明文的 UTF-8 字节与口令的 UTF-8 字节循环异或，再对所得字节做 Base64 编码。口令就是你刚才从地址里删去的 <code>password</code> 的值。请反过来做，得到原文。</p>
+  <pre>ICAgICBLWTklK11GKyQuNDRZOi+G0/GHztuE79yT7syK+uWF1MyW8uyA0eSP0sGI3t2S2MeO9e9PND4tkPT0jM7MjsDnhN70k93vhtPni9rJhPz+kdnJis3thdH0mt75jMbujNTyiv/vl/Xm</pre>
+  <p>在报告里写下你的还原步骤、最终明文，以及你怎样验证它没有解错。这个异或练习只用来理解字节和编码，不要拿它保护真实密码或业务数据。</p>
+</body>
+</html>
