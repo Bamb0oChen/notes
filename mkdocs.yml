@@ -7,7 +7,7 @@ repo_name: Bamb0oChen/notes
 
 # GitHub Pages 仓库站点（repo pages）会部署在 /notes/ 子路径下。
 # 不设置会导致某些模板（尤其是 404 页面）生成以 /assets 开头的绝对路径，线上会 404。
-site_url: https://Bamb0oChen.github.io/notes/
+site_url: https://Bamb0oChen.com/notes/
 
 # MkDocs 约定文档源目录为 docs/
 docs_dir: docs
