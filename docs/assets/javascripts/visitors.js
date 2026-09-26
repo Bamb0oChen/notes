@@ -1,6 +1,6 @@
 // Do not pollute production counts with local previews or mirror deployments.
 (() => {
-  if (location.hostname !== 'bamb0ochen.github.io' ||
+  if (!['bamb0ochen.com', 'bamb0ochen.github.io'].includes(location.hostname) ||
       !location.pathname.startsWith('/notes/')) return;
   if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true) return;
   const script = document.createElement('script');
