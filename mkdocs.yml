@@ -1,5 +1,5 @@
-# 最小可用 MkDocs 配置：先跑起来（Material + 搜索 + docs/）
-# 说明：不依赖复杂插件；导航先交给 MkDocs 自动发现页面（不完美但可用）。
+# MkDocs 配置：Material + 搜索 + docs/
+# 导航顺序在下方 nav 中显式配置。
 
 site_name: 学习笔记
 repo_url: https://github.com/Bamb0oChen/notes
@@ -61,7 +61,6 @@ plugins:
 # 随想在构建时从 Markdown 汇总，不需要运行后端。
 hooks:
   - hooks/thoughts.py
-  - hooks/subject_nav.py
 not_in_nav: |
   随想/第一阶段/**
   随想/posts/**
@@ -112,22 +111,239 @@ extra:
     lang: zh-CN
     theme: dark
 
-# Sidebar（左侧导航）接口：使用 nav 显式声明。
-# 阶段 1 你可以先不写 nav，让 MkDocs 自动发现页面；
-# 等你要“固定目录结构”时，再取消注释并按需扩展。
-# nav:
-#   - 首页: index.md
-#   - 计算机科学:
-#       - 概览: computer-science/index.md
-#   - 语言:
-#       - English: 语言/English/0.前言.md
-#       - 日本語: 语言/日本語/索引.md
-#   - 数学:
-#       - 概览: math/index.md
-#   - 大学物理:
-#       - 概览: phy/index.md
-#   - 随笔集:
-#       - 概览: Diary/index.md
+# 顶部标签顺序由 nav 的顶层条目决定；下级条目组成左侧导航。
+nav:
+  - 前言: index.md
+  - 杂谈:
+      - "杂谈文章/0.前言.md"
+      - "兴趣总结":
+        - "杂谈文章/兴趣总结/健身笔记.md"
+      - "年终总结":
+        - "杂谈文章/年终总结/2025年终总结.md"
+        - "杂谈文章/年终总结/写给2027高考生的话.md"
+      - "批判性游玩":
+        - "杂谈文章/批判性游玩/千恋万花批判性游玩体验.md"
+        - "杂谈文章/批判性游玩/星空列车与白的旅行批判性游玩体验.md"
+      - "技术杂谈":
+        - "杂谈文章/技术杂谈/NLP的历史，我们怎么让电脑“读懂”我们.md"
+        - "杂谈文章/技术杂谈/从孤岛到集群：一篇搞懂 Anaconda 、Docker 与 Kubernetes.md"
+        - "杂谈文章/技术杂谈/键盘长按变成连点：一次 KVM 输入异常排障.md"
+      - "文学感悟":
+        - "杂谈文章/文学感悟/“お元気ですか？”——泡沫经济与物哀美学.md"
+        - "杂谈文章/文学感悟/为什么我们要去游乐园.md"
+        - "杂谈文章/文学感悟/那天下雨了.md"
+  - 随想: 随想/index.md
+  - 计算机科学:
+      - "计算机科学/0.前言.md"
+      - "CMU CSAPP":
+        - "计算机科学/CMU CSAPP/Part 0 Preview.md"
+        - "计算机科学/CMU CSAPP/Part 0.5 Compute Roming.md"
+        - "计算机科学/CMU CSAPP/Part 1 Bits Bytes and Intergers cont.md"
+        - "计算机科学/CMU CSAPP/Part 2 Machine Level Programming.md"
+        - "计算机科学/CMU CSAPP/Part 3 Processor Architecture.md"
+        - "计算机科学/CMU CSAPP/Part 4 Optimization.md"
+        - "计算机科学/CMU CSAPP/Part 5 Memo Hierarchy.md"
+        - "计算机科学/CMU CSAPP/Part 6 Linker.md"
+        - "计算机科学/CMU CSAPP/Part 7 Exceptional Control Flow.md"
+        - "计算机科学/CMU CSAPP/Part 8 Virtual Memory.md"
+      - "Cursh Course CS":
+        - "计算机科学/Cursh Course CS/io基础.md"
+        - "计算机科学/Cursh Course CS/oauth和鉴权.md"
+        - "计算机科学/Cursh Course CS/索引.md"
+        - "计算机科学/Cursh Course CS/虚拟内存与分页技术.md"
+        - "计算机科学/Cursh Course CS/计算机网络.md"
+        - "计算机科学/Cursh Course CS/运维相关.md"
+      - "Harvard CS50":
+        - "C programming":
+          - "计算机科学/Harvard CS50/C programming/c程设计基础及实验.md"
+          - "计算机科学/Harvard CS50/C programming/math函数库.md"
+          - "计算机科学/Harvard CS50/C programming/stdio函数库.md"
+        - "python":
+          - "计算机科学/Harvard CS50/python/SQL.md"
+      - "Huggingface llm course":
+        - "计算机科学/Huggingface llm course/Transformer的架构.md"
+        - "计算机科学/Huggingface llm course/Transformer的运用.md"
+        - "计算机科学/Huggingface llm course/实验：情感分类.md"
+        - "计算机科学/Huggingface llm course/预处理.md"
+      - "learn-claude-code":
+        - "计算机科学/learn-claude-code/s01-the-agent-loop.md"
+        - "计算机科学/learn-claude-code/s02-tool-use.md"
+        - "计算机科学/learn-claude-code/s03-todo-write.md"
+        - "计算机科学/learn-claude-code/s04-subagent.md"
+        - "计算机科学/learn-claude-code/s05-skill-loading.md"
+        - "计算机科学/learn-claude-code/s06-context-compact.md"
+        - "计算机科学/learn-claude-code/s07-task-system.md"
+        - "计算机科学/learn-claude-code/s08-background-tasks.md"
+        - "计算机科学/learn-claude-code/s09-agent-teams.md"
+        - "计算机科学/learn-claude-code/s10-team-protocols.md"
+        - "计算机科学/learn-claude-code/s11-autonomous-agents.md"
+        - "计算机科学/learn-claude-code/s12-worktree-task-isolation.md"
+      - "MIT Missing Semester":
+        - "计算机科学/MIT Missing Semester/APPENDING markdown 美化实践.md"
+        - "计算机科学/MIT Missing Semester/LECTURE 1-2 bash shell.md"
+        - "计算机科学/MIT Missing Semester/LECTURE 3 Vim.md"
+        - "计算机科学/MIT Missing Semester/LECTURE 4 debugging & profilling.md"
+        - "计算机科学/MIT Missing Semester/LECTURE 5 git.md"
+        - "计算机科学/MIT Missing Semester/LECTURE 6 packaging and shipping code.md"
+        - "计算机科学/MIT Missing Semester/LECTURE 7 code quailty.md"
+        - "计算机科学/MIT Missing Semester/索引.md"
+      - "Stanford CS224n":
+        - "计算机科学/Stanford CS224n/CS224N详细笔记.md"
+        - "计算机科学/Stanford CS224n/python进阶.md"
+      - "Stanford CS338":
+        - "计算机科学/Stanford CS338/chapter1.md"
+        - "计算机科学/Stanford CS338/chapter2.md"
+        - "计算机科学/Stanford CS338/chapter3.md"
+        - "计算机科学/Stanford CS338/chapter4.md"
+      - "UCB CS61A":
+        - "计算机科学/UCB CS61A/python基础.md"
+        - "计算机科学/UCB CS61A/基础数据类型.md"
+        - "计算机科学/UCB CS61A/惰性递归.md"
+        - "计算机科学/UCB CS61A/环境与函数.md"
+        - "计算机科学/UCB CS61A/生成器.md"
+        - "计算机科学/UCB CS61A/面向对象编程.md"
+      - "UCB CS61B":
+        - "计算机科学/UCB CS61B/java基础.md"
+      - "ZJU HPC101":
+        - "计算机科学/ZJU HPC101/0.前言.md"
+        - "计算机科学/ZJU HPC101/Lecture 1 软硬件基础和运维.md"
+        - "计算机科学/ZJU HPC101/Lecture 2 超算硬件基础I.md"
+        - "计算机科学/ZJU HPC101/Lecture 3 超算硬件基础II.md"
+        - "计算机科学/ZJU HPC101/Lecture 4 向量化并行计算基础.md"
+        - "计算机科学/ZJU HPC101/Lecture 5 OpenMP.md"
+        - "计算机科学/ZJU HPC101/Lecture 6 高性能计算高级话题.md"
+      - "微服务系统开发":
+        - "计算机科学/微服务系统开发/0.前言.md"
+        - "koala studio 8.0信息资源部考核题":
+          - "计算机科学/微服务系统开发/koala studio 8.0信息资源部考核题/0. 前言.md"
+          - "计算机科学/微服务系统开发/koala studio 8.0信息资源部考核题/1. 计算机漫游.md"
+          - "计算机科学/微服务系统开发/koala studio 8.0信息资源部考核题/2. 开发者的基本素养.md"
+          - "计算机科学/微服务系统开发/koala studio 8.0信息资源部考核题/3. 从零到一.md"
+          - "计算机科学/微服务系统开发/koala studio 8.0信息资源部考核题/4. 大作业.md"
+      - "服务器搭建与运维":
+        - "计算机科学/服务器搭建与运维/1. 服务器硬件搭建.md"
+        - "计算机科学/服务器搭建与运维/2. 服务器系统搭建.md"
+        - "计算机科学/服务器搭建与运维/3. 服务器网络穿透.md"
+        - "计算机科学/服务器搭建与运维/4. 服务器软件工作流搭建.md"
+        - "计算机科学/服务器搭建与运维/5. 常用运维指令.md"
+      - "求职之路":
+        - "计算机科学/求职之路/华为2012刷题快查.md"
+      - "苹果生态":
+        - "计算机科学/苹果生态/iPhone安全设计.md"
+        - "计算机科学/苹果生态/macOS简史.md"
+        - "计算机科学/苹果生态/索引.md"
+      - "论文精选":
+        - "计算机科学/论文精选/index.md"
+  - 语言:
+      - "语言/index.md"
+      - "English":
+        - "语言/English/0.前言.md"
+        - "CET-4":
+          - "语言/English/CET-4/director.md"
+          - "listening":
+            - "语言/English/CET-4/listening/listening.md"
+            - "语言/English/CET-4/listening/听力1.md"
+          - "writing":
+            - "语言/English/CET-4/writing/1（创造力）.md"
+            - "语言/English/CET-4/writing/2（AI）.md"
+            - "语言/English/CET-4/writing/3 （job）.md"
+            - "语言/English/CET-4/writing/writing.md"
+        - "CET-6":
+          - "语言/English/CET-6/listening.md"
+          - "语言/English/CET-6/sammary1.md"
+          - "语言/English/CET-6/sammary2.md"
+          - "语言/English/CET-6/translation_and_listening.md"
+          - "语言/English/CET-6/translation_and_writing1.md"
+          - "语言/English/CET-6/translation_and_writing2.md"
+          - "语言/English/CET-6/translation_and_writing3.md"
+          - "语言/English/CET-6/translation_and_writing4.md"
+          - "语言/English/CET-6/translation_and_writing5.md"
+          - "语言/English/CET-6/translation_and_writing6.md"
+          - "语言/English/CET-6/translation_and_writing7.md"
+          - "语言/English/CET-6/translation_and_writing8.md"
+          - "语言/English/CET-6/word1.md"
+          - "语言/English/CET-6/word2.md"
+          - "语言/English/CET-6/word3.md"
+          - "语言/English/CET-6/索引.md"
+      - "日本語":
+        - "语言/日本語/索引.md"
+  - 杂项课程资料:
+      - "杂项课程资料/人工智能基础（A）.md"
+      - "杂项课程资料/军事理论.md"
+      - "杂项课程资料/工程训练.md"
+      - "杂项课程资料/电子书.md"
+      - "杂项课程资料/马克思主义原理.md"
+  - 自然科学基础:
+      - "自然科学基础/index.md"
+      - "大学生生物学":
+        - "自然科学基础/大学生生物学/index.md"
+      - "数学基础":
+        - "自然科学基础/数学基础/0.前言.md"
+        - "一元微积分":
+          - "自然科学基础/数学基础/一元微积分/0. 微积分笔记.md"
+          - "自然科学基础/数学基础/一元微积分/1. 极限.md"
+          - "自然科学基础/数学基础/一元微积分/1.1 极限方法论.md"
+          - "自然科学基础/数学基础/一元微积分/2. 连续.md"
+          - "自然科学基础/数学基础/一元微积分/2.1 极限与连续，导数与微分.md"
+          - "自然科学基础/数学基础/一元微积分/3. 一元函数微分学.md"
+          - "自然科学基础/数学基础/一元微积分/3.1 数学建模初步.md"
+          - "自然科学基础/数学基础/一元微积分/3.2 对数微分法.md"
+          - "自然科学基础/数学基础/一元微积分/3.3 微分方法论.md"
+          - "自然科学基础/数学基础/一元微积分/3.4 中值定理方法论.md"
+          - "自然科学基础/数学基础/一元微积分/4. 一元函数积分学.md"
+          - "自然科学基础/数学基础/一元微积分/5. 常微分方程.md"
+          - "自然科学基础/数学基础/一元微积分/电子书.md"
+        - "二元微积分":
+          - "自然科学基础/数学基础/二元微积分/0. 微积分II.md"
+          - "自然科学基础/数学基础/二元微积分/1.级数.md"
+          - "自然科学基础/数学基础/二元微积分/2.空间解析几何.md"
+          - "自然科学基础/数学基础/二元微积分/3.多元函数微分学.md"
+          - "自然科学基础/数学基础/二元微积分/4.多元函数积分学.md"
+        - "基于机器学习的线性代数":
+          - "自然科学基础/数学基础/基于机器学习的线性代数/1.向量空间和数据表示.md"
+          - "自然科学基础/数学基础/基于机器学习的线性代数/2.矩阵运算和线性映射.md"
+          - "自然科学基础/数学基础/基于机器学习的线性代数/3.线性方程组和正交化.md"
+        - "常微分方程":
+          - "自然科学基础/数学基础/常微分方程/0.前言.md"
+          - "自然科学基础/数学基础/常微分方程/1.一阶常微分方程.md"
+          - "自然科学基础/数学基础/常微分方程/2.高阶线性微分方程.md"
+          - "自然科学基础/数学基础/常微分方程/3.线性微分方程组.md"
+        - "概率论与数理统计":
+          - "自然科学基础/数学基础/概率论与数理统计/电子书.md"
+          - "自然科学基础/数学基础/概率论与数理统计/第2章+第3章 单维多维随机变量.md"
+          - "自然科学基础/数学基础/概率论与数理统计/第4章 随机变量的数字特征.md"
+          - "自然科学基础/数学基础/概率论与数理统计/第5章 随机变量函数概率分布.md"
+          - "自然科学基础/数学基础/概率论与数理统计/第6章 大数定律和中心极限定理.md"
+          - "自然科学基础/数学基础/概率论与数理统计/第7章 统计量与抽样分布.md"
+          - "自然科学基础/数学基础/概率论与数理统计/第8章 点估计.md"
+          - "小测":
+            - "自然科学基础/数学基础/概率论与数理统计/小测/24-25春夏第一次小测.md"
+            - "自然科学基础/数学基础/概率论与数理统计/小测/25-26春夏第一次小测.md"
+        - "线性代数":
+          - "自然科学基础/数学基础/线性代数/0. 线性代数导航.md"
+          - "自然科学基础/数学基础/线性代数/0.1 开端.md"
+          - "自然科学基础/数学基础/线性代数/1. 行列式与矩阵的秩.md"
+          - "自然科学基础/数学基础/线性代数/1.1 行列式解题方法论.md"
+          - "自然科学基础/数学基础/线性代数/2. 矩阵的运算.md"
+          - "自然科学基础/数学基础/线性代数/2.1 矩阵逆的寻找方法论.md"
+          - "自然科学基础/数学基础/线性代数/2.2 秩关系的证明方法论.md"
+          - "自然科学基础/数学基础/线性代数/2.3 矩阵期中串讲.md"
+          - "自然科学基础/数学基础/线性代数/3. n元向量空间.md"
+          - "自然科学基础/数学基础/线性代数/3.1 极大无关组（最大线性无关组）与向量组的秩.md"
+      - "普通化学":
+        - "自然科学基础/普通化学/index.md"
+      - "物理学":
+        - "自然科学基础/物理学/0.前言.md"
+        - "自然科学基础/物理学/1.运动学.md"
+        - "自然科学基础/物理学/2.刚体力学.md"
+        - "自然科学基础/物理学/3.相对论.md"
+        - "自然科学基础/物理学/电子书.md"
+        - "小测":
+          - "自然科学基础/物理学/小测/25-26大物I乙 第二次小测.md"
+  - 社会科学基础:
+      - "社会科学基础/index.md"
+      - "宏观经济学":
+        - "社会科学基础/宏观经济学/index.md"
 
 # 先保守使用 MkDocs 内置扩展，保证通用 Markdown 可渲染
 markdown_extensions:
