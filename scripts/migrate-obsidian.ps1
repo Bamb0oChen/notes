@@ -8,8 +8,8 @@ $ErrorActionPreference = "Stop"
 $imageExtensions = @(".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".bmp", ".avif", ".mp4")
 $targetRootByTopLevel = @{
   "cs50"    = "计算机科学\cs50"
-  "english" = "英文学习\Obsidian"
-  "Math"    = "数学基础\Obsidian"
+  "english" = "语言\English\Obsidian"
+  "Math"    = "自然科学基础\数学基础\Obsidian"
 }
 
 function Get-RelativePath([string]$FromDirectory, [string]$ToPath) {

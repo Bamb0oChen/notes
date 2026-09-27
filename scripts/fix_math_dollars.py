@@ -430,7 +430,7 @@ def main(argv: list[str]) -> int:
         default=[],
         help=(
             "Only process Markdown files under docs/ that match these path prefixes "
-            "(repeatable). Example: --include '数学基础/常微分方程'"
+            "(repeatable). Example: --include '自然科学基础/数学基础/常微分方程'"
         ),
     )
     args = parser.parse_args(argv)

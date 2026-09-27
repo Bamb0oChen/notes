@@ -17,8 +17,8 @@ use_directory_urls: true
 
 # 空白占位页保留在源码中，写完后再从排除清单移除。
 exclude_docs: |
-  数学基础/二元微积分/5.二类曲线积分和曲面积分.md
-  数学基础/概率论与数理统计/第9章 区间估计和假设检验.md
+  自然科学基础/数学基础/二元微积分/5.二类曲线积分和曲面积分.md
+  自然科学基础/数学基础/概率论与数理统计/第9章 区间估计和假设检验.md
   计算机科学/ZJU HPC101/Lecture 7 CUDA基础.md
   计算机科学/ZJU HPC101/Lecture 8 机器学习基础.md
   计算机科学/ZJU HPC101/Lecture 9 机器学习高级话题.md
@@ -61,6 +61,7 @@ plugins:
 # 随想在构建时从 Markdown 汇总，不需要运行后端。
 hooks:
   - hooks/thoughts.py
+  - hooks/subject_nav.py
 not_in_nav: |
   随想/第一阶段/**
   随想/posts/**
@@ -118,8 +119,9 @@ extra:
 #   - 首页: index.md
 #   - 计算机科学:
 #       - 概览: computer-science/index.md
-#   - 英文学习:
-#       - 概览: English/index.md
+#   - 语言:
+#       - English: 语言/English/0.前言.md
+#       - 日本語: 语言/日本語/索引.md
 #   - 数学:
 #       - 概览: math/index.md
 #   - 大学物理:
