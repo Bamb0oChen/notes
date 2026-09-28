@@ -1,7 +1,7 @@
 # MkDocs 配置：Material + 搜索 + docs/
 # 导航顺序在下方 nav 中显式配置。
 
-site_name: 学习笔记
+site_name: 移动的大图书馆
 repo_url: https://github.com/Bamb0oChen/notes
 repo_name: Bamb0oChen/notes
 
