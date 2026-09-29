@@ -61,6 +61,7 @@ plugins:
 # 随想在构建时从 Markdown 汇总，不需要运行后端。
 hooks:
   - hooks/thoughts.py
+  - hooks/top_nav.py
 not_in_nav: |
   随想/*.md
   !随想/index.md
@@ -83,6 +84,18 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
+  # 只维护 headbar；每个栏目内部仍由 MkDocs 按 docs/ 文件夹自动生成。
+  top_tabs:
+    - index.md
+    - 杂谈文章
+    - 随想
+    - 计算机科学
+    - 语言
+    - 杂项课程资料
+    - 自然科学基础
+    - 社会科学基础
+  top_tab_labels:
+    杂谈文章: 杂谈
   # 按此顺序展示精选阅读；path 为相对 docs/ 的 Markdown 路径。
   featured_reading:
     - path: 计算机科学/Cursh Course CS/计算机网络.md
