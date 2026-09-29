@@ -29,3 +29,8 @@
 @media (max-width: 40em) {
   .md-typeset .index-intro { padding: .6rem; grid-template-columns: minmax(0, 1fr) 96px; gap: 8px; }
 }
+
+.md-typeset .index-star-cta { margin: 2rem 0; text-align: center; }
+@media (max-width: 40em) {
+  .md-typeset .index-star-cta .md-button { box-sizing: border-box; width: 100%; }
+}

@@ -40,6 +40,8 @@
 
 我一直信奉着效率至上，这些笔记大多都是在复习的过程中为了加深记忆而留下的思想痕迹——当然杂谈文章不是——希望也能帮到你的学习
 
+<p class="index-star-cta"><a class="md-button md-button--primary" href="https://github.com/Bamb0oChen/notes" target="_blank" rel="noopener noreferrer">如果感觉对你有帮助的话，不妨顺手点个star👉</a></p>
+
 ---
 
 ## 📖 更新日志
