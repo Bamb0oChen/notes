@@ -14,7 +14,7 @@
     {% for card in thought_cards %}
     <article class="thoughts-card" data-month="{{ card.month }}">
       <header><time datetime="{{ card.date }}">{{ card.label }}</time></header>
-      <h2><a href="{{ card.url | url }}">{{ card.title | e }}</a></h2>
+      {% if not card.untitled %}<h2><a href="{{ card.url | url }}">{{ card.title | e }}</a></h2>{% endif %}
       <p class="thoughts-card-body">{{ card.excerpt | e }}</p>
       {% if card.image %}<a href="{{ card.url | url }}" tabindex="-1" aria-hidden="true"><img class="thoughts-card-image" src="{{ card.image.src | url }}" alt="{{ card.image.alt | e }}" loading="lazy"></a>{% endif %}
       {% if card.note %}<p class="thoughts-record-note">原文有日期或条目说明，详见全文。</p>{% endif %}
