@@ -26,6 +26,49 @@
 .md-header__inner .notes-travelling svg,
 .md-header__inner .notes-rss svg { width: 1.2rem; height: 1.2rem; }
 
+/* 桌面端搜索默认只显示图标，点击后沿顶栏展开 Material 原生搜索框。 */
+@media screen and (min-width: 60em) {
+    .md-header__inner > .md-header__button[for="__search"] {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        max-width: 2.4rem;
+        overflow: hidden;
+        transition: max-width .35s cubic-bezier(.2, .8, .2, 1),
+            opacity .2s ease, padding .35s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .md-header__inner > .md-search {
+        flex: 0 0 auto;
+        width: 0;
+        overflow: hidden;
+        transition: width .35s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    [data-md-toggle="search"]:checked ~ .md-header .md-header__inner > .md-header__button[for="__search"] {
+        max-width: 0;
+        padding-inline: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    [data-md-toggle="search"]:checked ~ .md-header .md-header__inner > .md-search {
+        width: 23.4rem;
+        overflow: visible;
+    }
+}
+
+@media screen and (min-width: 76.25em) {
+    [data-md-toggle="search"]:checked ~ .md-header .md-header__inner > .md-search {
+        width: 34.4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .md-header__inner > .md-header__button[for="__search"],
+    .md-header__inner > .md-search { transition: none; }
+}
+
 /* Material for MkDocs 自定义样式。
    目标：深黑蓝底 + 白字（尽量保持对比度与可读性）。 */
 
