@@ -16,6 +16,8 @@
 .notes-visitors a { text-decoration: underline; }
 
 /* 开往与 RSS 入口位于搜索和仓库信息之间，手机端也可直接发现。 */
+/* 原生配色控件仍供主题预设调用，但不再单独占用顶栏位置。 */
+.md-header__option[data-md-component="palette"] { display: none; }
 .md-header__inner .notes-theme-picker { position: relative; flex: 0 0 auto; }
 .md-header__inner .notes-theme-toggle { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
 .md-header__inner .notes-theme-toggle svg { width: 1.2rem; height: 1.2rem; }
@@ -52,15 +54,14 @@
     cursor: pointer;
 }
 .notes-theme-menu button:hover, .notes-theme-menu button:focus-visible, .notes-theme-menu button[aria-pressed="true"] {
-    background: var(--notes-surface);
+    background: var(--notes-theme-menu-highlight, var(--notes-surface));
 }
+[data-notes-theme="forest"] .notes-theme-menu { --notes-theme-menu-highlight: rgba(255, 255, 255, .16); }
 .notes-theme-menu button:focus-visible { outline: 2px solid var(--md-typeset-a-color); outline-offset: -2px; }
 .notes-theme-swatch { flex: 0 0 auto; width: .9rem; height: .9rem; border: 1px solid rgba(128, 128, 128, .45); border-radius: .25rem; }
 .notes-theme-swatch--night { background: linear-gradient(135deg, #10253a, #566b73); }
 .notes-theme-swatch--autumn { background: linear-gradient(135deg, #fbc9d9, #cd5a65); }
-.notes-theme-swatch--classic { background: linear-gradient(135deg, #f8e8dc, #c5b3ab); }
-.notes-theme-swatch--ink { background: #101820; }
-.notes-theme-swatch--paper { background: #ffe8ef; }
+.notes-theme-swatch--forest { background: linear-gradient(135deg, #dceec5, #174b35); }
 @media (max-width: 59.984375em) {
     .notes-theme-menu { position: fixed; top: 2.7rem; right: .5rem; }
 }

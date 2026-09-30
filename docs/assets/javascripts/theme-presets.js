@@ -3,9 +3,7 @@
   const presets = {
     night: { scheme: "slate", image: "night" },
     autumn: { scheme: "default", image: "autumn" },
-    classic: { scheme: "default", image: "classic" },
-    ink: { scheme: "slate", image: "none" },
-    paper: { scheme: "default", image: "none" },
+    forest: { scheme: "default", image: "forest" },
   };
 
   function savedPreset() {
@@ -24,6 +22,33 @@
     image.src = desktop;
   }
 
+  function crossfadeDay(picture, nextDesktop, nextMobile) {
+    document.querySelectorAll(".notes-backdrop__previous").forEach((layer) => layer.remove());
+    const previous = picture.cloneNode(true);
+    previous.className = "notes-backdrop__previous";
+    previous.style.background = getComputedStyle(picture).background;
+    const oldImage = picture.querySelector("img");
+    const copy = previous.querySelector("img");
+    copy.style.objectFit = getComputedStyle(oldImage).objectFit;
+    copy.style.objectPosition = getComputedStyle(oldImage).objectPosition;
+    picture.after(previous);
+
+    const nextSource = matchMedia("(max-width: 59.984375em)").matches ? nextMobile : nextDesktop;
+    const preload = new Image();
+    let fading = false;
+    const fade = () => {
+      if (fading || !previous.isConnected) return;
+      fading = true;
+      requestAnimationFrame(() => previous.classList.add("notes-backdrop__previous--fade"));
+      previous.addEventListener("transitionend", () => previous.remove(), { once: true });
+      setTimeout(() => previous.remove(), 900);
+    };
+    preload.onload = fade;
+    preload.onerror = fade;
+    preload.src = nextSource;
+    if (preload.complete) fade();
+  }
+
   function apply(picker, name, changeScheme = true) {
     const preset = presets[name];
     if (!preset) return;
@@ -31,9 +56,17 @@
     const night = document.querySelector(".notes-backdrop__dark");
     const day = document.querySelector(".notes-backdrop__light");
     setPicture(night, picker.dataset.nightDesktop, picker.dataset.nightMobile);
-    setPicture(day,
-      preset.image === "classic" ? picker.dataset.classicDesktop : picker.dataset.autumnDesktop,
-      preset.image === "classic" ? picker.dataset.classicMobile : picker.dataset.autumnMobile);
+    const images = {
+      autumn: [picker.dataset.autumnDesktop, picker.dataset.autumnMobile],
+      forest: [picker.dataset.forestDesktop, picker.dataset.forestMobile],
+    };
+    const nextImages = images[preset.image] || images.autumn;
+    if (["autumn", "forest"].includes(body.dataset.notesTheme) &&
+        ["autumn", "forest"].includes(name) && body.dataset.notesTheme !== name &&
+        !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      crossfadeDay(day, ...nextImages);
+    }
+    setPicture(day, ...nextImages);
     body.dataset.notesTheme = name;
     picker.querySelectorAll("[data-notes-theme-option]").forEach((option) => {
       option.setAttribute("aria-pressed", String(option.dataset.notesThemeOption === name));
