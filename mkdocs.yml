@@ -84,7 +84,6 @@ extra_css:
   - assets/stylesheets/local-ebooks.css
 
 extra_javascript:
-  - assets/javascripts/backdrop.js
   - assets/javascripts/visitors.js
   - assets/javascripts/local-ebooks.js
   # MathJax 配置在 extra.js 里，必须先于 MathJax 脚本加载
@@ -119,8 +118,8 @@ extra:
   # 例如 assets/images/notes-background.webp；留空不请求图片。
   notes_background: assets/images/notes-background-desktop-final.png
   notes_background_mobile: assets/images/notes-background-mobile.png
-  notes_background_light: assets/images/notes-background-light-desktop.png
-  notes_background_light_mobile: assets/images/notes-background-light-mobile.jpg
+  notes_background_light: assets/images/notes-background-light-autumn-desktop.png
+  notes_background_light_mobile: assets/images/notes-background-light-autumn-mirrored.png
   giscus:
     enabled: true
     repo: Bamb0oChen/notes
