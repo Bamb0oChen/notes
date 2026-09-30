@@ -12,6 +12,7 @@ math/lineralgebra/data/
 
 # MkDocs build output
 site/
+.cache/plugins/rss/
 
 # 随想服务凭据和本地数据库
 services/thoughts/.env

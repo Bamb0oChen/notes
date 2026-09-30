@@ -2,6 +2,7 @@
 # 不设置 nav，直接让 MkDocs 按 docs/ 的文件夹层级生成导航。
 
 site_name: 移动的大图书馆
+site_description: 记录计算机科学、自然科学、语言与生活的学习笔记和随想。
 repo_url: https://github.com/Bamb0oChen/notes
 repo_name: Bamb0oChen/notes
 
@@ -30,7 +31,7 @@ validation:
 
 theme:
   name: material
-  favicon: assets/images/notes-favicon.png
+  favicon: assets/images/patchouli-coding-bw-icon-mirrored.png
   language: zh
   custom_dir: overrides
   font: false
@@ -57,11 +58,17 @@ theme:
 # 基础搜索（Material 会自动接入）
 plugins:
   - search
+  - rss:
+      # 直接从 Git 历史识别新文章和更新，不增加 Markdown 写作配置。
+      length: 30
+      json_feed_enabled: false
+      image: https://bamb0ochen.com/notes/assets/images/patchouli-coding-bw-icon-mirrored.png
 
 # 随想在构建时从 Markdown 汇总，不需要运行后端。
 hooks:
   - hooks/thoughts.py
   - hooks/top_nav.py
+  - hooks/rss_meta.py
 not_in_nav: |
   随想/*.md
   !随想/index.md
