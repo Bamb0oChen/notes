@@ -84,6 +84,7 @@ extra_css:
   - assets/stylesheets/local-ebooks.css
 
 extra_javascript:
+  - assets/javascripts/theme-presets.js
   - assets/javascripts/visitors.js
   - assets/javascripts/local-ebooks.js
   # MathJax 配置在 extra.js 里，必须先于 MathJax 脚本加载

@@ -26,6 +26,19 @@
       {% if not config.theme.palette is mapping %}{% include "partials/palette.html" %}{% endif %}
     {% endif %}
     {% if not config.theme.palette is mapping %}{% include "partials/javascripts/palette.html" %}{% endif %}
+    <div class="notes-theme-picker" data-night-desktop="{{ config.extra.notes_background | url }}" data-night-mobile="{{ config.extra.notes_background_mobile | url }}" data-autumn-desktop="{{ config.extra.notes_background_light | url }}" data-autumn-mobile="{{ config.extra.notes_background_light_mobile | url }}" data-classic-desktop="{{ 'assets/images/notes-background-light-desktop.png' | url }}" data-classic-mobile="{{ 'assets/images/notes-background-light-mobile.jpg' | url }}">
+      <button class="md-header__button md-icon notes-theme-toggle" type="button" aria-label="个性化主题设置" title="个性化主题设置" aria-expanded="false" aria-controls="notes-theme-menu">
+        {% include ".icons/material/palette.svg" %}
+      </button>
+      <div class="notes-theme-menu" id="notes-theme-menu" role="group" aria-label="主题预设" hidden>
+        <span class="notes-theme-menu__title">个性化 · 主题预设</span>
+        <button type="button" data-notes-theme-option="night"><span class="notes-theme-swatch notes-theme-swatch--night"></span><span>星夜</span></button>
+        <button type="button" data-notes-theme-option="autumn"><span class="notes-theme-swatch notes-theme-swatch--autumn"></span><span>秋日粉</span></button>
+        <button type="button" data-notes-theme-option="classic"><span class="notes-theme-swatch notes-theme-swatch--classic"></span><span>经典白昼</span></button>
+        <button type="button" data-notes-theme-option="ink"><span class="notes-theme-swatch notes-theme-swatch--ink"></span><span>深色阅读</span></button>
+        <button type="button" data-notes-theme-option="paper"><span class="notes-theme-swatch notes-theme-swatch--paper"></span><span>浅色阅读</span></button>
+      </div>
+    </div>
     {% if config.extra.alternate %}{% include "partials/alternate.html" %}{% endif %}
     {% if "material/search" in config.plugins %}
       {% set search = config.plugins["material/search"] | attr("config") %}

@@ -35,6 +35,11 @@ body {
   transition: opacity .75s ease-in-out;
 }
 [data-md-color-scheme="default"] .notes-backdrop__light { opacity: 1; }
+/* Reading presets retain the native palette while hiding decorative artwork. */
+[data-notes-theme="ink"] .notes-backdrop picture,
+[data-notes-theme="paper"] .notes-backdrop picture { visibility: hidden; }
+[data-notes-theme="ink"] .notes-backdrop { background: #101820; }
+[data-notes-theme="paper"] .notes-backdrop { background: #fff1f4; }
 /* The dark layer stays opaque below: no black flash at the crossfade midpoint. */
 .md-content, .md-sidebar__scrollwrap, .md-header, .md-header::before,
 .md-tabs, .md-footer, .notes-visitors {

@@ -16,6 +16,54 @@
 .notes-visitors a { text-decoration: underline; }
 
 /* 开往与 RSS 入口位于搜索和仓库信息之间，手机端也可直接发现。 */
+.md-header__inner .notes-theme-picker { position: relative; flex: 0 0 auto; }
+.md-header__inner .notes-theme-toggle { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.md-header__inner .notes-theme-toggle svg { width: 1.2rem; height: 1.2rem; }
+.notes-theme-menu {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + .35rem);
+    right: 0;
+    width: min(14rem, calc(100vw - 1rem));
+    padding: .55rem;
+    border: 1px solid var(--notes-glass-border);
+    border-radius: .65rem;
+    background: var(--notes-chrome);
+    color: var(--notes-chrome-text);
+    box-shadow: 0 .6rem 2rem rgba(0, 0, 0, .24);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+.notes-theme-menu[hidden] { display: none; }
+.notes-theme-menu__title { display: block; padding: .25rem .45rem .5rem; font-size: .65rem; font-weight: 650; }
+.notes-theme-menu button {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    width: 100%;
+    padding: .42rem .5rem;
+    border: 0;
+    border-radius: .35rem;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: .7rem;
+    text-align: left;
+    cursor: pointer;
+}
+.notes-theme-menu button:hover, .notes-theme-menu button:focus-visible, .notes-theme-menu button[aria-pressed="true"] {
+    background: var(--notes-surface);
+}
+.notes-theme-menu button:focus-visible { outline: 2px solid var(--md-typeset-a-color); outline-offset: -2px; }
+.notes-theme-swatch { flex: 0 0 auto; width: .9rem; height: .9rem; border: 1px solid rgba(128, 128, 128, .45); border-radius: .25rem; }
+.notes-theme-swatch--night { background: linear-gradient(135deg, #10253a, #566b73); }
+.notes-theme-swatch--autumn { background: linear-gradient(135deg, #fbc9d9, #cd5a65); }
+.notes-theme-swatch--classic { background: linear-gradient(135deg, #f8e8dc, #c5b3ab); }
+.notes-theme-swatch--ink { background: #101820; }
+.notes-theme-swatch--paper { background: #ffe8ef; }
+@media (max-width: 59.984375em) {
+    .notes-theme-menu { position: fixed; top: 2.7rem; right: .5rem; }
+}
 .md-header__inner .notes-travelling,
 .md-header__inner .notes-rss {
     display: inline-flex;
