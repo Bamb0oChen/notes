@@ -118,8 +118,8 @@ body {
   --notes-glass-border: rgba(193, 120, 152, .28);
   --notes-backdrop-tint: transparent;
   --notes-chrome: rgba(255, 255, 255, .88);
-  --notes-header-glass: rgba(255, 255, 255, .96);
-  --notes-tabs-glass: rgba(255, 255, 255, .68);
+  --notes-header-glass: rgba(232, 161, 191, .96);
+  --notes-tabs-glass: rgba(250, 213, 227, .86);
   --notes-chrome-text: #243247;
   --md-primary-bg-color: #243247;
   --md-primary-bg-color--light: #43536a;
@@ -129,6 +129,7 @@ body {
 }
 /* 透明线稿共用一张图：日间转黑，夜间保持原本的白色。 */
 [data-md-color-scheme="default"] .md-logo img { filter: brightness(0); }
+[data-md-color-scheme="default"] .md-tabs { color: var(--notes-chrome-text); }
 [data-md-color-scheme="default"] .md-footer-meta { background: transparent; }
 [data-md-color-scheme="default"] .md-typeset .admonition,
 [data-md-color-scheme="default"] .md-typeset details { background: rgba(255, 255, 255, .65); }
