@@ -1,5 +1,7 @@
 # s12: Worktree + Task Isolation (Worktree 任务隔离)
 
+> 参考与改编：[shareAI-lab/learn-claude-code 中文原文](https://github.com/shareAI-lab/learn-claude-code/blob/main/docs/zh/s12-worktree-task-isolation.md)。本页在原文基础上作了个人修改，不作为本站原创文章计数。原项目采用 MIT 许可证，版权及许可声明见[原项目 LICENSE](https://github.com/shareAI-lab/learn-claude-code/blob/main/LICENSE)。
+
 `s01 > s02 > s03 > s04 > s05 > s06 | s07 > s08 > s09 > s10 > s11 > [ s12 ]`
 
 > *"各干各的目录, 互不干扰"* -- 任务管目标, worktree 管目录, 按 ID 绑定。

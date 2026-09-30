@@ -1,5 +1,7 @@
 # s02: Tool Use (工具使用)
 
+> 参考与改编：[shareAI-lab/learn-claude-code 中文原文](https://github.com/shareAI-lab/learn-claude-code/blob/main/docs/zh/s02-tool-use.md)。本页在原文基础上作了个人修改，不作为本站原创文章计数。原项目采用 MIT 许可证，版权及许可声明见[原项目 LICENSE](https://github.com/shareAI-lab/learn-claude-code/blob/main/LICENSE)。
+
 `s01 > [ s02 ] s03 > s04 > s05 > s06 | s07 > s08 > s09 > s10 > s11 > s12`
 
 > *"加一个工具, 只加一个 handler"* -- 循环不用动, 新工具注册进 dispatch map 就行。

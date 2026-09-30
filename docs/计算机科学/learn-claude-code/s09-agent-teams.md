@@ -1,5 +1,7 @@
 # s09: Agent Teams (Agent 团队)
 
+> 参考与改编：[shareAI-lab/learn-claude-code 中文原文](https://github.com/shareAI-lab/learn-claude-code/blob/main/docs/zh/s09-agent-teams.md)。本页在原文基础上作了个人修改，不作为本站原创文章计数。原项目采用 MIT 许可证，版权及许可声明见[原项目 LICENSE](https://github.com/shareAI-lab/learn-claude-code/blob/main/LICENSE)。
+
 `s01 > s02 > s03 > s04 > s05 > s06 | s07 > s08 > [ s09 ] s10 > s11 > s12`
 
 > *"任务太大一个人干不完, 要能分给队友"* -- 持久化队友 + JSONL 邮箱。

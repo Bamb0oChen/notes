@@ -2,6 +2,8 @@
 
 <iframe src="../../../../assets/pdfs/六级听力（1）.pdf" width="100%" height="800"></iframe>
 
+> 创作说明：内容由本人整理，使用 AI 辅助排版；文中的 `[cite_start]`、`[cite: …]` 是待清理的排版标记，并非可点击的参考文献。
+
 ### [cite_start]8. discourse [cite: 177-200]
 * **音标**: /disko: rs/
 * **词性**: 名词
