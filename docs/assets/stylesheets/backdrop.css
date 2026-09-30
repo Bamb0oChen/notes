@@ -64,7 +64,7 @@ body {
     max-width: none;
   }
 }
-.notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); }
+.notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); transition: background-color .75s ease-in-out; }
 .md-header, .md-tabs, .md-footer, .notes-visitors {
   background: var(--notes-chrome);
   color: var(--notes-chrome-text);
@@ -116,7 +116,7 @@ body {
 [data-md-color-scheme="default"] {
   --notes-glass: rgba(255, 255, 255, .82);
   --notes-glass-border: rgba(130, 145, 160, .25);
-  --notes-backdrop-tint: transparent;
+  --notes-backdrop-tint: rgba(238, 123, 167, .24);
   --notes-chrome: rgba(255, 255, 255, .88);
   --notes-header-glass: rgba(255, 255, 255, .96);
   --notes-tabs-glass: rgba(255, 255, 255, .68);
@@ -127,6 +127,8 @@ body {
   --md-footer-fg-color--light: #43536a;
   --md-footer-fg-color--lighter: #526077;
 }
+/* 透明线稿共用一张图：日间转黑，夜间保持原本的白色。 */
+[data-md-color-scheme="default"] .md-logo img { filter: brightness(0); }
 [data-md-color-scheme="default"] .md-footer-meta { background: transparent; }
 [data-md-color-scheme="default"] .md-typeset .admonition,
 [data-md-color-scheme="default"] .md-typeset details { background: rgba(255, 255, 255, .65); }
@@ -269,7 +271,7 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .md-sidebar--secondary { transition: none; }
-  .notes-backdrop__light, .md-content, .md-sidebar__scrollwrap, .md-header,
+  .notes-backdrop__light, .notes-backdrop::after, .md-content, .md-sidebar__scrollwrap, .md-header,
   .md-header::before, .md-tabs, .md-footer, .notes-visitors { transition: none; }
 }
 /* Compact desktops need a little more room for the face than the TOC rail.

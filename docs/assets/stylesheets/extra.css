@@ -26,6 +26,35 @@
 .md-header__inner .notes-travelling svg,
 .md-header__inner .notes-rss svg { width: 1.2rem; height: 1.2rem; }
 
+/* 桌面端也使用 Material 自带的放大镜入口，点击后展开搜索。 */
+@media screen and (min-width: 60em) {
+    .md-header__inner > .md-header__button[for="__search"] {
+        display: inline-flex;
+        align-items: center;
+        flex: 0 0 auto;
+    }
+
+    .md-header__inner > .md-search {
+        width: 0;
+        padding: 0;
+    }
+
+    .md-header__inner > .md-search .md-search__inner {
+        width: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+        position: fixed;
+        top: 2.4rem;
+        right: 1rem;
+        width: min(34.4rem, calc(100vw - 2rem));
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
 /* Material for MkDocs 自定义样式。
    目标：深黑蓝底 + 白字（尽量保持对比度与可读性）。 */
 
