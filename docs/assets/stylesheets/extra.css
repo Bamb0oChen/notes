@@ -74,6 +74,22 @@
 .md-header__inner .notes-travelling svg,
 .md-header__inner .notes-rss svg { width: 1.2rem; height: 1.2rem; }
 
+.notes-rss-preview {
+    display: grid;
+    gap: .75rem;
+    margin: 1.5rem 0;
+}
+.notes-rss-preview__item {
+    padding: .9rem 1.1rem;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .5rem;
+}
+.notes-rss-preview__item h2 { margin: 0 0 .35rem; }
+.notes-rss-preview__item time {
+    color: var(--md-default-fg-color--light);
+    font-size: .7rem;
+}
+
 /* 桌面端搜索默认只显示图标，点击后沿顶栏展开 Material 原生搜索框。 */
 @media screen and (min-width: 60em) {
     .md-header__inner > .md-header__button[for="__search"] {
