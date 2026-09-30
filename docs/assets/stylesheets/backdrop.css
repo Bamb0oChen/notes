@@ -64,7 +64,7 @@ body {
     max-width: none;
   }
 }
-.notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); transition: background-color .75s ease-in-out; }
+.notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); }
 .md-header, .md-tabs, .md-footer, .notes-visitors {
   background: var(--notes-chrome);
   color: var(--notes-chrome-text);
@@ -114,9 +114,9 @@ body {
 .md-content__inner { margin-top: 0; padding: 1.8rem 1.6rem 2rem; }
 /* Light reading surfaces remain translucent above the daylight background. */
 [data-md-color-scheme="default"] {
-  --notes-glass: rgba(255, 255, 255, .82);
-  --notes-glass-border: rgba(130, 145, 160, .25);
-  --notes-backdrop-tint: rgba(238, 123, 167, .24);
+  --notes-glass: rgba(255, 229, 239, .82);
+  --notes-glass-border: rgba(193, 120, 152, .28);
+  --notes-backdrop-tint: transparent;
   --notes-chrome: rgba(255, 255, 255, .88);
   --notes-header-glass: rgba(255, 255, 255, .96);
   --notes-tabs-glass: rgba(255, 255, 255, .68);
@@ -206,7 +206,7 @@ body {
 }
 @supports not (backdrop-filter: blur(1px)) {
   body { --notes-glass: rgba(7, 10, 15, .94); }
-  [data-md-color-scheme="default"] { --notes-glass: rgba(250, 251, 253, .97); }
+  [data-md-color-scheme="default"] { --notes-glass: rgba(255, 235, 243, .97); }
 }
 
 /* Hover-capable desktops: keep the reading column stable, reveal the TOC
@@ -271,7 +271,7 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .md-sidebar--secondary { transition: none; }
-  .notes-backdrop__light, .notes-backdrop::after, .md-content, .md-sidebar__scrollwrap, .md-header,
+  .notes-backdrop__light, .md-content, .md-sidebar__scrollwrap, .md-header,
   .md-header::before, .md-tabs, .md-footer, .notes-visitors { transition: none; }
 }
 /* Compact desktops need a little more room for the face than the TOC rail.
