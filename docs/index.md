@@ -14,7 +14,7 @@
   <img class="index-intro__avatar" src="assets/images/intro-avatar-dots.svg" alt="" width="480" height="408">
 </div>
 
-![](./images/night.png)
+![](./assets/images/patchouli-coding-bw-icon-mirrored.png)
 
 ## 📧 为什么叫移动的大图书馆
 
