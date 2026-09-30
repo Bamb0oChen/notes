@@ -27,7 +27,7 @@ body {
   background: radial-gradient(ellipse at 15% 10%, #293c46 0, transparent 55%),
     radial-gradient(ellipse at 95% 70%, #292c3c 0, transparent 60%), #11171e;
 }
-.notes-backdrop img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.notes-backdrop img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .notes-backdrop picture { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .notes-backdrop__light {
   opacity: 0;
