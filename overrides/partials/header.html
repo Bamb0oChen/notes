@@ -40,6 +40,9 @@
     <a class="md-header__button md-icon notes-travelling" href="https://www.travellings.cn/go.html" target="_blank" rel="noopener noreferrer" title="开往 · 随机探索独立网站" aria-label="开往 · 随机探索独立网站">
       {% include ".icons/material/train.svg" %}
     </a>
+    <a class="md-header__button md-icon notes-rss" href="{{ 'feed_rss_created.xml' | url }}" title="订阅新文章 RSS" aria-label="订阅新文章 RSS" type="application/rss+xml">
+      {% include ".icons/material/rss.svg" %}
+    </a>
     {% if config.repo_url %}
       <div class="md-header__source">{% include "partials/source.html" %}</div>
     {% endif %}
