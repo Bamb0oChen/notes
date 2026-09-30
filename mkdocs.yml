@@ -31,7 +31,7 @@ validation:
 
 theme:
   name: material
-  logo: assets/images/patchouli-coding-bw-icon-mirrored.png
+  logo: assets/images/patchouli-coding-white-outline.png
   favicon: assets/images/patchouli-coding-bw-icon-mirrored.png
   language: zh
   custom_dir: overrides
