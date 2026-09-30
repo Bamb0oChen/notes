@@ -31,6 +31,11 @@
 }
 
 .md-typeset .index-star-cta { margin: 2rem 0; text-align: center; }
+.md-typeset .index-contact-links { display: flex; gap: .65rem; margin: 1rem 0 .4rem; }
+.md-typeset .index-contact-link { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; padding: 0; border: 1px solid var(--notes-glass-border); border-radius: .6rem; background: var(--md-code-bg-color); color: var(--md-default-fg-color); cursor: pointer; transition: border-color .2s, color .2s, transform .2s; }
+.md-typeset .index-contact-link:hover, .md-typeset .index-contact-link:focus-visible { border-color: var(--md-accent-fg-color); color: var(--md-accent-fg-color); transform: translateY(-2px); }
+.md-typeset .index-contact-link svg { width: 1.2rem; height: 1.2rem; fill: currentColor; }
+.md-typeset .index-wechat-status { margin: .3rem 0 1rem; font-size: .75rem; color: var(--md-default-fg-color--light); }
 @media (max-width: 40em) {
   .md-typeset .index-star-cta .md-button { box-sizing: border-box; width: 100%; }
 }

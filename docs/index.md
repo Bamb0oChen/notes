@@ -1,6 +1,8 @@
-# 前言
+# 大图书馆の前言
 
-## Hi Here is Bamb0ochen
+## 大图书馆的铭刻
+
+### Hi Here is Bamb0ochen
 
 <div class="index-intro">
   <div class="index-intro__words">
@@ -9,7 +11,7 @@
     <p>今天是……你<br>今日は…あなた</p>
     <p>欢迎失足落进我的空间</p>
   </div>
-  <img class="index-intro__avatar" src="assets/images/intro-avatar-dots.svg" alt="双马尾人物的暖白点阵字符头像" width="480" height="408">
+  <img class="index-intro__avatar" src="assets/images/intro-avatar-dots.svg" alt="" width="480" height="408">
 </div>
 
 ![](./images/night.png)
@@ -70,7 +72,35 @@ life is experience ，有这种心态的人是无坚不摧的，而不是在焦�
 
 欢迎看我的个人主页，这里面你或许能看到我的更多展示面，欢迎添加友链，也欢迎通过联系方式真实（bushi）结识我
 
+<div class="index-contact-links" aria-label="馆主的其他入口">
+  <a class="index-contact-link" href="https://bamb0ochen.com/" title="个人主页" aria-label="个人主页" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></a>
+  <a class="index-contact-link" href="https://github.com/Bamb0oChen" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.69c-2.78.61-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.82.09-.64.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.6c.85 0 1.7.11 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.97c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></a>
+  <button class="index-contact-link" type="button" id="index-wechat-button" title="微信线索" aria-label="微信线索"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 4C4.7 4 2 6.8 2 10.2c0 1.8.8 3.4 2.2 4.5l-.6 2.5 2.9-1.3c.9.3 1.8.4 2.7.4h.7a6.4 6.4 0 0 1-.1-1.1c0-3.6 3.1-6.3 7-6.3h.4C16.6 6.1 13.5 4 9.2 4Zm-2.6 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm5 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM17 10c-3.3 0-6 2.2-6 5s2.7 5 6 5c.7 0 1.4-.1 2.1-.3l2.3 1-.5-2a4.7 4.7 0 0 0 2.1-3.7c0-2.8-2.7-5-6-5Zm-2 4.3a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6Zm4 0a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6Z"/></svg></button>
+</div>
+<p id="index-wechat-status" class="index-wechat-status" role="status" hidden></p>
+<script src="assets/javascripts/home-links.js" defer></script>
 
+当然，也欢迎各位跟我互换友链
+
+{
+  站点名：移动的大图书馆-homepage
+  链接：https://bamb0ochen.com/
+  头像：https://bamb0ochen.com/favicon.ico
+  介绍：bamb👀chen is here
+}
+
+加了以后欢迎提issue，我在看过介绍确认链接以后会加上友链哇
+
+## 大图书馆的一些馆藏
+
+大图书馆目前比较有代表性的馆藏，可以这样介绍：
+
+- **计算机科学**：各种国内外课程和想到啥写啥的技术杂谈，不过基本都是手写的，你会看到没开智的我和稍微有点知识储备的我（
+- **自然科学基础**：课内的一点小笔记
+- **EE 类**：以后慢慢更新吧，想成为画板子高手
+- **语言**：教练我想学说话（bushi
+- **杂谈文章与随想**：想到啥写啥，也有成体系的杂谈和文章，欢迎阅读
+- **社会科学基础**：慢慢写吧，毕竟有个经济学的辅修
 
 ---
 
