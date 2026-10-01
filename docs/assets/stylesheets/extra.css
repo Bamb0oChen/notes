@@ -326,6 +326,7 @@ body {
 .md-nav--primary.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
     background: transparent;
     box-shadow: inset 3px 0 0 var(--md-typeset-a-color);
+    padding-inline-start: .55rem;
 }
 /* 桌面树形导航；手机保留 Material 原有的逐级抽屉。 */
 @media (min-width: 76.25em) {
