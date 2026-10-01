@@ -126,12 +126,17 @@
     });
 
     const initial = savedPreset();
-    apply(picker, presets[initial] ? initial :
-      (document.body.dataset.mdColorScheme === "default" ? "autumn" : "night"),
-      Boolean(initial), true);
-    requestAnimationFrame(() => requestAnimationFrame(() => {
+    const initialName = presets[initial] ? initial :
+      (document.body.dataset.mdColorScheme === "default" ? "autumn" : "night");
+    apply(picker, initialName, Boolean(initial), true);
+    const markReady = () => requestAnimationFrame(() => requestAnimationFrame(() => {
       document.body.dataset.notesThemeReady = "";
     }));
+    if (initialName === "forest") {
+      const image = document.querySelector(".notes-backdrop__light img");
+      if (image?.decode) image.decode().catch(() => {}).finally(markReady);
+      else markReady();
+    } else markReady();
     new MutationObserver(() => {
       const current = document.body.dataset.notesTheme;
       const scheme = document.body.dataset.mdColorScheme;

@@ -55,6 +55,14 @@ body {
   [data-md-color-switching] .notes-visitors { transition-duration: .75s !important; }
 }
 body:not([data-notes-theme-ready]) .notes-backdrop__light { transition: none !important; }
+body[data-notes-theme="forest"]:not([data-notes-theme-ready]) .notes-backdrop__light img { visibility: hidden; }
+body:not([data-notes-theme-ready]) .md-content,
+body:not([data-notes-theme-ready]) .md-sidebar__scrollwrap,
+body:not([data-notes-theme-ready]) .md-header,
+body:not([data-notes-theme-ready]) .md-header::before,
+body:not([data-notes-theme-ready]) .md-tabs,
+body:not([data-notes-theme-ready]) .md-footer,
+body:not([data-notes-theme-ready]) .notes-visitors { transition: none !important; }
 .notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); }
 .md-header, .md-tabs, .md-footer, .notes-visitors {
   background: var(--notes-chrome);

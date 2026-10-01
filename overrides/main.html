@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{% block header %}
+  <script>
+    // Restore the saved preset before the header and page content are painted.
+    try {
+      const preset = localStorage.getItem("notes-theme-preset");
+      if (["night", "autumn", "forest"].includes(preset)) {
+        document.body.dataset.notesTheme = preset;
+        document.body.dataset.mdColorScheme = preset === "night" ? "slate" : "default";
+      }
+    } catch { /* Private browsing. */ }
+  </script>
+  {{ super() }}
+{% endblock %}
+
 {% block container %}
   <div class="notes-backdrop" aria-hidden="true">
     {% if config.extra.notes_background %}
@@ -17,6 +31,15 @@
         {% endif %}
         <img src="{{ config.extra.notes_background_light | url }}" alt="" decoding="async" loading="eager">
       </picture>
+      <script>
+        // The HTML defaults to autumn; replace it before first paint for forest.
+        if (document.body.dataset.notesTheme === "forest") {
+          const picture = document.currentScript.previousElementSibling;
+          const source = picture.querySelector("source");
+          if (source) source.srcset = "{{ 'assets/images/notes-background-forest-desktop.png' | url }}";
+          picture.querySelector("img").src = "{{ 'assets/images/notes-background-forest-desktop.png' | url }}";
+        }
+      </script>
     {% endif %}
   </div>
   {{ super() }}
