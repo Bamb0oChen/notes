@@ -84,7 +84,9 @@
         !matchMedia("(prefers-reduced-motion: reduce)").matches) {
       crossfadeDay(day);
     }
-    setPicture(day, ...nextImages);
+    // Keep the current daylight image while it fades out into night.
+    // Replacing it with the autumn fallback here briefly flashes autumn.
+    if (preset.image !== "night") setPicture(day, ...nextImages);
     body.dataset.notesTheme = name;
     picker.querySelectorAll("[data-notes-theme-option]").forEach((option) => {
       option.setAttribute("aria-pressed", String(option.dataset.notesThemeOption === name));
