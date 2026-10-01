@@ -90,6 +90,13 @@ life is experience ，有这种心态的人是无坚不摧的，而不是在焦�
 <p id="index-wechat-status" class="index-wechat-status" role="status" hidden></p>
 <script src="assets/javascripts/home-links.js" defer></script>
 
+### 友链
+
+<a class="index-friend-link" href="https://notes.smallbamboo.cn" target="_blank" rel="noopener noreferrer">
+  <img src="https://notes.smallbamboo.cn/wp-content/uploads/2026/08/20260816215731190-icon_autumn.png" alt="小竹の笔记本图标" width="48" height="48" loading="lazy">
+  <span><strong>小竹の笔记本</strong><small>我没有特别的天赋，我只是热切地充满好奇。</small></span>
+</a>
+
 当然，也欢迎各位跟我互换友链
 
 {
