@@ -34,8 +34,8 @@ body {
 .notes-backdrop__light {
   opacity: 0;
   background: linear-gradient(110deg, #f7e9e6, #edc5cd 72%, #daa5b4);
-  transition: opacity .75s ease-in-out;
 }
+[data-notes-theme-ready] .notes-backdrop__light { transition: opacity .75s ease-in-out; }
 [data-md-color-scheme="default"] .notes-backdrop__light { opacity: 1; }
 /* The dark layer stays opaque below: no black flash at the crossfade midpoint. */
 .md-content, .md-sidebar__scrollwrap, .md-header, .md-header::before,
@@ -54,6 +54,7 @@ body {
   [data-md-color-switching] .md-footer,
   [data-md-color-switching] .notes-visitors { transition-duration: .75s !important; }
 }
+body:not([data-notes-theme-ready]) .notes-backdrop__light { transition: none !important; }
 .notes-backdrop::after { content: ""; position: absolute; inset: 0; background: var(--notes-backdrop-tint); }
 .md-header, .md-tabs, .md-footer, .notes-visitors {
   background: var(--notes-chrome);
