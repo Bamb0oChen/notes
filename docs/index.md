@@ -90,6 +90,8 @@ life is experience ，有这种心态的人是无坚不摧的，而不是在焦�
 <p id="index-wechat-status" class="index-wechat-status" role="status" hidden></p>
 <script src="assets/javascripts/home-links.js" defer></script>
 
+加友链请移步[主页](https://bamb0ochen.com)哦~欢迎提交issue
+
 ## 📖 大图书馆的大事记
 此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
 
