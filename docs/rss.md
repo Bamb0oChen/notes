@@ -5,7 +5,7 @@ description: 预览最近发布和更新的笔记，并获取 RSS 订阅地址�
 
 使用 RSS 阅读器，复制下方的订阅地址。
 
-<a href="../feed_rss_created.xml" type="application/rss+xml">订阅新文章</a> · <a href="../feed_rss_updated.xml" type="application/rss+xml">订阅最近更新</a>
+<a href="../feed_rss_updated.xml" type="application/rss+xml">订阅最近更新</a>
 
 <div class="notes-rss-preview" data-feed="../feed_rss_created.xml">
   <p class="notes-rss-preview__status">正在加载最近文章…</p>
