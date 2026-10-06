@@ -1,7 +1,8 @@
-// Do not pollute production counts with local previews or mirror deployments.
+// Count only visits to the public domains, not local previews.
 (() => {
   if (!['bamb0ochen.com', 'bamb0ochen.github.io'].includes(location.hostname) ||
       !location.pathname.startsWith('/notes/')) return;
+
   const status = document.getElementById('notes-visitors-status');
   if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true) {
     if (status) {
@@ -11,48 +12,45 @@
     return;
   }
 
-  const containers = ['site_pv', 'site_uv', 'page_pv']
-    .map((key) => document.getElementById(`busuanzi_container_${key}`))
-    .filter(Boolean);
-  const hasCounts = () => containers.some((container) => container.style.display !== 'none');
-  const showUnavailable = () => {
-    if (status && !hasCounts()) status.hidden = false;
+  const origin = 'https://bamb0ochen.goatcounter.com';
+  const path = location.pathname;
+  const showCount = (id, count, baseline) => {
+    const element = document.getElementById(id);
+    const number = Number(String(count).replace(/,/g, ''));
+    if (!element || !Number.isSafeInteger(number) || number < 0) return false;
+    element.querySelector('strong').textContent = String(baseline + number);
+    element.hidden = false;
+    return true;
   };
-  if (status) {
-    const observer = new MutationObserver(() => {
-      if (hasCounts()) {
-        status.hidden = true;
-        observer.disconnect();
-      }
-    });
-    containers.forEach((container) => observer.observe(container, { attributes: true, attributeFilter: ['style'] }));
-    setTimeout(showUnavailable, 9000);
-  }
 
-  // Snapshots from 2026-09-27. Busuanzi keeps separate counters per domain.
-  if (location.hostname === 'bamb0ochen.com') {
-    const mergeCounter = (id, history) => {
-      const value = document.getElementById(id);
-      if (!value) return;
-      const observer = new MutationObserver(() => {
-        const current = Number(value.textContent);
-        if (!Number.isSafeInteger(current) || current < 0) return;
-        observer.disconnect();
-        value.textContent = String(history + current);
-      });
-      observer.observe(value, { childList: true, characterData: true, subtree: true });
-    };
-    mergeCounter('busuanzi_value_site_pv', 798);
-    // This is a sum of two domain-level UV counts, not a deduplicated UV.
-    mergeCounter('busuanzi_value_site_uv', 187);
-    if (['/notes/', '/notes/index.html'].includes(location.pathname)) {
-      mergeCounter('busuanzi_value_page_pv', 99);
-    }
-  }
+  const readCount = async (counterPath, id, baseline) => {
+    const response = await fetch(`${origin}/counter/${encodeURIComponent(counterPath)}.json`);
+    // A newly created page has no counter yet.
+    if (response.status === 404) return showCount(id, 0, baseline);
+    if (!response.ok) throw new Error(`GoatCounter returned ${response.status}`);
+    const data = await response.json();
+    if (!showCount(id, data.count, baseline)) throw new Error('Invalid GoatCounter count');
+  };
 
   const script = document.createElement('script');
   script.async = true;
-  script.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-  script.onerror = showUnavailable;
+  script.src = 'https://gc.zgo.at/count.js';
+  script.dataset.goatcounter = `${origin}/count`;
+  script.dataset.goatcounterSettings = JSON.stringify({ no_onload: true, no_events: true });
+  script.onload = () => {
+    // GoatCounter normally deduplicates repeat visits. Here we want page loads.
+    window.goatcounter.count({ path, no_session: true });
+  };
+  script.onerror = () => {
+    if (status) status.hidden = false;
+  };
   document.body.appendChild(script);
+
+  const pageBaseline = ['/notes/', '/notes/index.html'].includes(path) ? 99 : 0;
+  Promise.allSettled([
+    readCount('TOTAL', 'notes-site-views', 1596),
+    readCount(path, 'notes-page-views', pageBaseline),
+  ]).then((results) => {
+    if (status && results.every((result) => result.status === 'rejected')) status.hidden = false;
+  });
 })();
