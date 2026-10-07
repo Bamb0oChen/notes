@@ -7,8 +7,8 @@ description: 预览最近发布和更新的笔记，并获取 RSS 订阅地址�
 
 <a href="../feed_rss_updated.xml" type="application/rss+xml">订阅最近更新</a>
 
-<div class="notes-rss-preview" data-feed="../feed_rss_created.xml">
-  <p class="notes-rss-preview__status">正在加载最近文章…</p>
+<div class="notes-rss-preview" data-changes="changes.json">
+  <p class="notes-rss-preview__status">正在加载最近变更…</p>
 </div>
 
 <script src="../assets/javascripts/rss-preview.js" defer></script>

@@ -3,58 +3,52 @@
   if (!preview) return;
 
   const status = preview.querySelector('.notes-rss-preview__status');
-  const feedUrl = new URL(preview.dataset.feed, document.baseURI);
-  fetch(feedUrl, { headers: { Accept: 'application/rss+xml, application/xml, text/xml' } })
+  const changesUrl = new URL(preview.dataset.changes, document.baseURI);
+  fetch(changesUrl, { headers: { Accept: 'application/json' } })
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.text();
+      return response.json();
     })
-    .then((xml) => {
-      const feed = new DOMParser().parseFromString(xml, 'application/xml');
-      const parseError = feed.getElementsByTagName('parsererror')[0];
-      if (parseError) throw new Error(`XML 格式错误：${parseError.textContent.trim().slice(0, 120)}`);
-      if (feed.documentElement.localName !== 'rss') throw new Error('返回内容不是 RSS 订阅文件');
-      const channel = feed.getElementsByTagName('channel')[0];
-      if (!channel) throw new Error('RSS 缺少 channel');
-      const value = (item, tag) => item.getElementsByTagName(tag)[0]?.textContent?.trim() || '';
-      const items = [...channel.getElementsByTagName('item')].filter((item) => {
-        const link = value(item, 'link');
-        try { return !new URL(link).pathname.endsWith('/rss/'); }
-        catch { return true; }
-      });
-      status.remove();
-      if (!items.length) {
-        preview.textContent = '暂时没有可预览的文章。';
-        return;
-      }
-
+    .then((items) => {
+      if (!Array.isArray(items)) throw new Error('变更清单格式错误');
+      const list = document.createElement('div');
+      list.setAttribute('role', 'list');
       for (const item of items) {
-        const article = document.createElement('article');
-        article.className = 'notes-rss-preview__item';
-        const heading = document.createElement('h2');
-        const link = document.createElement('a');
-        link.href = value(item, 'link') || '#';
-        link.textContent = value(item, 'title') || '未命名文章';
-        heading.append(link);
-        article.append(heading);
+        const row = document.createElement('div');
+        row.className = 'notes-rss-preview__item';
+        row.setAttribute('role', 'listitem');
 
-        const published = value(item, 'pubDate');
-        if (published) {
+        const hasLink = typeof item.url === 'string';
+        const path = document.createElement(hasLink ? 'a' : 'span');
+        path.className = 'notes-rss-preview__path';
+        path.textContent = item.breadcrumb.join(' - ');
+        if (hasLink) path.href = new URL(`../${item.url}`, document.baseURI).href;
+        row.append(path);
+
+        const meta = document.createElement('span');
+        meta.className = 'notes-rss-preview__meta';
+        const parsed = new Date(item.date);
+        if (!Number.isNaN(parsed.getTime())) {
           const date = document.createElement('time');
-          const parsed = new Date(published);
-          if (!Number.isNaN(parsed.getTime())) {
-            date.dateTime = parsed.toISOString();
-            date.textContent = new Intl.DateTimeFormat('zh-CN', {
-              year: 'numeric', month: 'long', day: 'numeric'
-            }).format(parsed);
-            article.append(date);
-          }
+          date.dateTime = parsed.toISOString();
+          date.textContent = new Intl.DateTimeFormat('zh-CN', {
+            year: 'numeric', month: '2-digit', day: '2-digit',
+          }).format(parsed);
+          meta.append(date);
         }
-        preview.append(article);
+        const state = document.createElement('span');
+        state.className = `notes-rss-preview__state notes-rss-preview__state--${item.status}`;
+        state.textContent = item.status;
+        meta.append(state);
+        row.append(meta);
+        list.append(row);
       }
+      status.remove();
+      if (items.length) preview.append(list);
+      else preview.textContent = '暂时没有文章变更。';
     })
     .catch((error) => {
-      console.error('RSS 预览加载失败', error);
-      status.textContent = `文章列表加载失败（${error.message}）。请使用上方订阅地址或稍后重试。`;
+      console.error('RSS 变更列表加载失败', error);
+      status.textContent = `变更列表加载失败（${error.message}）。请稍后重试。`;
     });
 })();

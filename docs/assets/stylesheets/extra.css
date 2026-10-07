@@ -73,19 +73,33 @@
 .md-header__inner .notes-rss svg { width: 1.2rem; height: 1.2rem; }
 
 .notes-rss-preview {
-    display: grid;
-    gap: .75rem;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 .notes-rss-preview__item {
-    padding: .9rem 1.1rem;
-    border: 1px solid var(--md-default-fg-color--lightest);
-    border-radius: .5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: .25rem .65rem;
+    padding: .4rem 0;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+    font-size: .75rem;
 }
-.notes-rss-preview__item h2 { margin: 0 0 .35rem; }
-.notes-rss-preview__item time {
+.notes-rss-preview__path { overflow-wrap: anywhere; }
+.notes-rss-preview__meta {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    white-space: nowrap;
     color: var(--md-default-fg-color--light);
-    font-size: .7rem;
+    font-size: .6rem;
+}
+.notes-rss-preview__state { font-family: monospace; }
+.notes-rss-preview__state--add { color: #69b578; }
+.notes-rss-preview__state--modify { color: var(--md-typeset-a-color); }
+.notes-rss-preview__state--delete { color: #e07878; }
+@media (max-width: 30em) {
+    .notes-rss-preview__item { grid-template-columns: minmax(0, 1fr); }
+    .notes-rss-preview__meta { justify-content: flex-end; }
 }
 
 /* 桌面端搜索默认只显示图标，点击后沿顶栏展开 Material 原生搜索框。 */
