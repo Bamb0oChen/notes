@@ -19,8 +19,10 @@ class DeltaTests(unittest.TestCase):
         new = "<p>远处上下文</p><p>前文</p><p>新增段落</p><p>后文</p><p>远处尾部</p>"
         soup = BeautifulSoup(rss_delta.paragraph_delta(old, new), "html.parser")
         self.assertNotIn("旧段落", soup.get_text())
-        self.assertNotIn("远处上下文", soup.get_text())
-        self.assertNotIn("远处尾部", soup.get_text())
+        self.assertEqual([p.get_text() for p in soup.find_all("p")],
+                         ["远处上下文", "前文", "新增段落", "后文", "远处尾部"])
+        for text in ("远处上下文", "前文", "后文", "远处尾部"):
+            self.assertIn("color:#808080", soup.find("p", string=text)["style"])
         self.assertIn("color:#808080", soup.find("p", string="前文")["style"])
         added_style = soup.find("p", string="新增段落")["style"]
         self.assertIn("color:#000000", added_style)

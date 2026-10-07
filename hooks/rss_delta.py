@@ -92,12 +92,9 @@ def paragraph_delta(old, new):
     matcher = SequenceMatcher(None, list(map(fingerprint, old_blocks)),
                               list(map(fingerprint, new_blocks)), autojunk=False)
     output = []
-    for group in matcher.get_grouped_opcodes(n=1):
-        if output:
-            output.append('<p style="color:#808080;font-weight:400;">…</p>')
-        for operation, _, _, start, end in group:
-            if operation != "delete":
-                output.extend(styled(block, operation != "equal") for block in new_blocks[start:end])
+    for operation, _, _, start, end in matcher.get_opcodes():
+        if operation != "delete":
+            output.extend(styled(block, operation != "equal") for block in new_blocks[start:end])
     if not output and old_blocks != new_blocks:
         output.append('<p style="color:#808080;font-weight:400;">本次更新删去了正文内容。</p>')
     return (f'<div style="{FONT}font-size:16px;line-height:1.8;background-color:#ffffff;'
