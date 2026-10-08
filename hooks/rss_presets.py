@@ -4,6 +4,7 @@ import copy
 import hashlib
 import html
 import json
+import importlib.util
 from datetime import datetime
 from email.utils import format_datetime
 from pathlib import Path
@@ -11,8 +12,15 @@ from urllib.parse import urljoin
 from xml.etree import ElementTree as ET
 
 from mkdocs.plugins import event_priority
-from hooks.rss_changes import recent_changes
-from hooks.rss_urls import absolute_urls
+def _load_sibling(name):
+    spec = importlib.util.spec_from_file_location(name, Path(__file__).with_name(name + ".py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+recent_changes = _load_sibling("rss_changes").recent_changes
+absolute_urls = _load_sibling("rss_urls").absolute_urls
 
 _pages = {}
 STATUSES = ("",)
