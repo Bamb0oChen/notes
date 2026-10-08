@@ -75,6 +75,7 @@ life is experience ，有这种心态的人是无坚不摧的，而不是在焦�
 - **杂谈文章与随想**：想到啥写啥，也有成体系的杂谈和文章，欢迎阅读
 - **社会科学基础**：慢慢写吧，毕竟有个经济学的辅修
 
+当然，大图书馆由于他的笔记特性可能会很难找到我最新更新的杂谈，如果只想看这个部分的话，可以在上面的rss订阅中单独订阅我的杂谈部分，那里面的内容是按照时间排布的
 
 <p class="index-star-cta"><a class="md-button md-button--primary" href="https://github.com/Bamb0oChen/notes" target="_blank" rel="noopener noreferrer">如果感觉对你有帮助的话，不妨顺手点个star👉</a></p>
 
