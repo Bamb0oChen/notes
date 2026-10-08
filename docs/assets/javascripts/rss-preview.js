@@ -4,30 +4,61 @@
 
   const status = preview.querySelector('.notes-rss-preview__status');
   const changesUrl = new URL(preview.dataset.changes, document.baseURI);
-  fetch(changesUrl, { headers: { Accept: 'application/json' } })
-    .then((response) => {
+  const readJson = (url) => fetch(url, { headers: { Accept: 'application/json' } }).then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
-    })
-    .then((items) => {
+    });
+  Promise.all([readJson(changesUrl), readJson(new URL('presets.json', changesUrl))])
+    .then(([items, presets]) => {
       if (!Array.isArray(items)) throw new Error('变更清单格式错误');
+      if (!Array.isArray(presets)) throw new Error('订阅预设格式错误');
       const list = document.createElement('div');
       list.setAttribute('role', 'list');
       const filter = document.querySelector('#rss-folder');
       const stateFilter = document.querySelector('#rss-state');
+      const subscriptionFilter = document.querySelector('#rss-preset');
       const folders = new Set();
-      for (const item of items.filter((entry) => entry.status !== 'delete')) {
+      for (const item of items) {
         const parts = item.path.split('/').slice(0, -1);
         parts.forEach((_, index) => folders.add(parts.slice(0, index + 1).join('/')));
       }
       for (const folder of [...folders].sort((a, b) => a.localeCompare(b, 'zh-CN'))) {
         const option = document.createElement('option');
         option.value = folder;
-        const sample = items.find((item) => item.path.startsWith(`${folder}/`));
-        option.textContent = sample.breadcrumb.slice(0, folder.split('/').length).join(' - ');
+        option.textContent = folder.replaceAll('/', ' / ');
         filter.append(option);
       }
+      for (const preset of presets.filter((entry) => entry.folder).sort((a, b) => a.label.localeCompare(b.label, 'zh-CN'))) {
+        const option = document.createElement('option');
+        option.value = preset.folder;
+        option.textContent = preset.label;
+        subscriptionFilter.append(option);
+      }
+      const subscribe = document.querySelector('#rss-subscribe');
+      const copy = document.querySelector('#rss-copy');
+      const address = document.querySelector('#rss-subscription-url');
+      const copyStatus = document.querySelector('#rss-copy-status');
+      const params = new URLSearchParams(location.search);
+      if ([...filter.options].some((option) => option.value === params.get('folder'))) filter.value = params.get('folder');
+      if ([...stateFilter.options].some((option) => option.value === params.get('status'))) stateFilter.value = params.get('status');
+      copy.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(address.value);
+          copyStatus.textContent = '订阅地址已复制';
+        } catch {
+          address.focus();
+          address.select();
+          copyStatus.textContent = '请复制已选中的订阅地址';
+        }
+      });
       const render = () => {
+        const preset = presets.find((entry) => entry.folder === subscriptionFilter.value);
+        if (preset) {
+          subscribe.href = preset.url;
+          address.value = preset.url;
+          subscribe.hidden = copy.hidden = address.hidden = false;
+          copyStatus.textContent = '';
+        }
         list.replaceChildren();
         const visible = items.filter((item) =>
           (!filter.value || item.path.startsWith(`${filter.value}/`)) &&
@@ -67,6 +98,7 @@
       };
       filter.addEventListener('change', render);
       stateFilter.addEventListener('change', render);
+      subscriptionFilter.addEventListener('change', render);
       render();
       status.remove();
       if (items.length) preview.append(list);

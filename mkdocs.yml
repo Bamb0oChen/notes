@@ -75,6 +75,7 @@ hooks:
   - hooks/rss_urls.py
   - hooks/rss_changes.py
   - hooks/rss_delta.py
+  - hooks/rss_presets.py
 not_in_nav: |
   随想/*.md
   !随想/index.md
