@@ -22,8 +22,10 @@
 .local-ebook-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: .7rem; }
 
 .local-ebook-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: .8rem;
   gap: .35rem;
   min-height: 7.5rem;
   padding: .9rem;
@@ -34,6 +36,19 @@
   cursor: pointer;
   text-align: left;
 }
+
+.local-ebook-card .local-ebook-cover {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  width: 5rem;
+  height: 7rem;
+  object-fit: contain;
+  align-self: center;
+  background: white;
+  border-radius: .15rem;
+  box-shadow: 0 .15rem .4rem #0003;
+}
+.local-ebook-card small, .local-ebook-card strong, .local-ebook-card span { grid-column: 2; }
 
 .local-ebook-card:hover, .local-ebook-card:focus-visible, .local-ebook-card.is-active { border-color: var(--md-typeset-a-color); }
 .local-ebook-card.is-available::after { content: "已选择文件"; color: var(--md-typeset-a-color); font-size: .7rem; }
@@ -46,5 +61,8 @@
 @media (max-width: 600px) {
   .local-ebook-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .local-ebook-card { min-height: 8.5rem; padding: .7rem; }
+  .local-ebook-card { grid-template-columns: minmax(0, 1fr); }
+  .local-ebook-card .local-ebook-cover { grid-row: auto; justify-self: center; }
+  .local-ebook-card small, .local-ebook-card strong, .local-ebook-card span { grid-column: 1; }
   .local-ebook-reader iframe { min-height: 65vh; }
 }
