@@ -14,6 +14,7 @@
       const list = document.createElement('div');
       list.setAttribute('role', 'list');
       const filter = document.querySelector('#rss-folder');
+      const stateFilter = document.querySelector('#rss-state');
       const folders = new Set();
       for (const item of items.filter((entry) => entry.status !== 'delete')) {
         const parts = item.path.split('/').slice(0, -1);
@@ -28,7 +29,10 @@
       }
       const render = () => {
         list.replaceChildren();
-        const visible = items.filter((item) => !filter.value || item.path.startsWith(`${filter.value}/`)).slice(0, 30);
+        const visible = items.filter((item) =>
+          (!filter.value || item.path.startsWith(`${filter.value}/`)) &&
+          (!stateFilter.value || item.status === stateFilter.value)
+        ).slice(0, 30);
         for (const item of visible) {
           const row = document.createElement('div');
           row.className = 'notes-rss-preview__item';
@@ -59,9 +63,10 @@
           row.append(meta);
           list.append(row);
         }
-        if (!visible.length) list.textContent = '这个文件夹暂时没有文章变更。';
+        if (!visible.length) list.textContent = '当前筛选条件下暂无文章变更。';
       };
       filter.addEventListener('change', render);
+      stateFilter.addEventListener('change', render);
       render();
       status.remove();
       if (items.length) preview.append(list);
