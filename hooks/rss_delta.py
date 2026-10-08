@@ -1,6 +1,7 @@
 """Publish paragraph deltas in the update feed with stable content-version IDs."""
 
 import hashlib
+import copy
 import json
 import posixpath
 import re
@@ -21,6 +22,10 @@ from mkdocs.utils.meta import get_data
 _pages = {}
 _file_urls = {}
 FONT = "font-family:'Microsoft YaHei','微软雅黑',sans-serif;"
+
+
+def is_essay(path):
+    return path.split("/", 1)[0] in ("杂谈文章", "随想")
 
 
 def on_pre_build(config):
@@ -146,6 +151,14 @@ def on_post_build(config):
     parser = ET.XMLParser(target=ET.TreeBuilder(insert_pis=True))
     tree = ET.parse(path, parser=parser)
     channel = tree.find("channel")
+    original_links = {item.findtext("link") for item in channel.findall("item")}
+    # Collect the whole essay scope, even when it falls outside the global latest 30.
+    for article_url, page in _pages.items():
+        if is_essay(page.file.src_uri) and article_url not in original_links:
+            item = ET.SubElement(channel, "item")
+            for name, value in (("title", page.title), ("link", article_url),
+                                ("description", ""), ("pubDate", "")):
+                ET.SubElement(item, name).text = value
 
     for item in list(channel.findall("item")):
         article_url = item.findtext("link")
@@ -190,6 +203,26 @@ def on_post_build(config):
         channel.append(item)
     if items:
         channel.find("pubDate").text = max(items, key=lambda entry: parsedate_to_datetime(entry.findtext("pubDate"))).findtext("pubDate")
+    essay_tree = copy.deepcopy(tree)
+    essay_channel = essay_tree.find("channel")
+    essay_channel.find("title").text = "杂谈文章与随想"
+    essay_channel.find("description").text = "杂谈文章和随想的全文更新，按更新时间排列。"
+    for item in list(essay_channel.findall("item")):
+        if not is_essay(_pages[item.findtext("link")].file.src_uri):
+            essay_channel.remove(item)
+    essay_items = essay_channel.findall("item")
+    if essay_items:
+        essay_channel.find("pubDate").text = essay_items[0].findtext("pubDate")
+    for node in essay_channel:
+        if node.tag == "{http://www.w3.org/2005/Atom}link" and node.get("rel") == "self":
+            node.set("href", urljoin(config.site_url, "feed_rss_essays.xml"))
+    essay_path = Path(config.site_dir) / "feed_rss_essays.xml"
+    essay_tree.write(essay_path, encoding="utf-8", xml_declaration=True)
+    if stylesheet:
+        essay_path.write_bytes(essay_path.read_bytes().replace(b"?>", b"?> " + stylesheet.group(), 1))
+    for item in list(channel.findall("item")):
+        if item.findtext("link") not in original_links:
+            channel.remove(item)
     tree.write(path, encoding="utf-8", xml_declaration=True)
     if stylesheet:
         path.write_bytes(path.read_bytes().replace(b"?>", b"?> " + stylesheet.group(), 1))

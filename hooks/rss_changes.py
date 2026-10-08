@@ -68,8 +68,6 @@ def on_post_build(config):
                           for index, part in enumerate(path.parts[:-1])] + [path.stem]
             url = page.url if page else None
         entries.append({**change, "breadcrumb": breadcrumb, "url": url})
-        if len(entries) == 30:
-            break
     output = Path(config.site_dir) / "rss" / "changes.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(entries, ensure_ascii=False), encoding="utf-8")

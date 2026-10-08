@@ -75,6 +75,8 @@
 .notes-rss-preview {
     margin: 1rem 0;
 }
+.notes-rss-filter { display: flex; align-items: center; gap: .5rem; margin-top: 1rem; font-size: .75rem; }
+.notes-rss-filter select { max-width: 75%; padding: .3rem; color: var(--md-default-fg-color); background: var(--md-default-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: .2rem; }
 .notes-rss-preview__item {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;

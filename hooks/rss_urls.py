@@ -38,7 +38,7 @@ def on_post_build(config):
     ET.register_namespace("atom", "http://www.w3.org/2005/Atom")
     ET.register_namespace("dc", "http://purl.org/dc/elements/1.1/")
     site_dir = Path(config.site_dir)
-    for filename in ("feed_rss_created.xml", "feed_rss_updated.xml"):
+    for filename in ("feed_rss_created.xml", "feed_rss_updated.xml", "feed_rss_essays.xml"):
         feed_path = site_dir / filename
         if not feed_path.exists():
             continue

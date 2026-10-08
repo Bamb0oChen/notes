@@ -14,6 +14,12 @@ spec.loader.exec_module(rss_delta)
 
 
 class DeltaTests(unittest.TestCase):
+    def test_essay_subscription_scope(self):
+        for path in ("杂谈文章/感悟/文章.md", "随想/posts/日记.md", "随想/第一阶段/文章.md"):
+            self.assertTrue(rss_delta.is_essay(path))
+        for path in ("计算机科学/文章.md", "杂谈文章备份/文章.md", "index.md"):
+            self.assertFalse(rss_delta.is_essay(path))
+
     def test_paragraph_context_additions_and_omitted_deletions(self):
         old = "<p>远处上下文</p><p>前文</p><p>旧段落</p><p>后文</p><p>远处尾部</p>"
         new = "<p>远处上下文</p><p>前文</p><p>新增段落</p><p>后文</p><p>远处尾部</p>"
