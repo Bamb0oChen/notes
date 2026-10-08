@@ -23,8 +23,8 @@ recent_changes = _load_sibling("rss_changes").recent_changes
 absolute_urls = _load_sibling("rss_urls").absolute_urls
 
 _pages = {}
-STATUSES = ("",)
-LABELS = {"": "新增和修改"}
+STATUSES = ("", "add", "modify")
+LABELS = {"": "全部", "add": "新增", "modify": "修改"}
 
 
 def on_nav(nav, *, config, files):
@@ -58,19 +58,7 @@ def on_post_build(config):
     essay_path = site / "feed_rss_essays.xml"
     if essay_path.exists():
         existing.update({item.findtext("link"): item for item in ET.parse(essay_path).findall("./channel/item")})
-    folders = {""}
-    for source in _pages:
-        if source == "rss.md" or source.startswith("assets/"):
-            continue
-        parts = source.split("/")[:-1]
-        if parts:
-            folders.add(parts[0])
-    for change in changes:
-        if change["path"].startswith("assets/"):
-            continue
-        parts = change["path"].split("/")[:-1]
-        if parts:
-            folders.add(parts[0])
+    folders = ("", "essays")
 
     entries = []
     for change in changes:
@@ -102,10 +90,8 @@ def on_post_build(config):
     output = site / "rss" / "feeds"
     output.mkdir(parents=True, exist_ok=True)
     catalog = []
-    tab_labels = config.extra.get("top_tab_labels", {})
-    for folder in sorted(folders):
-        parts = folder.split("/") if folder else []
-        label = " / ".join([tab_labels.get(parts[0], parts[0]), *parts[1:]]) if parts else "全部文件夹"
+    for folder in folders:
+        label = "杂谈随想" if folder == "essays" else "全部文件夹"
         for status in STATUSES:
             name = preset_name(folder, status)
             href = urljoin(config.site_url, f"rss/feeds/{name}")
@@ -114,7 +100,7 @@ def on_post_build(config):
             for item in list(channel.findall("item")):
                 channel.remove(item)
             selected = [(change, item) for change, item in entries if
-                        (not folder or change["path"].startswith(folder + "/")) and
+                        (not folder or change["path"].split("/", 1)[0] in ("杂谈文章", "随想")) and
                         (not status or change["status"] == status)][:30]
             for _, item in selected:
                 channel.append(copy.deepcopy(item))

@@ -17,6 +17,7 @@
       const filter = document.querySelector('#rss-folder');
       const stateFilter = document.querySelector('#rss-state');
       const subscriptionFilter = document.querySelector('#rss-preset');
+      const subscriptionState = document.querySelector('#rss-preset-state');
       const folders = new Set();
       for (const item of items) {
         const parts = item.path.split('/').slice(0, -1);
@@ -28,7 +29,7 @@
         option.textContent = folder.replaceAll('/', ' / ');
         filter.append(option);
       }
-      for (const preset of presets.filter((entry) => entry.folder).sort((a, b) => a.label.localeCompare(b.label, 'zh-CN'))) {
+      for (const preset of presets.filter((entry) => entry.folder && !entry.status)) {
         const option = document.createElement('option');
         option.value = preset.folder;
         option.textContent = preset.label;
@@ -52,7 +53,7 @@
         }
       });
       const render = () => {
-        const preset = presets.find((entry) => entry.folder === subscriptionFilter.value);
+        const preset = presets.find((entry) => entry.folder === subscriptionFilter.value && entry.status === subscriptionState.value);
         if (preset) {
           subscribe.href = preset.url;
           address.value = preset.url;
@@ -99,6 +100,7 @@
       filter.addEventListener('change', render);
       stateFilter.addEventListener('change', render);
       subscriptionFilter.addEventListener('change', render);
+      subscriptionState.addEventListener('change', render);
       render();
       status.remove();
       if (items.length) preview.append(list);
