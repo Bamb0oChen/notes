@@ -99,6 +99,18 @@ life is experience ，有这种心态的人是无坚不摧的，而不是在焦�
 
 加友链请移步[主页](https://bamb0ochen.com)哦~欢迎提交issue
 
+我的友链信息，直接复制就好：
+
+```json
+{
+  "name": "移动的大图书馆-homepage",
+  "url": "https://bamb0ochen.com/",
+  "avatar": "https://bamb0ochen.com/favicon.ico",
+  "description": "bamb👀chen is here",
+  "note": ""
+}
+```
+
 ## 📖 大图书馆的大事记
 此处只记录功能上的重大更新，笔记内容每天都在更新，已成为驻波的笔记本
 
