@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+  {{ super() }}
+  {% if page and page.file.src_uri == 'index.md' %}
+    <link rel="stylesheet" href="{{ 'assets/stylesheets/intro.css' | url }}">
+  {% elif page and page.file.src_uri == '杂项课程资料/电子书.md' %}
+    <link rel="stylesheet" href="{{ 'assets/stylesheets/local-ebooks.css' | url }}">
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% if page and page.file.src_uri == '杂项课程资料/电子书.md' %}
+    <script src="{{ 'assets/javascripts/local-ebooks.js' | url }}" defer></script>
+  {% endif %}
+{% endblock %}
+
 {% block header %}
   <script>
     // Restore the saved preset before the header and page content are painted.

@@ -82,17 +82,14 @@ not_in_nav: |
 
 # 样式/脚本接口：把自定义文件放进 docs/assets/ 下，然后在这里引用
 extra_css:
-  - assets/stylesheets/intro.css
   - assets/stylesheets/thoughts.css
   - assets/fonts/source-han-sans.css
   - assets/stylesheets/extra.css
   - assets/stylesheets/backdrop.css
-  - assets/stylesheets/local-ebooks.css
 
 extra_javascript:
   - assets/javascripts/theme-presets.js
   - assets/javascripts/visitors.js
-  - assets/javascripts/local-ebooks.js
   # MathJax 配置在 extra.js 里，必须先于 MathJax 脚本加载
   - assets/javascripts/extra.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
