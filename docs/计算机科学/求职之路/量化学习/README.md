@@ -21,23 +21,7 @@ P0 不表示必须先完成整条路线。CMU HW0 可以提前尝试；遇到基
 
 ## 路线图
 
-```mermaid
-flowchart TD
-    S[当前：CSAPP未学完、Lab未开始] --> C[Data Lab → Bomb Lab]
-    C --> K[缓存知识 → Cache Lab]
-    K --> O[进程与虚拟内存 → Shell / Malloc]
-    S --> H[CMU HW0：基础诊断]
-    H --> M[HW1 → HW2：自动微分与训练框架]
-    K --> G[CPU/GPU后端与性能优化]
-    M --> G
-    G --> L[CS336 A1 → A2]
-    S --> F[金融：风险收益与组合理论]
-    F --> Q[CS7646 P2 → P3 → P5 → P6]
-    Q --> T[P7 → P8：策略评估]
-    L --> R[科研：复现 → 改进 → 消融 → 报告]
-    T --> R
-    R --> A[项目讲解与实习申请]
-```
+![量化、MLSys 与科研学习路线](../../../assets/images/quant-learning-roadmap.png)
 
 路线图的汇合表示后续可选方向，不要求量化和 MLSys 都完成才做科研或投递。
 
