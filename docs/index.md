@@ -97,7 +97,10 @@ life is experience ，有这种心态的人是无坚不摧的，而不是在焦�
 <p id="index-wechat-status" class="index-wechat-status" role="status" hidden></p>
 <script src="assets/javascripts/home-links.js" defer></script>
 
-加友链请移步[主页](https://bamb0ochen.com)哦~欢迎提交issue
+加友链请移步
+<font size=5>[主页](https://bamb0ochen.com)</font>
+哦~欢迎提交issue
+（有issue说我链接不够大，已改正。关于为什么不放在这个页面，我希望能尽可能把文章和我的个人展示面分开）
 
 我的友链信息，直接复制就好：
 
