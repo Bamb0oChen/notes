@@ -59,3 +59,5 @@ cudaMemcpy(c, cudaC, sizeof(c), cudaMemcpyDeviceToHost);
 
 return;
 ```
+
+但是

@@ -20,7 +20,6 @@ use_directory_urls: true
 exclude_docs: |
   自然科学基础/数学基础/大一数学课/微积分（甲）/二元微积分/5.二类曲线积分和曲面积分.md
   自然科学基础/数学基础/大一数学课/概率论与数理统计/第9章 区间估计和假设检验.md
-  计算机科学/ZJU HPC101/Lecture 7 CUDA基础.md
   计算机科学/ZJU HPC101/Lecture 8 机器学习基础.md
   计算机科学/ZJU HPC101/Lecture 9 机器学习高级话题.md
   计算机科学/ZJU HPC101/华为ICT架构学习.md
